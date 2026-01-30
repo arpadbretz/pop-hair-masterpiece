@@ -67,7 +67,7 @@ const Preloader = ({ finishLoading }) => {
         transition={{ delay: 1 }}
         className="text-[10px] uppercase tracking-[0.5em] mt-4 text-gray-500"
       >
-        Művészettel meghatározott elegancia
+        Az önkifejezés művészete
       </motion.p>
     </motion.div>
   );
@@ -192,7 +192,7 @@ const Hero = () => {
           >
             <span className="text-[11px] uppercase tracking-[0.8em] text-gold-champagne font-bold mb-6 block">Prémium Budai Szalon</span>
             <h1 className="text-6xl md:text-9xl font-serif italic leading-[0.9] text-black">
-              Tiszta<br />Művészet
+              A szépség mint<br />mestermű
             </h1>
           </motion.div>
           <motion.p
@@ -201,7 +201,7 @@ const Hero = () => {
             transition={{ delay: 0.8, duration: 1.5 }}
             className="text-lg md:text-2xl font-light text-gray-500 max-w-md leading-relaxed"
           >
-            Ahol a stílus nem puszta trendkövetés, hanem egy időtálló válasz a bennünk rejlő egyéniségre.
+            Húsz év szakértelem Budán, a stílus és az önazonosság találkozásánál. Nálunk a hajformázás nem csupán szolgáltatás, hanem egyénre szabott alkotás.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -255,7 +255,7 @@ const HorizontalBrands = () => {
             <div className="flex-1 h-full bg-black p-20 flex flex-col justify-center text-white">
               <span className="text-gold-champagne text-xs uppercase tracking-[0.5em] mb-12">01 / KONCEPCIÓ</span>
               <h2 className="text-[12vw] font-serif italic leading-none mb-12">Pop Hair</h2>
-              <p className="max-w-md text-xl font-light text-gray-400 mb-12">A legmagasabb szintű szakmaiság és kreativitás találkozása. Kevin Murphy rituálék, balayage specialisták és stílustanácsadás.</p>
+              <p className="max-w-md text-xl font-light text-gray-400 mb-12">Szakrális figyelem és kompromisszummentes minőség. Kevin Murphy rituáléinkkal és balayage specialistáinkkal a haj egészségét és a modern esztétikát ötvözzük.</p>
               <button className="w-fit border border-white/20 px-12 py-5 text-[10px] uppercase font-bold tracking-[0.4em] hover:bg-white hover:text-black transition-all">Szolgáltatások felfedezése</button>
             </div>
             <div className="flex-1 h-full relative overflow-hidden">
@@ -273,7 +273,7 @@ const HorizontalBrands = () => {
             <div className="flex-1 h-full p-20 flex flex-col justify-center text-black">
               <span className="text-[#887050] text-xs uppercase tracking-[0.5em] mb-12">02 / KERESKEDELEM</span>
               <h2 className="text-[12vw] font-serif italic leading-none mb-12 text-[#887050]">Loya</h2>
-              <p className="max-w-md text-xl font-light text-gray-600 mb-12">A piac legtisztább, prémium minőségű póthajai. Szakembereknek és magánszemélyeknek, akik nem ismernek kompromisszumot.</p>
+              <p className="max-w-md text-xl font-light text-gray-600 mb-12">A póthajak új standardja. Kizárólag válogatott, etikus forrásból származó prémium hajak azoknak, akik a láthatatlan tökéletességre törekszenek.</p>
               <button className="w-fit border border-[#887050]/20 px-12 py-5 text-[10px] uppercase font-bold tracking-[0.4em] hover:bg-[#887050] hover:text-white transition-all text-[#887050]">Katalógus böngészése</button>
             </div>
           </div>
@@ -287,7 +287,7 @@ const TeamMasterpiece = () => {
   return (
     <section id="galéria" className="py-48 bg-white">
       <div className="max-w-7xl mx-auto px-8">
-        <SectionTitle title="Mesterek" subtitle="AZ ELIT" />
+        <SectionTitle title="Mesterek" subtitle="SZAKÉRTELEM" />
 
         <div className="grid lg:grid-cols-3 gap-32">
           {[
@@ -353,7 +353,7 @@ const VideoMaskSection = () => {
           </div>
           <div>
             <p className="text-white text-xs uppercase font-bold tracking-[0.4em]">A színfalak mögött</p>
-            <p className="text-gray-500 text-[10px] uppercase tracking-widest mt-1 italic">Vogue Divathét 2025</p>
+            <p className="text-gray-500 text-[10px] uppercase tracking-widest mt-1 italic">Fashion Week Backstage 2024</p>
           </div>
         </div>
       </div>
@@ -364,9 +364,9 @@ const VideoMaskSection = () => {
 const TestimonialsMaster = () => {
   const [current, setCurrent] = useState(0);
   const data = [
-    { name: "Kovács Adél", text: "Ahol a szakma és a művészet találkozik. Szilvi kezei között újjászületek minden alkalommal." },
-    { name: "Szalai Márk", text: "A Loya hajak minősége egyszerűen más dimenzió. Nem találtam hasonlót egész Európában." },
-    { name: "Nagy Júlia", text: "Budapest legjobb szalonja, ha valami igazán egyedit és prémiumot keresel." }
+    { name: "Kovács Adél", text: "A POP Hair az a hely, ahol végre azt kaptam, amit megálmodtam: természetes eleganciát és professzionális gondoskodást." },
+    { name: "Szalai Márk", text: "A Loya hajak minősége egyszerűen más dimenzió. Nem találtam hasonlót egész Európában, a textúra és a tartósság egyedülálló." },
+    { name: "Nagy Júlia", text: "Budapest legprofibb szalonja. Szilvi kezei között minden látogatás egy rituálé, amiből feltöltődve távozom." }
   ];
 
   useEffect(() => {
@@ -420,7 +420,7 @@ const FooterElite = () => {
         <div className="grid lg:grid-cols-12 gap-32 mb-64">
           <div className="lg:col-span-8">
             <PerspectiveReveal>
-              <h3 className="text-7xl md:text-[11vw] font-serif italic leading-[0.85] mb-20 text-white">Építsük fel az Ön<br /><span className="text-gold-champagne">önazonosságát.</span></h3>
+              <h3 className="text-7xl md:text-[11vw] font-serif italic leading-[0.85] mb-20 text-white">Találjuk meg az Ön<br /><span className="text-gold-champagne">valódi énjét.</span></h3>
             </PerspectiveReveal>
             <div className="flex flex-wrap gap-20">
               <div className="space-y-6">
@@ -429,7 +429,7 @@ const FooterElite = () => {
               </div>
               <div className="space-y-6">
                 <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-500">Találkozzunk</p>
-                <p className="text-4xl font-serif">Buda, Iskola utca 12.</p>
+                <p className="text-4xl font-serif">1011 Budapest, Iskola utca 16.</p>
               </div>
             </div>
           </div>
@@ -485,7 +485,7 @@ export default function App() {
             <Hero />
             <div className="py-48 px-8 bg-white flex items-center justify-center">
               <PerspectiveReveal className="max-w-4xl text-center">
-                <h2 className="text-4xl md:text-7xl font-serif italic text-black mb-12 leading-tight">Minden hajszál egy új történet kezdete. Mi segítünk <span className="text-gold-champagne">megírni.</span></h2>
+                <h2 className="text-4xl md:text-7xl font-serif italic text-black mb-12 leading-tight">Minden hajszál egy új történet kezdete. Segítünk, hogy az Öné <span className="text-gold-champagne">felejthetetlen legyen.</span></h2>
                 <div className="w-20 h-[1px] bg-black mx-auto" />
               </PerspectiveReveal>
             </div>
@@ -524,7 +524,7 @@ export default function App() {
             className="fixed bottom-12 right-12 z-[100] bg-black text-white px-10 py-5 rounded-full shadow-2xl flex items-center gap-6 group overflow-hidden border border-white/10"
           >
             <div className="w-2 h-2 rounded-full bg-gold-champagne animate-pulse" />
-            <span className="text-[10px] uppercase font-bold tracking-[0.5em] relative z-10">Foglaljon Helyet</span>
+            <span className="text-[10px] uppercase font-bold tracking-[0.5em] relative z-10">IDŐPONTFOGALÁS</span>
             <div className="absolute inset-0 bg-gold-champagne text-black flex items-center justify-center transition-transform duration-500 translate-y-full group-hover:translate-y-0">
               <span className="text-[10px] uppercase font-bold tracking-[0.5em]">Foglalás</span>
             </div>
