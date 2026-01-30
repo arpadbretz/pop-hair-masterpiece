@@ -293,21 +293,24 @@ const TeamMasterpiece = () => {
           {[
             {
               name: "Bacsik Szilvia",
-              role: "Kreatív Igazgató",
+              role: "Tulajdonos & Vezető mesterfodrász",
+              bio: "Tulajdonos és vezető mesterfodrász, több mint 20 év tapasztalattal. Kevin Murphy szakértőként a legmagasabb szintű szakmai tudást ötvözi a prémium termékhasználattal és a személyre szabott megoldásokkal. Kiemelt szakterülete az esküvői hajkészítés, ahol az elegancia és egyéniség harmonikus egysége áll a középpontban.",
               img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&h=1000&auto=format&fit=crop",
               y: 0
             },
             {
               name: "Szilágyi Gábor",
               role: "Mesterfodrász",
+              bio: "Munkáját az alaposság, a precizitás és a magas szakmai igényesség jellemzi. Vendégei a tudatos, személyre szabott megoldások és a professzionális hozzáállás miatt választják, amelyben a technikai pontosság és az emberi figyelem természetes egységet alkot.",
               img: "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?q=80&w=800&h=1000&auto=format&fit=crop",
-              y: 100
+              y: 80
             },
             {
               name: "Csala Dani",
-              role: "Hajművész",
+              role: "Fodrászművész",
+              bio: "Elhivatott és tehetséges fodrász, akit a szenvedély vezérel stílusos és egyedi frizurák készítésében. Nála biztos lehetsz benne, hogy olyan hajvágást kapsz, ami nemcsak trendi, hanem tökéletesen illik a személyiségedhez is.",
               img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&h=1000&auto=format&fit=crop",
-              y: 200
+              y: 160
             }
           ].map((member, idx) => (
             <motion.div
@@ -326,7 +329,8 @@ const TeamMasterpiece = () => {
                 </div>
               </div>
               <h3 className="text-4xl font-serif italic mb-2">{member.name}</h3>
-              <p className="text-gold-champagne text-[10px] uppercase font-bold tracking-[0.4em] mb-4">{member.role}</p>
+              <p className="text-gold-champagne text-[10px] uppercase font-bold tracking-[0.4em] mb-6">{member.role}</p>
+              <p className="text-sm font-light text-gray-400 leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">{member.bio}</p>
               <div className="w-12 h-[1px] bg-black/10 group-hover:w-full transition-all duration-700" />
             </motion.div>
           ))}
@@ -483,12 +487,64 @@ export default function App() {
           <Navbar />
           <main>
             <Hero />
-            <div className="py-48 px-8 bg-white flex items-center justify-center">
-              <PerspectiveReveal className="max-w-4xl text-center">
-                <h2 className="text-4xl md:text-7xl font-serif italic text-black mb-12 leading-tight">Minden hajszál egy új történet kezdete. Segítünk, hogy az Öné <span className="text-gold-champagne">felejthetetlen legyen.</span></h2>
-                <div className="w-20 h-[1px] bg-black mx-auto" />
-              </PerspectiveReveal>
-            </div>
+            <section id="rólunk" className="py-48 px-8 bg-white overflow-hidden">
+              <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-32 items-center">
+                <PerspectiveReveal>
+                  <span className="text-gold-champagne text-[10px] uppercase font-bold tracking-[0.5em] mb-8 block">Filozófia</span>
+                  <h2 className="text-5xl md:text-7xl font-serif italic text-black mb-12 leading-tight">Pop Hair Salon – prémium <span className="text-gold-champagne">fodrászat Budán.</span></h2>
+                  <div className="space-y-8 text-xl font-light text-gray-600 leading-relaxed">
+                    <p>A Pop Hair Salon egy olyan prémium fodrászszalon Budán, ahol a magas szintű szakmai tudás, a személyre szabott figyelem és a minőségi termékhasználat találkozik. Nálunk nem futószalag-szolgáltatás zajlik, hanem tudatos stílusépítés: minden vendéget egyéniségként kezelünk, és minden frizura mögött átgondolt szakmai döntés áll.</p>
+                    <p>Csapatunk magasan képzett, tapasztalt mesterfodrászokból áll, akik számára a precizitás, az igényesség és a folyamatos fejlődés alapérték. A legmodernebb technikákat alkalmazva biztosítjuk, hogy a végeredmény hosszú távon is jól kezelhető és viselhető legyen.</p>
+                  </div>
+                </PerspectiveReveal>
+                <div className="relative aspect-[4/5] bg-gray-100 overflow-hidden shadow-2xl">
+                  <motion.img
+                    whileInView={{ scale: 1.1 }}
+                    transition={{ duration: 2 }}
+                    src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1200&auto=format&fit=crop"
+                    className="h-full w-full object-cover grayscale"
+                    alt="Salon philosophy"
+                  />
+                  <div className="absolute inset-0 bg-black/5" />
+                </div>
+              </div>
+            </section>
+
+            {/* Specialty & Atmosphere Section */}
+            <section className="py-48 bg-black text-white">
+              <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row gap-24 items-center">
+                <div className="flex-1 order-2 md:order-1">
+                  <PerspectiveReveal>
+                    <span className="text-gold-champagne text-[10px] uppercase font-bold tracking-[0.5em] mb-8 block">Szakértelem</span>
+                    <h2 className="text-4xl md:text-6xl font-serif italic mb-12">Művészet a <span className="text-gold-champagne">színfalak mögül.</span></h2>
+                    <p className="text-xl font-light text-gray-400 leading-relaxed mb-8">
+                      Szakmai szemléletünket a divat világa inspirálja: vezetőnk több mint egy évtizede dolgozik fotózásokon, forgatásokon és fashion weekeken. Hiszünk abban, hogy a stílus nem puszta trendkövetés, hanem személyiséghez illesztett, időtálló megoldás.
+                    </p>
+                    <p className="text-xl font-light text-gray-400 leading-relaxed mb-12">
+                      Szalonunk légköre nyugodt, igényes és inspiráló – olyan tér, ahol a vendégek valódi figyelmet kapnak, és ahol a minőség nem ígéret, hanem alapelv. Célunk az önazonos elégedettség.
+                    </p>
+                    <div className="flex gap-12 border-t border-white/10 pt-12">
+                      <div>
+                        <p className="text-2xl font-serif italic mb-2">10+ év</p>
+                        <p className="text-[10px] uppercase tracking-widest text-gray-500">Backstage tapasztalat</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-serif italic mb-2">20+ év</p>
+                        <p className="text-[10px] uppercase tracking-widest text-gray-500">Szakmai múlt</p>
+                      </div>
+                    </div>
+                  </PerspectiveReveal>
+                </div>
+                <div className="flex-1 order-1 md:order-2 grid grid-cols-2 gap-4">
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594434212627-ac196123abb7?q=80&w=800&auto=format&fit=crop" className="h-full w-full object-cover grayscale" alt="Fashion work" />
+                  </div>
+                  <div className="aspect-[3/4] overflow-hidden mt-12">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" className="h-full w-full object-cover grayscale" alt="Wedding specialty" />
+                  </div>
+                </div>
+              </div>
+            </section>
             <HorizontalBrands />
             <TeamMasterpiece />
             <VideoMaskSection />
