@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-luxury-gold: #d4af37;
+  --color-luxury-gold-light: #f2dfb3;
+  --color-gold-champagne: #e5d3b3;
+  --color-soft-black: #1a1a1a;
+  --color-off-white: #f9f6f1;
+
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
+
+  --tracking-vogue: 0.5em;
+  --tracking-vogue-tight: 0.2em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-black bg-white overflow-x-hidden;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-champagne);
+    color: #000;
+  }
+}
+
+@layer utilities {
+  .border-hairline {
+    border-width: 0.5px;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #e5d3b3 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #e5d3b3 50%, #d4af37 100%);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .bg-grain {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .bg-grain::after {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  @keyframes grain {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -10%);
+    }
+    20% {
+      transform: translate(-15%, 5%);
+    }
+    30% {
+      transform: translate(7%, -25%);
+    }
+    40% {
+      transform: translate(-5%, 25%);
+    }
+    50% {
+      transform: translate(-15%, 10%);
+    }
+    60% {
+      transform: translate(15%, 0%);
+    }
+    70% {
+      transform: translate(0%, 15%);
+    }
+    80% {
+      transform: translate(3%, 35%);
+    }
+    90% {
+      transform: translate(-10%, 10%);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
