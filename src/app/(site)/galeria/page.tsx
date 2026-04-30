@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { galleryImagesQuery } from "@/sanity/lib/queries";
 import type { GalleryImage } from "@/sanity/lib/types";
@@ -45,7 +46,9 @@ export default async function GalleryPage() {
         </div>
 
         {items.length > 0 ? (
-          <GalleryClient items={items} />
+          <Suspense fallback={null}>
+            <GalleryClient items={items} />
+          </Suspense>
         ) : (
           <div className="py-32 text-center text-gray-400 font-light">
             <p className="text-xl">Hamarosan feltöltjük a galériát.</p>
