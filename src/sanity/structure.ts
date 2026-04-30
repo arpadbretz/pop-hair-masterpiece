@@ -9,6 +9,7 @@ const SINGLETON_DEFINITIONS: Array<{
   { id: "siteSettings", type: "siteSettings", title: "Beállítások" },
   { id: "homeContent", type: "homeContent", title: "Főoldal" },
   { id: "aboutContent", type: "aboutContent", title: "Rólunk" },
+  { id: "servicesContent", type: "servicesContent", title: "Szolgáltatások" },
   { id: "weddingContent", type: "weddingContent", title: "Esküvő" },
 ];
 

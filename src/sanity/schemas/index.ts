@@ -10,6 +10,7 @@ import { weddingProcessStep } from "./weddingProcessStep";
 import { homeContent } from "./homeContent";
 import { aboutContent } from "./aboutContent";
 import { weddingContent } from "./weddingContent";
+import { servicesContent } from "./servicesContent";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // Singletons (egyedi dokumentumok)
@@ -17,6 +18,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   homeContent,
   aboutContent,
   weddingContent,
+  servicesContent,
 
   // Listák
   teamMember,
@@ -32,4 +34,5 @@ export const singletonTypes = new Set([
   "homeContent",
   "aboutContent",
   "weddingContent",
+  "servicesContent",
 ]);

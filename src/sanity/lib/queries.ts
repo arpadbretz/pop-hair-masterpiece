@@ -49,6 +49,16 @@ export const aboutContentQuery = groq`
   }
 `;
 
+export const servicesContentQuery = groq`
+  *[_type == "servicesContent"][0] {
+    repairImage,
+    actionImage,
+    actionTitleLine1,
+    actionTitleLine2,
+    actionSubtitle
+  }
+`;
+
 export const weddingContentQuery = groq`
   *[_type == "weddingContent"][0] {
     heroEyebrow,

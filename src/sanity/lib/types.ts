@@ -43,6 +43,14 @@ export interface AboutContent {
   closingQuoteAuthor?: string;
 }
 
+export interface ServicesContent {
+  repairImage?: Image;
+  actionImage?: Image;
+  actionTitleLine1?: string;
+  actionTitleLine2?: string;
+  actionSubtitle?: string;
+}
+
 export interface WeddingContent {
   heroEyebrow?: string;
   heroTitleLine1: string;

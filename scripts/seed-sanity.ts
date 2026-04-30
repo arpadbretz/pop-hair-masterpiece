@@ -341,62 +341,107 @@ async function seedWeddingProcess() {
 
 async function seedGallery() {
   console.log("→ Gallery");
-  // Curated subset of the legacy assets — clients can prune/extend in Studio.
-  const items = [
-    { file: "eskuvo-hero.jpg", title: "Menyasszonyi Frizura Design", category: "wedding", size: "large" },
-    { file: "balayage-munkank-1.jpg", title: "Mesteri Balayage", category: "work" },
-    { file: "szalon-belso-1.jpg", title: "Enteriőr Részlet", category: "salon" },
-    { file: "eskuvo-mood-1.jpg", title: "Esküvői Mood", category: "wedding" },
-    { file: "editorial-munkank-1.jpg", title: "Editorial Hajszobrászat", category: "work", size: "large" },
-    { file: "szalon-munka-1.jpg", title: "Alkotási Folyamat", category: "salon" },
-    { file: "hajhosszabbitas-1.jpg", title: "Láthatatlan Illesztés", category: "work" },
-    { file: "eskuvo-munkank-1.jpg", title: "Esküvői Elegancia", category: "wedding" },
-    { file: "balayage-munkank-2.jpg", title: "Natural Sunkissed", category: "work", size: "large" },
-    { file: "szalon-belso-2.jpg", title: "Minimalista Luxus", category: "salon" },
-    { file: "balayage-blonde.jpg", title: "Ice Blonde Balayage", category: "work" },
-    { file: "eskuvo-vibe-1.jpg", title: "Esküvői Pillanat", category: "wedding" },
-    { file: "stilus-munkank-1.jpg", title: "Modern Formavilág", category: "work" },
-    { file: "eskuvo-vibe-13.jpg", title: "Esküvői Részletek", category: "wedding" },
-    { file: "szalon-belso-3.jpg", title: "Szalon Részlet", category: "salon" },
-    { file: "balayage-warm.jpg", title: "Meleg Tónusú Árnyalás", category: "work" },
-    { file: "eskuvo-munkank-3.jpg", title: "Romantikus Hullámok", category: "wedding", size: "large" },
-    { file: "kevin-murphy-termek-1.jpg", title: "Kevin Murphy Kényeztetés", category: "salon" },
-    { file: "hajhosszabbitas-detail.jpg", title: "Precíziós Technika", category: "work" },
-    { file: "kevin-murphy-details-1.jpg", title: "Prémium Hatóanyagok", category: "salon" },
-    { file: "modern-haj-1.jpg", title: "Trendszínek", category: "work" },
-    { file: "eskuvo-vibe-3.jpg", title: "Boldog Menyasszony", category: "wedding" },
-    { file: "eskuvo-vibe-15.jpg", title: "Esküvői Varázs", category: "wedding", size: "large" },
-    { file: "eskuvo-vibe-17.jpg", title: "Esküvői Portré", category: "wedding" },
+  // Wipe any previously-seeded gallery docs so re-runs don't accumulate.
+  const existingIds = await client.fetch<string[]>(
+    '*[_type == "galleryImage"]._id'
+  );
+  if (existingIds.length > 0) {
+    console.log(`  cleaning ${existingIds.length} existing gallery docs`);
+    const tx = client.transaction();
+    existingIds.forEach((id) => tx.delete(id));
+    await tx.commit();
+  }
+  // Mirrors the original Gallery.jsx ordering 1:1 (31 items including video).
+  const items: {
+    id: string;
+    file: string;
+    title: string;
+    category: string;
+    size?: string;
+    videoUrl?: string;
+  }[] = [
+    { id: "video-atmosphere", file: "szalon-munka-1.jpg", title: "Pop Hair Atmoszféra", category: "video", size: "large", videoUrl: "/videos/hero.mp4" },
+    { id: "eskuvo-hero", file: "eskuvo-hero.jpg", title: "Menyasszonyi Frizura Design", category: "wedding", size: "large" },
+    { id: "balayage-1", file: "balayage-munkank-1.jpg", title: "Mesteri Balayage", category: "work" },
+    { id: "salon-belso-1", file: "szalon-belso-1.jpg", title: "Enteriőr Részlet", category: "salon" },
+    { id: "eskuvo-mood-1", file: "eskuvo-mood-1.jpg", title: "Esküvői Mood", category: "wedding" },
+    { id: "editorial-1", file: "editorial-munkank-1.jpg", title: "Editorial Hajszobrászat", category: "work", size: "large" },
+    { id: "szalon-munka-1", file: "szalon-munka-1.jpg", title: "Alkotási Folyamat", category: "salon" },
+    { id: "hajhosszabbitas-1", file: "hajhosszabbitas-1.jpg", title: "Láthatatlan Illesztés", category: "work" },
+    { id: "eskuvo-munkank-1", file: "eskuvo-munkank-1.jpg", title: "Esküvői Elegancia", category: "wedding" },
+    { id: "balayage-2", file: "balayage-munkank-2.jpg", title: "Natural Sunkissed", category: "work", size: "large" },
+    { id: "szalon-belso-2", file: "szalon-belso-2.jpg", title: "Minimalista Luxus", category: "salon" },
+    { id: "balayage-blonde", file: "balayage-blonde.jpg", title: "Ice Blonde Balayage", category: "work" },
+    { id: "eskuvo-vibe-1", file: "eskuvo-vibe-1.jpg", title: "Esküvői Pillanat", category: "wedding" },
+    { id: "stilus-1", file: "stilus-munkank-1.jpg", title: "Modern Formavilág", category: "work" },
+    { id: "eskuvo-vibe-13", file: "eskuvo-vibe-13.jpg", title: "Esküvői Részletek", category: "wedding" },
+    { id: "szalon-belso-3", file: "szalon-belso-3.jpg", title: "Szalon Részlet", category: "salon" },
+    { id: "balayage-warm", file: "balayage-warm.jpg", title: "Meleg Tónusú Árnyalás", category: "work" },
+    { id: "eskuvo-munkank-3", file: "eskuvo-munkank-3.jpg", title: "Romantikus Hullámok", category: "wedding", size: "large" },
+    { id: "km-termek-1", file: "kevin-murphy-termek-1.jpg", title: "Kevin Murphy Kényeztetés", category: "salon" },
+    { id: "hajhosszabbitas-detail", file: "hajhosszabbitas-detail.jpg", title: "Precíziós Technika", category: "work" },
+    { id: "km-details-1", file: "kevin-murphy-details-1.jpg", title: "Prémium Hatóanyagok", category: "salon" },
+    { id: "eskuvo-vibe-2", file: "eskuvo-vibe-2.jpg", title: "Esküvői Előkészületek", category: "wedding" },
+    { id: "modern-haj", file: "modern-haj-1.jpg", title: "Trendszínek", category: "work" },
+    { id: "eskuvo-vibe-3", file: "eskuvo-vibe-3.jpg", title: "Boldog Menyasszony", category: "wedding" },
+    { id: "eskuvo-vibe-4", file: "eskuvo-vibe-4.jpg", title: "Hajszobrászat", category: "wedding" },
+    { id: "eskuvo-vibe-14", file: "eskuvo-vibe-14.jpg", title: "A Mi Munkánk", category: "wedding" },
+    { id: "eskuvo-vibe-15", file: "eskuvo-vibe-15.jpg", title: "Esküvői Varázs", category: "wedding", size: "large" },
+    { id: "eskuvo-vibe-16", file: "eskuvo-vibe-16.jpg", title: "Elegancia", category: "wedding" },
+    { id: "eskuvo-vibe-17", file: "eskuvo-vibe-17.jpg", title: "Esküvői Portré", category: "wedding" },
+    { id: "eskuvo-vibe-18", file: "eskuvo-vibe-18.jpg", title: "Részletek", category: "wedding" },
+    { id: "eskuvo-vibe-11", file: "eskuvo-vibe-11.jpg", title: "Örök Emlék", category: "wedding" },
   ];
   let order = 0;
   for (const it of items) {
     const img = await uploadAsset(it.file);
     if (!img) continue;
     order += 1;
-    await client.createOrReplace({
-      _id: `gal-${it.file.replace(/\.[^.]+$/, "")}`,
+    const doc: Record<string, unknown> = {
+      _id: `gal-${it.id}`,
       _type: "galleryImage",
       title: it.title,
       image: { ...img, alt: it.title },
       category: it.category,
       size: it.size ?? "small",
       order,
-    });
+    };
+    if (it.videoUrl) doc.videoUrl = it.videoUrl;
+    await client.createOrReplace(doc as never);
   }
+}
+
+async function seedServicesContent() {
+  console.log("→ Services content");
+  const repair = await uploadAsset("balayage-munkank-1.jpg");
+  const action = await uploadAsset("szalon-munka-1.jpg");
+  await client.createOrReplace({
+    _id: "servicesContent",
+    _type: "servicesContent",
+    repairImage: repair,
+    actionImage: action,
+    actionTitleLine1: "Precizitás abban,",
+    actionTitleLine2: "amit csinálunk.",
+    actionSubtitle: "Budai Mesterszalon • Mesterfodrász vágás",
+  });
 }
 
 async function main() {
   console.log(`Seeding Sanity project ${PROJECT_ID} / dataset ${DATASET}\n`);
-  await seedSiteSettings();
-  await seedHomeContent();
-  await seedAboutContent();
-  await seedWeddingContent();
-  await seedTeam();
-  await seedServices();
-  await seedPricing();
-  await seedReviews();
-  await seedWeddingProcess();
-  await seedGallery();
+  const only = process.argv.slice(2);
+  const should = (key: string) => only.length === 0 || only.includes(key);
+
+  if (should("siteSettings")) await seedSiteSettings();
+  if (should("homeContent")) await seedHomeContent();
+  if (should("aboutContent")) await seedAboutContent();
+  if (should("weddingContent")) await seedWeddingContent();
+  if (should("servicesContent")) await seedServicesContent();
+  if (should("team")) await seedTeam();
+  if (should("services")) await seedServices();
+  if (should("pricing")) await seedPricing();
+  if (should("reviews")) await seedReviews();
+  if (should("weddingProcess")) await seedWeddingProcess();
+  if (should("gallery")) await seedGallery();
   console.log("\n✓ Done. Visit /studio to review and refine.");
 }
 
