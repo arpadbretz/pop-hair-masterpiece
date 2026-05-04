@@ -177,11 +177,11 @@ async function seedWeddingContent() {
   await client.createOrReplace({
     _id: "weddingContent",
     _type: "weddingContent",
-    heroEyebrow: "Esküvői Frizurák",
-    heroTitleLine1: "Egy különleges nap,",
-    heroTitleLine2: "minden részlet számít.",
+    heroEyebrow: "A Nagy Nap",
+    heroTitleLine1: "Esküvői",
+    heroTitleLine2: "frizurák.",
     heroQuote:
-      "A célunk mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.",
+      "Egy különleges nap, ahol minden részlet számít. A célunk mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.",
     heroImage: hero,
     expertiseBody:
       "Az esküvő egy különleges nap, ahol minden részlet számít. A Pop Hair Salonban nagy hangsúlyt fektetünk a menyasszonyi frizurák elkészítésére, ahol a cél mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.\n\nA szolgáltatás tartalmazhat próba frizurát, a menyasszonyi frizura elkészítését, valamint alkalmi frizurákat a vendégek számára. Minden esetben személyes konzultáció során tervezzük meg a frizurát.",
