@@ -25,7 +25,7 @@ export interface HomeContent {
   heroVideoWebm?: string;
   heroVideoPoster?: Image;
   kmTitle?: string;
-  kmDescription?: unknown[];
+  kmDescription?: string;
   kmImage?: Image;
   yearsExperience?: string;
   reviewBadgeCount?: string;
@@ -35,12 +35,14 @@ export interface AboutContent {
   philosophyTitleLine1?: string;
   philosophyTitleLine2?: string;
   philosophyQuote?: string;
-  philosophyBody?: unknown[];
+  philosophyBody?: string;
   philosophyImage?: Image;
-  kmFilozofiaBody?: unknown[];
+  kmFilozofiaBody?: string;
   kmFilozofiaImage?: Image;
   closingQuote?: string;
   closingQuoteAuthor?: string;
+  whyChooseUsTitle?: string;
+  whyChooseUsItems?: string[];
 }
 
 export interface ServicesContent {
@@ -57,7 +59,7 @@ export interface WeddingContent {
   heroTitleLine2: string;
   heroQuote?: string;
   heroImage?: Image;
-  expertiseBody?: unknown[];
+  expertiseBody?: string;
   expertiseImageLeft?: Image;
   expertiseImageRight?: Image;
   yearsLabel?: string;
@@ -73,7 +75,7 @@ export interface TeamMember {
   role: string;
   speciality?: string;
   bio: string;
-  image: Image & { alt?: string };
+  image?: Image & { alt?: string };
 }
 
 export interface Service {

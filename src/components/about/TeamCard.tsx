@@ -22,13 +22,21 @@ export function TeamCard({
     >
       <div className="relative mb-16">
         <div className="w-72 h-72 rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10">
-          <Image
-            src={urlForImage(member.image).width(600).height(600).fit("crop").url()}
-            alt={member.image.alt ?? member.name}
-            width={600}
-            height={600}
-            className="w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110"
-          />
+          {member.image ? (
+            <Image
+              src={urlForImage(member.image).width(600).height(600).fit("crop").url()}
+              alt={member.image.alt ?? member.name}
+              width={600}
+              height={600}
+              className="w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-luxury-gold/15 via-off-white to-luxury-gold/5 flex items-center justify-center">
+              <span className="font-serif italic text-7xl text-luxury-gold/70">
+                {member.name.charAt(0)}
+              </span>
+            </div>
+          )}
         </div>
         <motion.div
           animate={{ rotate: 360 }}

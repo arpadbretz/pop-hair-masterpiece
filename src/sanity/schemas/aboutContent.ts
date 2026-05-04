@@ -28,8 +28,9 @@ export const aboutContent = defineType({
     defineField({
       name: "philosophyBody",
       title: "Filozófia szöveg",
-      type: "array",
-      of: [{ type: "block", styles: [{ title: "Normál", value: "normal" }] }],
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 8,
     }),
     defineField({
       name: "philosophyImage",
@@ -40,8 +41,9 @@ export const aboutContent = defineType({
     defineField({
       name: "kmFilozofiaBody",
       title: "Kevin Murphy filozófia szöveg",
-      type: "array",
-      of: [{ type: "block", styles: [{ title: "Normál", value: "normal" }] }],
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 8,
     }),
     defineField({
       name: "kmFilozofiaImage",
@@ -62,6 +64,19 @@ export const aboutContent = defineType({
       title: "Idézet szerzője",
       type: "string",
       initialValue: "Bacsik Szilvia",
+    }),
+    defineField({
+      name: "whyChooseUsTitle",
+      title: "„Miért válassz minket?\" – cím",
+      type: "string",
+      initialValue: "Miért válassz minket?",
+    }),
+    defineField({
+      name: "whyChooseUsItems",
+      title: "„Miért válassz minket?\" – pontok",
+      description: "Rövid, listázott érvek (pl. „több mint 20 év szakmai tapasztalat\").",
+      type: "array",
+      of: [{ type: "string" }],
     }),
   ],
   preview: {

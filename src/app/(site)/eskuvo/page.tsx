@@ -14,6 +14,7 @@ import type {
 import { urlForImage } from "@/sanity/lib/image";
 import { SectionTitle, PerspectiveReveal } from "@/components/Common";
 import { WeddingProcessCard } from "@/components/wedding/WeddingProcessCard";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 export const metadata = {
   title: "Esküvői Design",
@@ -122,17 +123,25 @@ export default async function WeddingPage() {
                 Szakértelem.
               </h2>
               <div className="space-y-8 text-lg text-gray-500 font-light leading-relaxed">
-                <p>
-                  Bacsik Szilvia több mint egy évtizede aktív szereplője a
-                  divat világának. Rendszeres résztvevője fashion weekeknek,
-                  fotózásoknak és forgatásoknak, ami a menyasszonyi frizurák
-                  tervezésében is visszaköszön.
-                </p>
-                <p>
-                  Kiemelt szakterülete az esküvői hajkészítés, ahol a precizitás,
-                  az elegancia és az egyéniség harmonikus egysége áll a
-                  középpontban.
-                </p>
+                {splitParagraphs(w.expertiseBody).length > 0 ? (
+                  splitParagraphs(w.expertiseBody).map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))
+                ) : (
+                  <>
+                    <p>
+                      Bacsik Szilvia több mint egy évtizede aktív szereplője a
+                      divat világának. Rendszeres résztvevője fashion weekeknek,
+                      fotózásoknak és forgatásoknak, ami a menyasszonyi frizurák
+                      tervezésében is visszaköszön.
+                    </p>
+                    <p>
+                      Kiemelt szakterülete az esküvői hajkészítés, ahol a
+                      precizitás, az elegancia és az egyéniség harmonikus egysége
+                      áll a középpontban.
+                    </p>
+                  </>
+                )}
               </div>
             </PerspectiveReveal>
 

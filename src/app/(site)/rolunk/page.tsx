@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Heart, ShieldCheck, Zap, History, Award } from "lucide-react";
+import { Heart, ShieldCheck, Zap, History, Award, Check } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import {
   aboutContentQuery,
@@ -10,6 +10,7 @@ import type { AboutContent, TeamMember } from "@/sanity/lib/types";
 import { urlForImage } from "@/sanity/lib/image";
 import { SectionTitle, PerspectiveReveal } from "@/components/Common";
 import { TeamCard } from "@/components/about/TeamCard";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 export const metadata = {
   title: "Rólunk",
@@ -70,15 +71,23 @@ export default async function AboutPage() {
                 </div>
               )}
               <div className="space-y-6 text-lg text-gray-400 font-light leading-relaxed max-w-xl">
-                <p>
-                  Nálunk nem futószalag-szolgáltatás zajlik. Minden vendéget
-                  egyéniségként kezelünk, és minden frizura mögött átgondolt
-                  szakmai döntés áll.
-                </p>
-                <p>
-                  Célunk, hogy mindenki magabiztosan, önazonosan és elégedetten
-                  távozzon tőlünk.
-                </p>
+                {splitParagraphs(a.philosophyBody).length > 0 ? (
+                  splitParagraphs(a.philosophyBody).map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))
+                ) : (
+                  <>
+                    <p>
+                      Nálunk nem futószalag-szolgáltatás zajlik. Minden vendéget
+                      egyéniségként kezelünk, és minden frizura mögött átgondolt
+                      szakmai döntés áll.
+                    </p>
+                    <p>
+                      Célunk, hogy mindenki magabiztosan, önazonosan és
+                      elégedetten távozzon tőlünk.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
             <div className="relative group">
@@ -143,15 +152,24 @@ export default async function AboutPage() {
             <div className="space-y-12">
               <SectionTitle title="A Márka Mögött" subtitle="KEVIN MURPHY FILOZÓFIA" />
               <div className="space-y-8 text-xl font-light text-gray-500 leading-relaxed">
-                <p>
-                  A Kevin Murphy nem csupán egy termékcsalád, hanem egy
-                  szemléletmód. A bőrápolás technológiájára építve, a legtisztább
-                  természetes alapanyagokat ötvözi a tudomány erejével.
-                </p>
-                <p>
-                  Fenntarthatóság, környezettudatosság és kompromisszummentes
-                  minőség.
-                </p>
+                {splitParagraphs(a.kmFilozofiaBody).length > 0 ? (
+                  splitParagraphs(a.kmFilozofiaBody).map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))
+                ) : (
+                  <>
+                    <p>
+                      A Kevin Murphy nem csupán egy termékcsalád, hanem egy
+                      szemléletmód. A bőrápolás technológiájára építve, a
+                      legtisztább természetes alapanyagokat ötvözi a tudomány
+                      erejével.
+                    </p>
+                    <p>
+                      Fenntarthatóság, környezettudatosság és kompromisszummentes
+                      minőség.
+                    </p>
+                  </>
+                )}
               </div>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="p-8 border border-black/5 bg-off-white">
@@ -192,6 +210,33 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
+
+      {a.whyChooseUsItems && a.whyChooseUsItems.length > 0 && (
+        <section className="py-32 md:py-48 bg-off-white">
+          <div className="max-w-5xl mx-auto px-8">
+            <SectionTitle
+              title={a.whyChooseUsTitle ?? "Miért válassz minket?"}
+              subtitle="ELŐNYÖK"
+              align="center"
+            />
+            <ul className="grid md:grid-cols-2 gap-x-16 gap-y-8 max-w-3xl mx-auto">
+              {a.whyChooseUsItems.map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-5 border-b border-black/5 pb-6"
+                >
+                  <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-luxury-gold/10">
+                    <Check size={16} className="text-luxury-gold" />
+                  </span>
+                  <span className="text-lg font-light text-gray-700 leading-relaxed">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {(a.closingQuote ?? FALLBACK_ABOUT.closingQuote) && (
         <section className="py-32 md:py-48 bg-black text-white text-center relative overflow-hidden">

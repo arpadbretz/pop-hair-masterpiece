@@ -40,8 +40,9 @@ export const weddingContent = defineType({
     defineField({
       name: "expertiseBody",
       title: "Szakértelem szöveg",
-      type: "array",
-      of: [{ type: "block", styles: [{ title: "Normál", value: "normal" }] }],
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 8,
     }),
     defineField({
       name: "expertiseImageLeft",

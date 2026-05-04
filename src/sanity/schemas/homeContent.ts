@@ -61,8 +61,9 @@ export const homeContent = defineType({
     defineField({
       name: "kmDescription",
       title: "Kevin Murphy szekció szövege",
-      type: "array",
-      of: [{ type: "block", styles: [{ title: "Normál", value: "normal" }] }],
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 8,
     }),
     defineField({
       name: "kmImage",

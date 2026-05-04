@@ -45,7 +45,9 @@ export const aboutContentQuery = groq`
     kmFilozofiaBody,
     kmFilozofiaImage,
     closingQuote,
-    closingQuoteAuthor
+    closingQuoteAuthor,
+    whyChooseUsTitle,
+    whyChooseUsItems
   }
 `;
 

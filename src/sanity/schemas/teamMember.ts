@@ -34,6 +34,7 @@ export const teamMember = defineType({
     defineField({
       name: "image",
       title: "Portré",
+      description: "Opcionális — ha hiányzik, a kezdőbetű jelenik meg helyette.",
       type: "image",
       options: { hotspot: true },
       fields: [
@@ -41,10 +42,8 @@ export const teamMember = defineType({
           name: "alt",
           title: "Alt szöveg",
           type: "string",
-          validation: (r) => r.required(),
         }),
       ],
-      validation: (r) => r.required(),
     }),
     defineField({
       name: "order",

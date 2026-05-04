@@ -17,6 +17,7 @@ import { urlForImage } from "@/sanity/lib/image";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ReviewSlider } from "@/components/ReviewSlider";
 import { PerspectiveReveal } from "@/components/Common";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 const FALLBACK_HOME: HomeContent = {
   heroEyebrow: "Budai Szalon • Alapítva 2004",
@@ -121,16 +122,25 @@ export default async function HomePage() {
                   </span>
                 </h2>
                 <div className="space-y-8 text-xl font-light text-gray-400 leading-relaxed max-w-xl">
-                  <p>
-                    Kizárólag a legmagasabb minőségű, környezettudatos és
-                    innovatív Kevin Murphy termékekkel dolgozunk. Nálunk minden
-                    hajmosás egy rituálé, minden kezelés egy befektetés az Ön
-                    szépségébe.
-                  </p>
-                  <p>
-                    Saját fejlesztésű rituáléinkkal és balayage specialistáinkkal
-                    a haj egészségét és a modern esztétikát ötvözzük.
-                  </p>
+                  {splitParagraphs(h.kmDescription).length > 0 ? (
+                    splitParagraphs(h.kmDescription).map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))
+                  ) : (
+                    <>
+                      <p>
+                        Kizárólag a legmagasabb minőségű, környezettudatos és
+                        innovatív Kevin Murphy termékekkel dolgozunk. Nálunk
+                        minden hajmosás egy rituálé, minden kezelés egy
+                        befektetés az Ön szépségébe.
+                      </p>
+                      <p>
+                        Saját fejlesztésű rituáléinkkal és balayage
+                        specialistáinkkal a haj egészségét és a modern esztétikát
+                        ötvözzük.
+                      </p>
+                    </>
+                  )}
                 </div>
               </PerspectiveReveal>
 
