@@ -46,5 +46,8 @@ next-env.d.ts
 sanity.types.ts
 schema.json
 
+# private client communication — do not commit
+/emails/
+
 # legacy reference (keep in repo? remove later)
 # _legacy_src/  # currently kept for reference during migration

@@ -14,6 +14,7 @@ const navItems = [
   { name: "Szolgáltatások", path: "/szolgaltatasok" },
   { name: "Galéria", path: "/galeria" },
   { name: "Esküvő", path: "/eskuvo" },
+  { name: "Blog", path: "/blog" },
   { name: "Kapcsolat", path: "/kapcsolat" },
 ];
 

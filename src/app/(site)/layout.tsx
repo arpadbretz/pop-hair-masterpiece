@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { FloatingBookingButton } from "@/components/FloatingBookingButton";
 import { getSiteSettings } from "@/sanity/lib/getSiteSettings";
 
 export default async function SiteLayout({
@@ -26,6 +27,7 @@ export default async function SiteLayout({
         facebookUrl={settings.facebookUrl}
         tiktokUrl={settings.tiktokUrl}
       />
+      <FloatingBookingButton bookingUrl={settings.bookingUrl} />
     </>
   );
 }

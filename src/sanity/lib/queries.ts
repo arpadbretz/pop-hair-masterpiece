@@ -114,3 +114,33 @@ export const weddingProcessStepsQuery = groq`
     _id, title, description, icon
   }
 `;
+
+export const blogPostsQuery = groq`
+  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    category,
+    coverImage,
+    excerpt
+  }
+`;
+
+export const blogPostBySlugQuery = groq`
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    category,
+    coverImage,
+    excerpt,
+    videoUrl,
+    body
+  }
+`;
+
+export const blogPostSlugsQuery = groq`
+  *[_type == "blogPost" && defined(slug.current)].slug.current
+`;

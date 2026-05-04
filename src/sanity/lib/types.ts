@@ -117,3 +117,26 @@ export interface WeddingProcessStep {
   description: string;
   icon?: string;
 }
+
+export type BlogPostCategory =
+  | "tips"
+  | "wedding"
+  | "care"
+  | "trends"
+  | "salon"
+  | "vlog";
+
+export interface BlogPostListItem {
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  category?: BlogPostCategory;
+  coverImage?: Image & { alt?: string };
+  excerpt?: string;
+}
+
+export interface BlogPost extends BlogPostListItem {
+  videoUrl?: string;
+  body: unknown[];
+}

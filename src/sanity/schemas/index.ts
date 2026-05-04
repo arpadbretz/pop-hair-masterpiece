@@ -11,6 +11,7 @@ import { homeContent } from "./homeContent";
 import { aboutContent } from "./aboutContent";
 import { weddingContent } from "./weddingContent";
 import { servicesContent } from "./servicesContent";
+import { blogPost } from "./blogPost";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // Singletons (egyedi dokumentumok)
@@ -21,6 +22,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   servicesContent,
 
   // Listák
+  blogPost,
   teamMember,
   service,
   galleryImage,
