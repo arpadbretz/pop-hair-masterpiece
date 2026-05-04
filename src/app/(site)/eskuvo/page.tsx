@@ -75,7 +75,7 @@ export default async function WeddingPage() {
   const stepList = steps.length > 0 ? steps : FALLBACK_STEPS;
 
   return (
-    <div className="pt-32 bg-white">
+    <div className="bg-white">
       <section className="h-[90vh] relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
           {w.heroImage ? (
