@@ -84,7 +84,7 @@ export function GalleryClient({ items }: { items: GalleryItem[] }) {
             className={`relative text-[10px] uppercase font-bold tracking-[0.4em] transition-all duration-500 whitespace-nowrap ${
               activeTab === cat.id
                 ? "text-black"
-                : "text-gray-400 hover:text-black"
+                : "text-gray-600 hover:text-black"
             }`}
           >
             {cat.name}
@@ -157,7 +157,7 @@ export function GalleryClient({ items }: { items: GalleryItem[] }) {
           >
             <button
               aria-label="Bezárás"
-              className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors z-[1001]"
+              className="absolute top-10 right-10 text-white/85 hover:text-white transition-colors z-[1001]"
               onClick={(e) => {
                 e.stopPropagation();
                 close();
@@ -167,7 +167,7 @@ export function GalleryClient({ items }: { items: GalleryItem[] }) {
             </button>
             <button
               aria-label="Előző"
-              className="absolute left-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors hidden md:block z-[1001]"
+              className="absolute left-10 top-1/2 -translate-y-1/2 text-white/85 hover:text-white transition-colors hidden md:block z-[1001]"
               onClick={(e) => {
                 e.stopPropagation();
                 prev();
@@ -177,7 +177,7 @@ export function GalleryClient({ items }: { items: GalleryItem[] }) {
             </button>
             <button
               aria-label="Következő"
-              className="absolute right-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors hidden md:block z-[1001]"
+              className="absolute right-10 top-1/2 -translate-y-1/2 text-white/85 hover:text-white transition-colors hidden md:block z-[1001]"
               onClick={(e) => {
                 e.stopPropagation();
                 next();

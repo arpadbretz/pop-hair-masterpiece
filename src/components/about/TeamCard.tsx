@@ -52,7 +52,7 @@ export function TeamCard({
         {member.name}
       </h3>
       <div className="space-y-6 max-w-sm px-4">
-        <div className="space-y-4 text-sm font-light text-gray-400 leading-relaxed group-hover:text-gray-600 transition-colors">
+        <div className="space-y-4 text-sm font-light text-gray-600 leading-relaxed group-hover:text-gray-600 transition-colors">
           {splitParagraphs(member.bio).map((p, i) => (
             <p key={i}>{p}</p>
           ))}

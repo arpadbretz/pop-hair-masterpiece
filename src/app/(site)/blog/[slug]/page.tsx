@@ -61,7 +61,7 @@ export default async function BlogPostPage({
       <div className="max-w-3xl mx-auto px-8">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-3 text-[10px] uppercase font-bold tracking-[0.4em] text-gray-400 hover:text-luxury-gold transition-colors mb-12 mt-12"
+          className="inline-flex items-center gap-3 text-[10px] uppercase font-bold tracking-[0.4em] text-gray-600 hover:text-luxury-gold transition-colors mb-12 mt-12"
         >
           <ArrowLeft size={14} />
           Vissza a Bloghoz
@@ -73,7 +73,7 @@ export default async function BlogPostPage({
               {CATEGORY_LABELS[post.category]}
             </span>
           )}
-          <span className="text-gray-400">
+          <span className="text-gray-600">
             {formatDateHu(post.publishedAt)}
           </span>
         </div>
@@ -83,7 +83,7 @@ export default async function BlogPostPage({
         </h1>
 
         {post.excerpt && (
-          <p className="text-xl md:text-2xl font-light text-gray-500 leading-relaxed border-l border-luxury-gold/30 pl-8 mb-16 italic">
+          <p className="text-xl md:text-2xl font-light text-gray-700 leading-relaxed border-l border-luxury-gold/30 pl-8 mb-16 italic">
             {post.excerpt}
           </p>
         )}

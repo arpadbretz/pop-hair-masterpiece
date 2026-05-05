@@ -68,14 +68,14 @@ export default async function AboutPage() {
                 )}
               </h1>
               {(a.philosophyQuote ?? FALLBACK_ABOUT.philosophyQuote) && (
-                <div className="space-y-8 text-2xl font-light text-gray-500 leading-relaxed italic border-l border-luxury-gold/20 pl-10">
+                <div className="space-y-8 text-2xl font-light text-gray-700 leading-relaxed italic border-l border-luxury-gold/20 pl-10">
                   <p>
                     &ldquo;{a.philosophyQuote ?? FALLBACK_ABOUT.philosophyQuote}
                     &rdquo;
                   </p>
                 </div>
               )}
-              <div className="space-y-6 text-lg text-gray-400 font-light leading-relaxed max-w-xl">
+              <div className="space-y-6 text-lg text-gray-600 font-light leading-relaxed max-w-xl">
                 {splitParagraphs(a.philosophyBody).length > 0 ? (
                   splitParagraphs(a.philosophyBody).map((p, i) => (
                     <p key={i}>{p}</p>
@@ -106,7 +106,7 @@ export default async function AboutPage() {
                     className="w-full h-full object-cover brightness-95 group-hover:brightness-105 transition-all duration-[2000ms]"
                   />
                 ) : (
-                  <div className="w-full h-full bg-off-white flex items-center justify-center text-gray-300 text-xs uppercase tracking-widest">
+                  <div className="w-full h-full bg-off-white flex items-center justify-center text-gray-700 text-xs uppercase tracking-widest">
                     Kép a CMS-ből
                   </div>
                 )}
@@ -117,7 +117,7 @@ export default async function AboutPage() {
                     <History size={24} className="text-luxury-gold" />
                     <div>
                       <p className="text-2xl font-serif italic">20+ Év</p>
-                      <p className="text-[9px] uppercase tracking-widest text-gray-400">
+                      <p className="text-[9px] uppercase tracking-widest text-gray-600">
                         Tapasztalat
                       </p>
                     </div>
@@ -126,7 +126,7 @@ export default async function AboutPage() {
                     <Award size={24} className="text-luxury-gold" />
                     <div>
                       <p className="text-2xl font-serif italic">KM Specialist</p>
-                      <p className="text-[9px] uppercase tracking-widest text-gray-400">
+                      <p className="text-[9px] uppercase tracking-widest text-gray-600">
                         Minősítés
                       </p>
                     </div>
@@ -156,7 +156,7 @@ export default async function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
               <SectionTitle title="Szakmai szemlélet" subtitle="SZAKMAI HÁTTÉR" />
-              <div className="space-y-8 text-xl font-light text-gray-500 leading-relaxed">
+              <div className="space-y-8 text-xl font-light text-gray-700 leading-relaxed">
                 {splitParagraphs(a.kmFilozofiaBody).length > 0 ? (
                   splitParagraphs(a.kmFilozofiaBody).map((p, i) => (
                     <p key={i}>{p}</p>

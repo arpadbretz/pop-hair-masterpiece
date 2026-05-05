@@ -27,7 +27,7 @@ function ReviewCard({ review }: { review: Review }) {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400">
+            <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-600">
               {review.platform}
             </span>
             <div className="w-1.5 h-1.5 rounded-full bg-luxury-gold" />
@@ -45,7 +45,7 @@ function ReviewCard({ review }: { review: Review }) {
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black mb-1">
             {review.name}
           </span>
-          <span className="text-[8px] uppercase tracking-widest text-gray-400">
+          <span className="text-[8px] uppercase tracking-widest text-gray-600">
             Ellenőrzött Vendég
           </span>
         </div>
@@ -90,7 +90,7 @@ export function ReviewSlider({
                 ))}
               </div>
               {reviewCount && (
-                <p className="text-[9px] uppercase tracking-[0.3em] text-gray-500 font-bold">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-gray-700 font-bold">
                   {reviewCount}+ Google Vélemény
                 </p>
               )}

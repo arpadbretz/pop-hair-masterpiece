@@ -31,10 +31,10 @@ export default async function BlogIndexPage() {
 
         {posts.length === 0 ? (
           <div className="max-w-xl mx-auto text-center py-32">
-            <p className="text-2xl font-serif italic text-gray-400 mb-6">
+            <p className="text-2xl font-serif italic text-gray-600 mb-6">
               Hamarosan érkeznek az első cikkek.
             </p>
-            <p className="text-sm text-gray-400 font-light">
+            <p className="text-sm text-gray-600 font-light">
               Stílustippek, hajápolási útmutatók, szalonéletünk pillanatai.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default async function BlogIndexPage() {
                       {CATEGORY_LABELS[post.category]}
                     </span>
                   )}
-                  <span className="text-gray-400">
+                  <span className="text-gray-600">
                     {formatDateHu(post.publishedAt)}
                   </span>
                 </div>
@@ -80,7 +80,7 @@ export default async function BlogIndexPage() {
                 </h2>
 
                 {post.excerpt && (
-                  <p className="text-base font-light text-gray-500 leading-relaxed line-clamp-3 mb-6">
+                  <p className="text-base font-light text-gray-700 leading-relaxed line-clamp-3 mb-6">
                     {post.excerpt}
                   </p>
                 )}

@@ -50,7 +50,7 @@ export default async function GalleryPage() {
             <GalleryClient items={items} />
           </Suspense>
         ) : (
-          <div className="py-32 text-center text-gray-400 font-light">
+          <div className="py-32 text-center text-gray-600 font-light">
             <p className="text-xl">Hamarosan feltöltjük a galériát.</p>
           </div>
         )}

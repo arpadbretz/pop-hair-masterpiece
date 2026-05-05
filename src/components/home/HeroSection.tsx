@@ -105,7 +105,7 @@ export function HeroSection({
 
       <div className="absolute bottom-16 left-10 hidden md:block">
         <div className="w-28 h-28 rounded-full border border-white/20 backdrop-blur-sm flex items-center justify-center animate-spin-slow text-center p-3">
-          <span className="text-[8px] text-white/50 uppercase tracking-tighter leading-tight font-bold">
+          <span className="text-[8px] text-white/85 uppercase tracking-tighter leading-tight font-bold">
             KEVIN MURPHY • BUDA • 20 ÉV • PRÉMIUM •
           </span>
         </div>

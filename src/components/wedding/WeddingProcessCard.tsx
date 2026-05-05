@@ -38,7 +38,7 @@ export function WeddingProcessCard({
         </div>
       )}
       <h3 className="text-3xl font-serif italic mb-6">{step.title}</h3>
-      <p className="text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors">
+      <p className="text-gray-600 font-light leading-relaxed group-hover:text-gray-700 transition-colors">
         {step.description}
       </p>
     </motion.div>

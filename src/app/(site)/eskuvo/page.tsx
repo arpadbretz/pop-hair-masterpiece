@@ -123,7 +123,7 @@ export default async function WeddingPage() {
                 Páratlan <br />
                 Szakértelem.
               </h2>
-              <div className="space-y-8 text-lg text-gray-500 font-light leading-relaxed">
+              <div className="space-y-8 text-lg text-gray-700 font-light leading-relaxed">
                 {splitParagraphs(w.expertiseBody).length > 0 ? (
                   splitParagraphs(w.expertiseBody).map((p, i) => (
                     <p key={i}>{p}</p>
@@ -151,7 +151,7 @@ export default async function WeddingPage() {
                 <p className="text-4xl font-serif italic text-luxury-gold">
                   {w.yearsLabel ?? FALLBACK_WEDDING.yearsLabel}
                 </p>
-                <p className="text-[9px] uppercase tracking-widest font-bold text-gray-400">
+                <p className="text-[9px] uppercase tracking-widest font-bold text-gray-600">
                   Év tapasztalat
                 </p>
               </div>
@@ -159,7 +159,7 @@ export default async function WeddingPage() {
                 <p className="text-4xl font-serif italic text-luxury-gold">
                   {w.weddingsLabel ?? FALLBACK_WEDDING.weddingsLabel}
                 </p>
-                <p className="text-[9px] uppercase tracking-widest font-bold text-gray-400">
+                <p className="text-[9px] uppercase tracking-widest font-bold text-gray-600">
                   Boldog Menyasszony
                 </p>
               </div>

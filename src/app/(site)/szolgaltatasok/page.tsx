@@ -52,7 +52,7 @@ export default async function ServicesPage() {
             {introParagraphs.map((p, i) => (
               <p
                 key={i}
-                className="text-xl font-light text-gray-500 leading-relaxed"
+                className="text-xl font-light text-gray-700 leading-relaxed"
               >
                 {p}
               </p>
@@ -78,7 +78,7 @@ export default async function ServicesPage() {
             {closingParagraphs.map((p, i) => (
               <p
                 key={i}
-                className="text-lg font-light text-gray-500 leading-relaxed italic"
+                className="text-lg font-light text-gray-700 leading-relaxed italic"
               >
                 {p}
               </p>
@@ -107,7 +107,7 @@ export default async function ServicesPage() {
                 title={c.hairExtensionsTitle ?? "Hajhosszabbítás és hajkereskedelem"}
                 subtitle="KIEMELT TERÜLET"
               />
-              <div className="space-y-6 text-lg font-light text-gray-500 leading-relaxed">
+              <div className="space-y-6 text-lg font-light text-gray-700 leading-relaxed">
                 {hairExtensionParagraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -136,7 +136,7 @@ export default async function ServicesPage() {
                   {c.actionTitleLine2 ?? FALLBACK_CONTENT.actionTitleLine2}
                 </span>
               </h3>
-              <p className="text-white/60 text-[10px] uppercase font-bold tracking-[0.5em]">
+              <p className="text-white/80 text-[10px] uppercase font-bold tracking-[0.5em]">
                 {c.actionSubtitle ?? FALLBACK_CONTENT.actionSubtitle}
               </p>
             </div>

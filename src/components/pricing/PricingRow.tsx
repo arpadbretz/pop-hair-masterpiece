@@ -23,7 +23,7 @@ export function PricingRow({
           {item.name}
         </h3>
         {item.description && (
-          <p className="text-xs text-gray-400 uppercase tracking-widest">
+          <p className="text-xs text-gray-600 uppercase tracking-widest">
             {item.description}
           </p>
         )}

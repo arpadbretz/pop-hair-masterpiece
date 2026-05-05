@@ -71,7 +71,7 @@ export function ServiceRow({
             <p
               className={cn(
                 "text-sm font-light leading-relaxed max-w-md",
-                service.highlight ? "text-gray-300" : "text-gray-500"
+                service.highlight ? "text-gray-300" : "text-gray-700"
               )}
             >
               {service.description}

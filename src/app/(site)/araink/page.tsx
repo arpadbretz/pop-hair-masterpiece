@@ -46,7 +46,7 @@ export default async function PricingPage() {
         </div>
 
         <div className="mt-32 p-12 lg:p-16 bg-off-white text-center border border-luxury-gold/10">
-          <p className="text-lg font-light text-gray-500 mb-8 italic">
+          <p className="text-lg font-light text-gray-700 mb-8 italic">
             Az árak tájékoztató jellegűek, a pontos összeg a haj hosszától és
             sűrűségétől függően változhat. Személyes konzultáció során pontos
             árajánlatot adunk.

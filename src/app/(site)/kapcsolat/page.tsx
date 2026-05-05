@@ -61,7 +61,7 @@ export default async function ContactPage() {
               <p className="text-3xl font-serif italic max-w-md">
                 {settings.address}
               </p>
-              <p className="text-gray-400 text-sm font-light">
+              <p className="text-gray-600 text-sm font-light">
                 Szalonunk Budán, könnyen megközelíthető helyen.
               </p>
             </div>
@@ -76,7 +76,7 @@ export default async function ContactPage() {
               <div className="grid grid-cols-2 gap-4 text-lg font-serif italic">
                 {settings.openingHours.map((entry) => (
                   <div key={entry.label}>
-                    <p className="text-gray-400 text-xs uppercase not-italic tracking-widest mb-1">
+                    <p className="text-gray-600 text-xs uppercase not-italic tracking-widest mb-1">
                       {entry.label}
                     </p>
                     <p>{entry.hours}</p>
@@ -119,7 +119,7 @@ export default async function ContactPage() {
               Foglaljon{" "}
               <span className="text-luxury-gold">időpontot</span>
             </h2>
-            <p className="text-gray-500 font-light mb-12">
+            <p className="text-gray-700 font-light mb-12">
               Online rendszerünkön keresztül egyszerűen kiválaszthatja a számára
               megfelelő időpontot és mesterfodrászt.
             </p>
@@ -132,7 +132,7 @@ export default async function ContactPage() {
               Ugrás a foglaláshoz
             </a>
             <div className="mt-12 p-8 border border-luxury-gold/20 bg-white">
-              <p className="text-xs text-gray-400 uppercase tracking-widest mb-4">
+              <p className="text-xs text-gray-600 uppercase tracking-widest mb-4">
                 Fontos tudnivaló
               </p>
               <p className="text-sm font-light leading-relaxed">

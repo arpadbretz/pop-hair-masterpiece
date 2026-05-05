@@ -121,7 +121,7 @@ export default async function HomePage() {
                     {h.kmTitle ?? FALLBACK_HOME.kmTitle}
                   </span>
                 </h2>
-                <div className="space-y-8 text-xl font-light text-gray-400 leading-relaxed max-w-xl">
+                <div className="space-y-8 text-xl font-light text-gray-600 leading-relaxed max-w-xl">
                   {splitParagraphs(h.kmDescription).length > 0 ? (
                     splitParagraphs(h.kmDescription).map((p, i) => (
                       <p key={i}>{p}</p>
@@ -239,7 +239,7 @@ export default async function HomePage() {
               Számunkra minden vendég{" "}
               <span className="text-luxury-gold">egyedi.</span>
             </h2>
-            <p className="text-gray-500 font-light text-lg leading-relaxed">
+            <p className="text-gray-700 font-light text-lg leading-relaxed">
               Több mint húsz év szakmai tapasztalat, személyre szabott munka és
               prémium termékek Budán.
             </p>
@@ -249,7 +249,7 @@ export default async function HomePage() {
               <span className="text-3xl font-serif italic text-luxury-gold mb-1">
                 {h.yearsExperience ?? FALLBACK_HOME.yearsExperience}
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-gray-500 font-bold">
+              <span className="text-[9px] uppercase tracking-widest text-gray-700 font-bold">
                 Év tapasztalat
               </span>
             </div>
@@ -257,7 +257,7 @@ export default async function HomePage() {
               <span className="text-3xl font-serif italic text-luxury-gold mb-1">
                 {h.reviewBadgeCount ?? FALLBACK_HOME.reviewBadgeCount}
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-gray-500 font-bold">
+              <span className="text-[9px] uppercase tracking-widest text-gray-700 font-bold">
                 Értékelés
               </span>
             </div>

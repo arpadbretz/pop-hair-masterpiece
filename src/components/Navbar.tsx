@@ -200,7 +200,7 @@ export function Navbar({
                   >
                     <Instagram
                       size={28}
-                      className="text-gray-400 hover:text-black transition-colors"
+                      className="text-gray-600 hover:text-black transition-colors"
                     />
                   </a>
                 )}
@@ -213,13 +213,13 @@ export function Navbar({
                   >
                     <Facebook
                       size={28}
-                      className="text-gray-400 hover:text-black transition-colors"
+                      className="text-gray-600 hover:text-black transition-colors"
                     />
                   </a>
                 )}
               </div>
               {address && (
-                <p className="text-[10px] uppercase tracking-widest text-gray-400">
+                <p className="text-[10px] uppercase tracking-widest text-gray-600">
                   {address}
                 </p>
               )}

@@ -20,7 +20,7 @@ const components: PortableTextComponents = {
       </h3>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-luxury-gold pl-8 my-12 italic text-2xl font-light text-gray-500 leading-relaxed">
+      <blockquote className="border-l-2 border-luxury-gold pl-8 my-12 italic text-2xl font-light text-gray-700 leading-relaxed">
         {children}
       </blockquote>
     ),
@@ -69,7 +69,7 @@ const components: PortableTextComponents = {
             />
           </div>
           {value.caption && (
-            <figcaption className="text-center text-sm text-gray-400 mt-4 italic">
+            <figcaption className="text-center text-sm text-gray-600 mt-4 italic">
               {value.caption}
             </figcaption>
           )}

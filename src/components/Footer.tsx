@@ -63,7 +63,7 @@ export function Footer({
             </h3>
             <div className="flex flex-wrap gap-12 md:gap-24">
               <div className="space-y-4">
-                <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-500">
+                <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-700">
                   Hívjon Minket
                 </p>
                 <a
@@ -74,7 +74,7 @@ export function Footer({
                 </a>
               </div>
               <div className="space-y-4">
-                <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-500">
+                <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-700">
                   Találkozzunk
                 </p>
                 <p className="text-3xl font-serif text-luxury-gold">{address}</p>
@@ -84,7 +84,7 @@ export function Footer({
 
           <div className="lg:col-span-4 flex flex-col justify-end gap-16">
             <div className="space-y-6">
-              <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-500">
+              <p className="text-xs uppercase font-bold tracking-[0.4em] text-gray-700">
                 Kövessen Minket
               </p>
               <div className="flex gap-10">
@@ -133,7 +133,7 @@ export function Footer({
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-white/5">
           <div className="space-y-4">
-            <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+            <p className="text-[10px] uppercase tracking-widest text-gray-700 font-bold">
               Oldalak
             </p>
             <div className="flex flex-col gap-2">
@@ -182,10 +182,10 @@ export function Footer({
             </div>
           </div>
           <div className="space-y-4">
-            <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+            <p className="text-[10px] uppercase tracking-widest text-gray-700 font-bold">
               Szolgáltatások
             </p>
-            <div className="flex flex-col gap-2 text-sm text-gray-400">
+            <div className="flex flex-col gap-2 text-sm text-gray-600">
               <span>női és férfi hajvágás</span>
               <span>hajfestés, balayage</span>
               <span>hajhosszabbítás</span>
@@ -193,7 +193,7 @@ export function Footer({
             </div>
           </div>
           <div className="col-span-2 space-y-4">
-            <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+            <p className="text-[10px] uppercase tracking-widest text-gray-700 font-bold">
               Hírlevél
             </p>
             <div className="flex border-b border-white/20 pb-2">
@@ -208,7 +208,7 @@ export function Footer({
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-gray-500">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-gray-700">
           <p className="text-[8px] uppercase tracking-[0.6em]">
             © {new Date().getFullYear()} POP HAIR SALON • MINDEN JOG FENNTARTVA •
             PROMETHEUS DIGITAL
