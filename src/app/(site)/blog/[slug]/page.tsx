@@ -57,7 +57,7 @@ export default async function BlogPostPage({
   const embed = getVideoEmbed(post.videoUrl);
 
   return (
-    <article className="pt-32 pb-32 bg-white">
+    <article className="pt-36 md:pt-44 pb-32 bg-white">
       <div className="max-w-3xl mx-auto px-8">
         <Link
           href="/blog"

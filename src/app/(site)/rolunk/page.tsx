@@ -43,7 +43,7 @@ export default async function AboutPage() {
   const a = about ?? FALLBACK_ABOUT;
 
   return (
-    <div className="pt-32 bg-white">
+    <div className="pt-36 md:pt-44 bg-white">
       <section className="py-32 px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 items-center">

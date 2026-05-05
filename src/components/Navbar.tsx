@@ -64,11 +64,11 @@ export function Navbar({
           <Image
             src="/images/logo.png"
             alt="Pop Hair Salon"
-            width={200}
-            height={200}
+            width={220}
+            height={220}
             priority
             className={cn(
-              "h-24 md:h-28 w-auto object-contain transition-all duration-500",
+              "h-28 md:h-36 w-auto object-contain transition-all duration-500",
               !isScrolled && isDarkHeroPage
                 ? "brightness-0 invert"
                 : "brightness-0"
