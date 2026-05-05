@@ -2,18 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, ArrowRight } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/fetch";
-import {
-  weddingContentQuery,
-  weddingProcessStepsQuery,
-} from "@/sanity/lib/queries";
+import { weddingContentQuery } from "@/sanity/lib/queries";
 import { getSiteSettings } from "@/sanity/lib/getSiteSettings";
-import type {
-  WeddingContent,
-  WeddingProcessStep,
-} from "@/sanity/lib/types";
+import type { WeddingContent } from "@/sanity/lib/types";
 import { urlForImage } from "@/sanity/lib/image";
-import { SectionTitle, PerspectiveReveal } from "@/components/Common";
-import { WeddingProcessCard } from "@/components/wedding/WeddingProcessCard";
+import { PerspectiveReveal } from "@/components/Common";
 import { splitParagraphs } from "@/lib/paragraphs";
 
 export const metadata = {
@@ -33,45 +26,16 @@ const FALLBACK_WEDDING: WeddingContent = {
   ctaTitleLine2: "a Pop Hair Salonban.",
 };
 
-const FALLBACK_STEPS: WeddingProcessStep[] = [
-  {
-    _id: "f1",
-    title: "Konzultáció",
-    description:
-      "Személyes megbeszélés, ahol feltérképezzük az Ön stílusát, az esküvői ruha jellegét és az alkalom hangulatát.",
-    icon: "calendar",
-  },
-  {
-    _id: "f2",
-    title: "A Próba",
-    description:
-      "Egy nyugodt, alapos folyamat, ahol kísérletezünk és finomhangoljuk a frizurát, amíg az tökéletesen tükrözi az Ön elképzeléseit.",
-    icon: "sparkles",
-  },
-  {
-    _id: "f3",
-    title: "A Helyszínen",
-    description:
-      "Igény szerint a szalonban vagy külső helyszínen készítjük el a frizurát, biztosítva a feszültségmentes, luxus hangulatot.",
-    icon: "camera",
-  },
-];
-
 export default async function WeddingPage() {
-  const [wedding, steps, settings] = await Promise.all([
+  const [wedding, settings] = await Promise.all([
     sanityFetch<WeddingContent | null>({
       query: weddingContentQuery,
       tags: ["weddingContent"],
     }).catch(() => null),
-    sanityFetch<WeddingProcessStep[]>({
-      query: weddingProcessStepsQuery,
-      tags: ["weddingProcessStep"],
-    }).catch(() => [] as WeddingProcessStep[]),
     getSiteSettings(),
   ]);
 
   const w = wedding ?? FALLBACK_WEDDING;
-  const stepList = steps.length > 0 ? steps : FALLBACK_STEPS;
 
   return (
     <div className="bg-white">
@@ -188,17 +152,6 @@ export default async function WeddingPage() {
                   <div className="w-full h-full bg-gradient-to-br from-luxury-gold/10 to-gold-champagne/30" />
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-32 md:py-64 bg-white">
-        <div className="max-w-7xl mx-auto px-8">
-          <SectionTitle title="A Nagy Nap" subtitle="FOLYAMAT" align="center" />
-          <div className="grid md:grid-cols-3 gap-12 lg:gap-24">
-            {stepList.map((step, i) => (
-              <WeddingProcessCard key={step._id} step={step} index={i} />
             ))}
           </div>
         </div>
