@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, ArrowUpRight } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 
 const TikTokIcon = ({
   size = 24,
@@ -194,16 +194,21 @@ export function Footer({
           </div>
           <div className="col-span-2 space-y-4">
             <p className="text-[10px] uppercase tracking-widest text-gray-700 font-bold">
-              Hírlevél
+              Jogi tudnivalók
             </p>
-            <div className="flex border-b border-white/20 pb-2">
-              <input
-                type="email"
-                placeholder="E-mail címe"
-                aria-label="E-mail cím a hírlevélhez"
-                className="bg-transparent border-none outline-none text-sm w-full text-white placeholder:text-gray-500"
-              />
-              <ArrowUpRight size={20} className="text-luxury-gold" />
+            <div className="flex flex-col gap-2 text-sm">
+              <Link
+                href="/impresszum"
+                className="hover:text-luxury-gold transition-colors"
+              >
+                Impresszum
+              </Link>
+              <Link
+                href="/adatvedelem"
+                className="hover:text-luxury-gold transition-colors"
+              >
+                Adatvédelmi tájékoztató
+              </Link>
             </div>
           </div>
         </div>

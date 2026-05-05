@@ -331,66 +331,6 @@ async function seedServices() {
   }
 }
 
-async function seedPricing() {
-  console.log("→ Pricing");
-  // Szilvi did not provide concrete prices in the launch copy — list mirrors
-  // her service catalogue with "Egyéni kalkuláció" placeholders. She can edit
-  // these in Sanity Studio without changing code.
-  const list = [
-    { _id: "pr-female", name: "női hajvágás", price: "Egyéni kalkuláció", order: 1 },
-    {
-      _id: "pr-male",
-      name: "férfi hajvágás és barber szolgáltatások",
-      price: "Egyéni kalkuláció",
-      order: 2,
-    },
-    { _id: "pr-color", name: "hajfestés", price: "Egyéni kalkuláció", order: 3 },
-    {
-      _id: "pr-bal",
-      name: "balayage technikák",
-      price: "Egyéni kalkuláció",
-      order: 4,
-    },
-    {
-      _id: "pr-extension",
-      name: "hajhosszabbítás (nano kapszula)",
-      price: "Egyéni kalkuláció",
-      order: 5,
-    },
-    {
-      _id: "pr-care",
-      name: "professzionális hajápolás",
-      price: "Egyéni kalkuláció",
-      order: 6,
-    },
-    {
-      _id: "pr-occasion",
-      name: "alkalmi frizurák",
-      price: "Egyéni kalkuláció",
-      order: 7,
-    },
-    {
-      _id: "pr-bridal",
-      name: "menyasszonyi frizurák",
-      price: "Egyéni kalkuláció",
-      order: 8,
-    },
-  ];
-  // Wipe any previously-seeded pricing docs so re-runs don't leave behind stale items.
-  const existingIds = await client.fetch<string[]>(
-    '*[_type == "pricingItem"]._id'
-  );
-  if (existingIds.length > 0) {
-    console.log(`  cleaning ${existingIds.length} existing pricing docs`);
-    const tx = client.transaction();
-    existingIds.forEach((id) => tx.delete(id));
-    await tx.commit();
-  }
-  for (const p of list) {
-    await client.createOrReplace({ _type: "pricingItem", ...p });
-  }
-}
-
 async function seedReviews() {
   console.log("→ Reviews");
   const list = [
@@ -545,7 +485,6 @@ async function main() {
   if (should("servicesContent")) await seedServicesContent();
   if (should("team")) await seedTeam();
   if (should("services")) await seedServices();
-  if (should("pricing")) await seedPricing();
   if (should("reviews")) await seedReviews();
   if (should("weddingProcess")) await seedWeddingProcess();
   if (should("gallery")) await seedGallery();

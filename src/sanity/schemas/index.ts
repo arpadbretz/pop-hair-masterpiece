@@ -4,7 +4,6 @@ import { siteSettings } from "./siteSettings";
 import { teamMember } from "./teamMember";
 import { service } from "./service";
 import { galleryImage } from "./galleryImage";
-import { pricingItem } from "./pricingItem";
 import { review } from "./review";
 import { weddingProcessStep } from "./weddingProcessStep";
 import { homeContent } from "./homeContent";
@@ -26,7 +25,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   teamMember,
   service,
   galleryImage,
-  pricingItem,
   review,
   weddingProcessStep,
 ];

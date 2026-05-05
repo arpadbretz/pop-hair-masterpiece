@@ -100,13 +100,6 @@ export interface GalleryImage {
   videoUrl?: string;
 }
 
-export interface PricingItem {
-  _id: string;
-  name: string;
-  price: string;
-  description?: string;
-}
-
 export interface Review {
   _id: string;
   name: string;

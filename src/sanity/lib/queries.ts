@@ -101,12 +101,6 @@ export const galleryImagesQuery = groq`
   }
 `;
 
-export const pricingItemsQuery = groq`
-  *[_type == "pricingItem"] | order(order asc) {
-    _id, name, price, description
-  }
-`;
-
 export const reviewsQuery = groq`
   *[_type == "review"] | order(order asc) {
     _id, name, platform, text, rating
