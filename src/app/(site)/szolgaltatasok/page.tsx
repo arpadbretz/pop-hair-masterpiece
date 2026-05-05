@@ -6,52 +6,13 @@ import type { Service, ServicesContent } from "@/sanity/lib/types";
 import { urlForImage } from "@/sanity/lib/image";
 import { SectionTitle } from "@/components/Common";
 import { ServiceRow } from "@/components/services/ServiceRow";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 export const metadata = {
   title: "Szolgáltatások",
   description:
-    "Mesterfodrász vágás, balayage, Kevin Murphy rituálék és elrontott hajak javítása Budán.",
+    "Női és férfi hajvágás, festés, balayage, hajhosszabbítás, alkalmi és menyasszonyi frizurák Budán.",
 };
-
-const FALLBACK_SERVICES: Service[] = [
-  {
-    _id: "fallback-1",
-    name: "Elrontott hajak javítása",
-    price: "Egyéni kalkuláció",
-    description:
-      "Specialitásunk a másutt elrontott színek és formák professzionális helyrehozása.",
-    highlight: true,
-    icon: "refresh",
-  },
-  {
-    _id: "fallback-2",
-    name: "Mesterfodrász vágás",
-    price: "28.000 HUF-tól",
-    description: "Bacsik Szilvia vezetésével, arcformához és karakterhez tervezve.",
-    icon: "scissors",
-  },
-  {
-    _id: "fallback-3",
-    name: "Balayage Ritual",
-    price: "42.000 HUF-tól",
-    description: "Kevin Murphy kényeztetéssel és prémium árnyalással.",
-    icon: "sparkles",
-  },
-  {
-    _id: "fallback-4",
-    name: "Női hajvágás",
-    price: "22.500 HUF",
-    description: "Személyre szabott stílustanácsadással és mosással.",
-    icon: "scissors",
-  },
-  {
-    _id: "fallback-5",
-    name: "Kevin Murphy rituálé",
-    price: "18.500 HUF",
-    description: "Mélytápláló kezelés a haj szerkezetének újjáépítésére.",
-    icon: "heart",
-  },
-];
 
 const FALLBACK_CONTENT: ServicesContent = {
   actionTitleLine1: "Precizitás abban,",
@@ -72,83 +33,88 @@ export default async function ServicesPage() {
     getSiteSettings(),
   ]);
 
-  const list = services.length > 0 ? services : FALLBACK_SERVICES;
   const c = content ?? FALLBACK_CONTENT;
+  const introParagraphs = splitParagraphs(c.introBody);
+  const closingParagraphs = splitParagraphs(c.closingBody);
+  const hairExtensionParagraphs = splitParagraphs(c.hairExtensionsBody);
 
   return (
     <div className="pt-48 pb-32 bg-white">
       <div className="max-w-7xl mx-auto px-8">
-        <SectionTitle title="Szolgáltatások" subtitle="SZAKÉRTELEM" align="center" />
+        <SectionTitle
+          title="Szolgáltatásaink"
+          subtitle="SZAKÉRTELEM"
+          align="center"
+        />
 
-        <div className="max-w-4xl mx-auto space-y-12">
-          {list.map((service, i) => (
-            <ServiceRow
-              key={service._id}
-              service={service}
-              index={i}
-              bookingUrl={settings.bookingUrl}
-            />
-          ))}
-        </div>
-
-        <div className="mt-32 md:mt-48 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="relative aspect-[4/5] overflow-hidden group shadow-2xl bg-off-white">
-            {c.repairImage ? (
-              <Image
-                src={urlForImage(c.repairImage).width(1000).url()}
-                alt="Mesteri hajjavítás munka"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-[2000ms]"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-luxury-gold/10 via-transparent to-luxury-gold/5" />
-            )}
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all" />
+        {introParagraphs.length > 0 && (
+          <div className="max-w-3xl mx-auto -mt-12 mb-20 space-y-6 text-center">
+            {introParagraphs.map((p, i) => (
+              <p
+                key={i}
+                className="text-xl font-light text-gray-500 leading-relaxed"
+              >
+                {p}
+              </p>
+            ))}
           </div>
-          <div className="space-y-12">
-            <SectionTitle title="Mesteri Hajjavítás" subtitle="SPECIALITÁSUNK" />
-            <p className="text-xl font-light text-gray-500 leading-relaxed italic">
-              Sokan keresnek meg minket elrontott színekkel, foltos balayage-zsal
-              vagy helytelenül vágott formákkal. Számunkra nincs reménytelen
-              eset, csak szakmai kihívás.
-            </p>
-            <div className="space-y-8">
-              {[
-                {
-                  num: "01.",
-                  title: "Állapotfelmérés",
-                  desc: "Részletes elemzés a haj szerkezetéről és a korábbi kémiai folyamatokról.",
-                },
-                {
-                  num: "02.",
-                  title: "Szerkezetépítés",
-                  desc: "Mielőtt új színt adnánk, megerősítjük a hajszálakat Kevin Murphy rituálékkal.",
-                },
-                {
-                  num: "03.",
-                  title: "Színkorrekció",
-                  desc: "Eltüntetjük a foltokat és visszahozzuk a haj természetes, luxus fényét.",
-                },
-              ].map((step) => (
-                <div
-                  key={step.num}
-                  className="flex gap-8 border-b border-black/5 pb-8 last:border-0"
-                >
-                  <span className="text-luxury-gold font-serif italic text-3xl">
-                    {step.num}
-                  </span>
-                  <div>
-                    <h4 className="text-xl font-serif italic mb-2">
-                      {step.title}
-                    </h4>
-                    <p className="text-sm text-gray-400">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
+        )}
+
+        {services.length > 0 && (
+          <div className="max-w-4xl mx-auto space-y-12">
+            {services.map((service, i) => (
+              <ServiceRow
+                key={service._id}
+                service={service}
+                index={i}
+                bookingUrl={settings.bookingUrl}
+              />
+            ))}
+          </div>
+        )}
+
+        {closingParagraphs.length > 0 && (
+          <div className="max-w-3xl mx-auto mt-24 space-y-6 text-center">
+            {closingParagraphs.map((p, i) => (
+              <p
+                key={i}
+                className="text-lg font-light text-gray-500 leading-relaxed italic"
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {hairExtensionParagraphs.length > 0 && (
+          <div className="mt-32 md:mt-48 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="relative aspect-[4/5] overflow-hidden group shadow-2xl bg-off-white">
+              {c.repairImage ? (
+                <Image
+                  src={urlForImage(c.repairImage).width(1000).url()}
+                  alt={c.hairExtensionsTitle ?? "Hajhosszabbítás"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-[2000ms]"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-luxury-gold/10 via-transparent to-luxury-gold/5" />
+              )}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all" />
+            </div>
+            <div className="space-y-10">
+              <SectionTitle
+                title={c.hairExtensionsTitle ?? "Hajhosszabbítás és hajkereskedelem"}
+                subtitle="KIEMELT TERÜLET"
+              />
+              <div className="space-y-6 text-lg font-light text-gray-500 leading-relaxed">
+                {hairExtensionParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         <div className="mt-32 md:mt-48 bg-off-white p-2">
           <div className="relative h-[600px] overflow-hidden">

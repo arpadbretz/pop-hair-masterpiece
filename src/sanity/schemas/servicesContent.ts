@@ -37,6 +37,33 @@ export const servicesContent = defineType({
       type: "string",
       initialValue: "Budai Mesterszalon • Mesterfodrász vágás",
     }),
+    defineField({
+      name: "introBody",
+      title: "Bevezető szöveg (a szolgáltatás-lista FELETT)",
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 5,
+    }),
+    defineField({
+      name: "closingBody",
+      title: "Záró szöveg (a szolgáltatás-lista UTÁN)",
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 5,
+    }),
+    defineField({
+      name: "hairExtensionsTitle",
+      title: "Hajhosszabbítás szekció címe",
+      type: "string",
+      initialValue: "Hajhosszabbítás és hajkereskedelem",
+    }),
+    defineField({
+      name: "hairExtensionsBody",
+      title: "Hajhosszabbítás szekció szövege",
+      description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
+      type: "text",
+      rows: 8,
+    }),
   ],
   preview: {
     prepare: () => ({ title: "Szolgáltatások oldal" }),

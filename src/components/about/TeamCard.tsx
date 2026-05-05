@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { TeamMember } from "@/sanity/lib/types";
 import { urlForImage } from "@/sanity/lib/image";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 export function TeamCard({
   member,
@@ -51,9 +52,11 @@ export function TeamCard({
         {member.name}
       </h3>
       <div className="space-y-6 max-w-sm px-4">
-        <p className="text-sm font-light text-gray-400 leading-relaxed group-hover:text-gray-600 transition-colors">
-          {member.bio}
-        </p>
+        <div className="space-y-4 text-sm font-light text-gray-400 leading-relaxed group-hover:text-gray-600 transition-colors">
+          {splitParagraphs(member.bio).map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
         {member.speciality && (
           <div className="pt-6 border-t border-black/5 flex flex-col items-center gap-2">
             <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-black">

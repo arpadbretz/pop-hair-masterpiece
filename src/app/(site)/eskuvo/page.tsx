@@ -23,15 +23,14 @@ export const metadata = {
 };
 
 const FALLBACK_WEDDING: WeddingContent = {
-  heroEyebrow: "A Nagy Nap Művészete",
+  heroEyebrow: "",
   heroTitleLine1: "Esküvői",
-  heroTitleLine2: "Design.",
-  heroQuote:
-    "Hiszünk abban, hogy a menyasszonyi frizura nem csupán egy viselet, hanem a személyiség és az alkalom harmonikus kivetülése.",
+  heroTitleLine2: "frizurák.",
+  heroQuote: "Az esküvő egy különleges nap, ahol minden részlet számít.",
   yearsLabel: "20+",
   weddingsLabel: "100+",
-  ctaTitleLine1: "Legyen a stílus az Ön",
-  ctaTitleLine2: "legszebb ékszere.",
+  ctaTitleLine1: "Szeretettel várunk",
+  ctaTitleLine2: "a Pop Hair Salonban.",
 };
 
 const FALLBACK_STEPS: WeddingProcessStep[] = [
@@ -93,9 +92,11 @@ export default async function WeddingPage() {
         </div>
 
         <div className="relative z-10 text-center px-8">
-          <span className="text-[11px] uppercase font-bold tracking-[1.2em] text-white drop-shadow-lg mb-12 block">
-            {w.heroEyebrow ?? FALLBACK_WEDDING.heroEyebrow}
-          </span>
+          {w.heroEyebrow && (
+            <span className="text-[11px] uppercase font-bold tracking-[1.2em] text-white drop-shadow-lg mb-12 block">
+              {w.heroEyebrow}
+            </span>
+          )}
           <h1 className="text-7xl md:text-[12vw] font-serif italic text-white drop-shadow-2xl leading-none tracking-tighter">
             {w.heroTitleLine1 ?? FALLBACK_WEDDING.heroTitleLine1}
             <br />

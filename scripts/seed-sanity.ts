@@ -105,11 +105,11 @@ async function seedHomeContent() {
   await client.createOrReplace({
     _id: "homeContent",
     _type: "homeContent",
-    heroEyebrow: "Budai Mesterszalon • Több mint 20 év",
+    heroEyebrow: "",
     heroTitleLine1: "A szépség,",
     heroTitleLine2: "ami önazonos.",
     heroSubtitle:
-      "Több mint húsz év szakmai tapasztalatával egy olyan hely Budán, ahol a hajformázás nem futószalag-szolgáltatás, hanem figyelmes, személyre szabott munka. Számunkra minden vendég egyedi.",
+      "Több mint húsz év szakmai tapasztalatával a Pop Hair Salon egy olyan hely Budán, ahol a hajformázás nem futószalag-szolgáltatás, hanem figyelmes, személyre szabott munka.\n\nSzámunkra minden vendég egyedi. Hiszünk abban, hogy egy jól elkészített frizura nemcsak szép, hanem viselőjéhez illik, természetes és hosszú távon is működik.\n\nA Pop Hair Salonban a szakmai precizitás, a minőségi termékek és a nyugodt, igényes környezet találkozik.",
     heroVideoMp4: "/videos/hero.mp4",
     heroVideoWebm: "/videos/hero.webm",
     kmTitle: "Murphy.",
@@ -128,27 +128,26 @@ async function seedAboutContent() {
   await client.createOrReplace({
     _id: "aboutContent",
     _type: "aboutContent",
-    philosophyTitleLine1: "Rólunk –",
-    philosophyTitleLine2: "valódi figyelem.",
+    philosophyTitleLine1: "Rólunk.",
+    philosophyTitleLine2: "",
     philosophyQuote:
       "A Pop Hair Salon egy olyan szalon, ahol a vendég valódi figyelmet kap.",
     philosophyBody:
       "Fontos számunkra, hogy minden frizura mögött átgondolt szakmai munka álljon. Nem dolgozunk kapkodva vagy sablonok alapján – minden vendég haját, stílusát és igényeit külön figyelembe vesszük.\n\nSzámunkra a fodrászat egyszerre szakma és felelősség: a haj egészsége, a természetes megjelenés és a vendég elégedettsége mindig első helyen áll.\n\nCélunk, hogy vendégeink magabiztosan és jól érezzék magukat a frizurájukkal – nemcsak a szalonból kilépve, hanem a hétköznapokban is.",
     philosophyImage: philosophy,
     kmFilozofiaBody:
-      "A fodrászat egy folyamatosan fejlődő szakma, ezért számunkra fontos a folyamatos tanulás és szakmai fejlődés. Rendszeresen veszünk részt szakmai továbbképzéseken és tréningeken, hogy vendégeink számára a legmodernebb technikákat és megoldásokat tudjuk biztosítani.\n\nA szalonban kizárólag Kevin Murphy professzionális termékekkel dolgozunk. Bacsik Szilvia Kevin Murphy Session Stylist minősítéssel rendelkezik, amely a márka mély szakmai ismeretét és magas szintű használatát jelenti.\n\nA termékek alapos ismeretének köszönhetően minden vendég számára személyre szabott hajápolási és styling javaslatot tudunk adni. Hiszünk abban, hogy a szép frizura alapja az egészséges haj.",
+      "A fodrászat egy folyamatosan fejlődő szakma, ezért számunkra fontos a folyamatos tanulás és szakmai fejlődés.\n\nRendszeresen veszünk részt szakmai továbbképzéseken és tréningeken, hogy vendégeink számára a legmodernebb technikákat és megoldásokat tudjuk biztosítani.\n\nA szalonban kizárólag Kevin Murphy professzionális termékekkel dolgozunk. Bacsik Szilvia Kevin Murphy Session Stylist minősítéssel rendelkezik, amely a márka mély szakmai ismeretét és magas szintű használatát jelenti.\n\nA termékek alapos ismeretének köszönhetően minden vendég számára személyre szabott hajápolási és styling javaslatot tudunk adni.\n\nHiszünk abban, hogy a szép frizura alapja az egészséges haj.",
     kmFilozofiaImage: km,
-    closingQuote:
-      "Célunk, hogy vendégeink magabiztosan és jól érezzék magukat a frizurájukkal – nemcsak a szalonból kilépve, hanem a hétköznapokban is.",
+    closingQuote: "Szeretettel várlak a Pop Hair Salonban!",
     closingQuoteAuthor: "Bacsik Szilvia",
     whyChooseUsTitle: "Miért válassz minket?",
     whyChooseUsItems: [
-      "Több mint 20 év szakmai tapasztalat",
-      "Személyre szabott frizurák",
-      "Folyamatos szakmai továbbképzések",
+      "több mint 20 év szakmai tapasztalat",
+      "személyre szabott frizurák",
+      "folyamatos szakmai továbbképzések",
       "Kevin Murphy Session Stylist szakmai háttér",
-      "Professzionális hajápolási tanácsadás",
-      "Prémium szalon környezet",
+      "professzionális hajápolási tanácsadás",
+      "prémium szalon környezet",
     ],
   });
 }
@@ -177,21 +176,20 @@ async function seedWeddingContent() {
   await client.createOrReplace({
     _id: "weddingContent",
     _type: "weddingContent",
-    heroEyebrow: "A Nagy Nap",
+    heroEyebrow: "",
     heroTitleLine1: "Esküvői",
     heroTitleLine2: "frizurák.",
-    heroQuote:
-      "Egy különleges nap, ahol minden részlet számít. A célunk mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.",
+    heroQuote: "Az esküvő egy különleges nap, ahol minden részlet számít.",
     heroImage: hero,
     expertiseBody:
-      "Az esküvő egy különleges nap, ahol minden részlet számít. A Pop Hair Salonban nagy hangsúlyt fektetünk a menyasszonyi frizurák elkészítésére, ahol a cél mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.\n\nA szolgáltatás tartalmazhat próba frizurát, a menyasszonyi frizura elkészítését, valamint alkalmi frizurákat a vendégek számára. Minden esetben személyes konzultáció során tervezzük meg a frizurát.",
+      "A Pop Hair Salonban nagy hangsúlyt fektetünk a menyasszonyi frizurák elkészítésére, ahol a cél mindig az, hogy a frizura tökéletesen illeszkedjen a menyasszony stílusához és az esküvő hangulatához.\n\nA szolgáltatás tartalmazhat: próba frizurát, menyasszonyi frizura készítését, alkalmi frizurákat a vendégek számára.\n\nMinden esetben személyes konzultáció során tervezzük meg a frizurát.",
     expertiseImageLeft: left,
     expertiseImageRight: right,
     yearsLabel: "20+",
     weddingsLabel: "100+",
     lookbookImages: lookbook,
-    ctaTitleLine1: "Tervezzük meg együtt",
-    ctaTitleLine2: "a Te frizurádat.",
+    ctaTitleLine1: "Szeretettel várunk",
+    ctaTitleLine2: "a Pop Hair Salonban.",
   });
 }
 
@@ -222,9 +220,9 @@ async function seedTeam() {
     {
       _id: "team-szilvi",
       name: "Bacsik Szilvia",
-      role: "Tulajdonos & Mesterfodrász",
+      role: "Mesterfodrász & a Pop Hair Salon alapítója",
       speciality: "Kevin Murphy Session Stylist",
-      bio: "Több mint húsz éve dolgozom fodrászként, ez idő alatt számos fotózáson, divatbemutatón és szakmai projekten vettem részt. A divatvilág inspirációi és a mindennapi vendégmunka egyaránt formálták azt a szemléletet, amellyel ma dolgozom. Számomra a fodrászat elsősorban bizalom — fontos, hogy a vendég jól érezze magát, meghallgatva és megértve érezze magát, és olyan frizurával távozzon, amely valóban illik hozzá.",
+      bio: "Bacsik Szilvia vagyok, mesterfodrász és a Pop Hair Salon alapítója.\n\nTöbb mint húsz éve dolgozom fodrászként, ez idő alatt számos fotózáson, divatbemutatón és szakmai projekten vettem részt. A divatvilág inspirációi és a mindennapi vendégmunka egyaránt formálták azt a szemléletet, amellyel ma dolgozom.\n\nSzámomra a fodrászat elsősorban bizalom. Fontos, hogy a vendég jól érezze magát, meghallgatva és megértve érezze magát, és olyan frizurával távozzon, amely valóban illik hozzá.\n\nA munkám során különösen fontosnak tartom a haj egészségének megőrzését, ezért a szalonban a Kevin Murphy professzionális termékeit használjuk.\n\nA Pop Hair Salon létrehozásakor az volt a célom, hogy egy nyugodt, igényes környezetet teremtsünk, ahol a szakmai minőség és az emberi figyelem egyaránt jelen van.\n\nSzeretettel várlak a Pop Hair Salonban!",
       file: "eskuvo-munkank-1.jpg",
       order: 1,
     },
@@ -286,88 +284,46 @@ async function seedServices() {
     await tx.commit();
   }
 
+  // Verbatim Szilvi service list — names only, no fabricated descriptions
+  // and no prices (Szilvi will fill prices in Studio later).
   const list = [
-    {
-      _id: "svc-women",
-      name: "Női hajvágás",
-      price: "22.500 HUF",
-      description:
-        "Személyre szabott stílustanácsadással, hajmosással és precíz kivitelezéssel.",
-      icon: "scissors",
-      order: 1,
-    },
+    { _id: "svc-women", name: "női hajvágás", icon: "scissors", order: 1 },
     {
       _id: "svc-men",
-      name: "Férfi hajvágás és barber",
-      price: "12.500 HUF",
-      description:
-        "Klasszikus és modern férfi vágások, szakáll-formázás, prémium stylinggal.",
+      name: "férfi hajvágás és barber szolgáltatások",
       icon: "scissors",
       order: 2,
     },
-    {
-      _id: "svc-color",
-      name: "Hajfestés",
-      price: "32.000 HUF-tól",
-      description:
-        "Teljes festés és melírozás Kevin Murphy színekkel, a haj egészségét szem előtt tartva.",
-      icon: "palette",
-      order: 3,
-    },
+    { _id: "svc-color", name: "hajfestés", icon: "palette", order: 3 },
     {
       _id: "svc-balayage",
-      name: "Balayage technikák",
-      price: "42.000 HUF-tól",
-      description:
-        "Természetes, kézzel festett árnyalatok – Kevin Murphy kényeztetéssel és prémium színanyagokkal.",
+      name: "balayage technikák",
       icon: "sparkles",
       order: 4,
     },
     {
       _id: "svc-extension",
-      name: "Hajhosszabbítás (nano kapszula)",
-      price: "Egyéni kalkuláció",
-      description:
-        "Minőségi póthajakkal, nano kapszula technikával – természetes megjelenés és kényelmes viselet. Konzultációval kezdünk.",
+      name: "hajhosszabbítás (nano kapszula)",
       icon: "sparkles",
       order: 5,
     },
     {
       _id: "svc-care",
-      name: "Professzionális hajápolás",
-      price: "18.500 HUF-tól",
-      description:
-        "Mélytápláló rituálék és Kevin Murphy kezelések a haj szerkezetének helyreállítására.",
+      name: "professzionális hajápolás",
       icon: "heart",
       order: 6,
     },
     {
       _id: "svc-occasion",
-      name: "Alkalmi frizurák",
-      price: "Egyéni kalkuláció",
-      description:
-        "Egyedi feltűzések és alkalmi stílusok – fotózásokra, ünnepi eseményekre, vendégeknek.",
+      name: "alkalmi frizurák",
       icon: "sparkles",
       order: 7,
     },
     {
       _id: "svc-bridal",
-      name: "Menyasszonyi frizurák",
-      price: "Egyéni kalkuláció",
-      description:
-        "Próba frizura, menyasszonyi frizura és vendégfrizurák – személyes konzultációval tervezve.",
+      name: "menyasszonyi frizurák",
       icon: "sparkles",
       order: 8,
-    },
-    {
-      _id: "svc-rescue",
-      name: "Elrontott hajak javítása",
-      price: "Egyéni kalkuláció",
-      description:
-        "Specialitásunk a másutt elrontott színek és formák professzionális helyrehozása.",
-      icon: "refresh",
-      highlight: true,
-      order: 9,
     },
   ];
   for (const s of list) {
@@ -377,15 +333,48 @@ async function seedServices() {
 
 async function seedPricing() {
   console.log("→ Pricing");
+  // Szilvi did not provide concrete prices in the launch copy — list mirrors
+  // her service catalogue with "Egyéni kalkuláció" placeholders. She can edit
+  // these in Sanity Studio without changing code.
   const list = [
-    { _id: "pr-female", name: "Női hajvágás", price: "22.500", description: "Személyre szabott stílustanácsadással és mosással", order: 1 },
-    { _id: "pr-male", name: "Férfi hajvágás és barber", price: "12.500", description: "Prémium stylinggal", order: 2 },
-    { _id: "pr-color", name: "Hajfestés", price: "32.000-től", description: "Kevin Murphy színekkel, hajbarát összetétellel", order: 3 },
-    { _id: "pr-bal", name: "Balayage", price: "42.000-től", description: "Természetes, kézzel festett árnyalatok", order: 4 },
-    { _id: "pr-extension", name: "Hajhosszabbítás (nano kapszula)", price: "Egyéni kalkuláció", description: "Konzultáció alapján, mennyiség és hossz szerint", order: 5 },
-    { _id: "pr-care", name: "Professzionális hajápolás", price: "18.500-tól", description: "Mélytápláló rituálé sérült hajszerkezetre", order: 6 },
-    { _id: "pr-occasion", name: "Alkalmi frizura", price: "Egyéni kalkuláció", description: "Egyedi feltűzés vagy alkalmi stílus", order: 7 },
-    { _id: "pr-bridal", name: "Menyasszonyi frizura", price: "Egyéni kalkuláció", description: "Próba frizurával, személyes konzultációval", order: 8 },
+    { _id: "pr-female", name: "női hajvágás", price: "Egyéni kalkuláció", order: 1 },
+    {
+      _id: "pr-male",
+      name: "férfi hajvágás és barber szolgáltatások",
+      price: "Egyéni kalkuláció",
+      order: 2,
+    },
+    { _id: "pr-color", name: "hajfestés", price: "Egyéni kalkuláció", order: 3 },
+    {
+      _id: "pr-bal",
+      name: "balayage technikák",
+      price: "Egyéni kalkuláció",
+      order: 4,
+    },
+    {
+      _id: "pr-extension",
+      name: "hajhosszabbítás (nano kapszula)",
+      price: "Egyéni kalkuláció",
+      order: 5,
+    },
+    {
+      _id: "pr-care",
+      name: "professzionális hajápolás",
+      price: "Egyéni kalkuláció",
+      order: 6,
+    },
+    {
+      _id: "pr-occasion",
+      name: "alkalmi frizurák",
+      price: "Egyéni kalkuláció",
+      order: 7,
+    },
+    {
+      _id: "pr-bridal",
+      name: "menyasszonyi frizurák",
+      price: "Egyéni kalkuláció",
+      order: 8,
+    },
   ];
   // Wipe any previously-seeded pricing docs so re-runs don't leave behind stale items.
   const existingIds = await client.fetch<string[]>(
@@ -524,16 +513,23 @@ async function seedGallery() {
 
 async function seedServicesContent() {
   console.log("→ Services content");
-  const repair = await uploadAsset("balayage-munkank-1.jpg");
+  const repair = await uploadAsset("hajhosszabbitas-1.jpg");
   const action = await uploadAsset("szalon-munka-1.jpg");
   await client.createOrReplace({
     _id: "servicesContent",
     _type: "servicesContent",
     repairImage: repair,
     actionImage: action,
-    actionTitleLine1: "Precizitás abban,",
-    actionTitleLine2: "amit csinálunk.",
-    actionSubtitle: "Budai Mesterszalon • Mesterfodrász vágás",
+    actionTitleLine1: "Szeretettel várunk",
+    actionTitleLine2: "a Pop Hair Salonban.",
+    actionSubtitle: "Budapest • Pop Hair Salon",
+    introBody:
+      "Szalonunkban a modern fodrászati technikák és a személyre szabott megoldások állnak a középpontban.\n\nSzolgáltatásaink között megtalálható:",
+    closingBody:
+      "Minden szolgáltatás során figyelembe vesszük a haj állapotát, a vendég stílusát és az egyéni igényeket.\n\nA női és férfi frizurák esetében egyaránt fontos számunkra a precíz kivitelezés, a személyre szabott tanácsadás és a természetes, jól viselhető végeredmény.",
+    hairExtensionsTitle: "Hajhosszabbítás és hajkereskedelem",
+    hairExtensionsBody:
+      "A Pop Hair Salonban kiemelt terület a professzionális hajhosszabbítás.\n\nVendégeink számára különböző technikákat kínálunk, amelyek lehetővé teszik a haj hosszának és dúsításának természetes megjelenésű növelését.\n\nFontos számunkra, hogy a hajhosszabbítás harmonikusan illeszkedjen a természetes hajhoz, kényelmesen viselhető legyen, és hosszú távon is megőrizze minőségét.\n\nSzalonunkban minőségi póthajakkal dolgozunk, és vendégeink számára hajkereskedelmi lehetőséget is biztosítunk.\n\nMinden hajhosszabbítás előtt személyes konzultáció során segítünk kiválasztani a megfelelő technikát és hajtípust.",
   });
 }
 

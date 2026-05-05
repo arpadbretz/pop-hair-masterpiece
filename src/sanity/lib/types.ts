@@ -51,6 +51,10 @@ export interface ServicesContent {
   actionTitleLine1?: string;
   actionTitleLine2?: string;
   actionSubtitle?: string;
+  introBody?: string;
+  closingBody?: string;
+  hairExtensionsTitle?: string;
+  hairExtensionsBody?: string;
 }
 
 export interface WeddingContent {
@@ -81,8 +85,8 @@ export interface TeamMember {
 export interface Service {
   _id: string;
   name: string;
-  price: string;
-  description: string;
+  price?: string;
+  description?: string;
   icon?: string;
   highlight?: boolean;
 }

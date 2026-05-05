@@ -57,7 +57,11 @@ export const servicesContentQuery = groq`
     actionImage,
     actionTitleLine1,
     actionTitleLine2,
-    actionSubtitle
+    actionSubtitle,
+    introBody,
+    closingBody,
+    hairExtensionsTitle,
+    hairExtensionsBody
   }
 `;
 

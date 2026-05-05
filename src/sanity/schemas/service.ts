@@ -13,18 +13,16 @@ export const service = defineType({
     }),
     defineField({
       name: "price",
-      title: "Ár",
+      title: "Ár (opcionális)",
       type: "string",
       description:
-        "Szabadszavas — pl. '28.000 HUF-tól', '22.500 HUF', vagy 'Egyéni kalkuláció'.",
-      validation: (r) => r.required(),
+        "Pl. '28.000 HUF-tól', '22.500 HUF', vagy 'Egyéni kalkuláció'. Üresen hagyva nem jelenik meg ár a kártyán.",
     }),
     defineField({
       name: "description",
-      title: "Leírás",
+      title: "Leírás (opcionális)",
       type: "text",
       rows: 3,
-      validation: (r) => r.required(),
     }),
     defineField({
       name: "icon",

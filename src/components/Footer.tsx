@@ -57,9 +57,9 @@ export function Footer({
         <div className="grid lg:grid-cols-12 gap-20 mb-32">
           <div className="lg:col-span-8">
             <h3 className="text-5xl md:text-[8vw] font-serif italic leading-[0.85] mb-12 text-white">
-              Találjuk meg az Ön
+              Szeretettel várunk
               <br />
-              <span className="text-gold-gradient">valódi énjét.</span>
+              <span className="text-gold-gradient">a Pop Hair Salonban.</span>
             </h3>
             <div className="flex flex-wrap gap-12 md:gap-24">
               <div className="space-y-4">
@@ -162,6 +162,18 @@ export function Footer({
                 Galéria
               </Link>
               <Link
+                href="/eskuvo"
+                className="text-sm hover:text-luxury-gold transition-colors"
+              >
+                Esküvő
+              </Link>
+              <Link
+                href="/blog"
+                className="text-sm hover:text-luxury-gold transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/kapcsolat"
                 className="text-sm hover:text-luxury-gold transition-colors"
               >
@@ -174,10 +186,10 @@ export function Footer({
               Szolgáltatások
             </p>
             <div className="flex flex-col gap-2 text-sm text-gray-400">
-              <span>Elrontott hajak javítása</span>
-              <span>Mesterfodrászat</span>
-              <span>Balayage Ritual</span>
-              <span>Kevin Murphy Rituálé</span>
+              <span>női és férfi hajvágás</span>
+              <span>hajfestés, balayage</span>
+              <span>hajhosszabbítás</span>
+              <span>menyasszonyi frizurák</span>
             </div>
           </div>
           <div className="col-span-2 space-y-4">

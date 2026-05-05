@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Heart, ShieldCheck, Zap, History, Award, Check } from "lucide-react";
+import { Heart, History, Award, Check } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import {
   aboutContentQuery,
@@ -19,12 +19,11 @@ export const metadata = {
 };
 
 const FALLBACK_ABOUT: AboutContent = {
-  philosophyTitleLine1: "Tudatos",
-  philosophyTitleLine2: "Stílusépítés.",
+  philosophyTitleLine1: "Rólunk.",
+  philosophyTitleLine2: "",
   philosophyQuote:
-    "A Pop Hair Salon nem csupán egy szalon, hanem egy tér, ahol a magas szintű szakmai tudás és a személyre szabott figyelem találkozik.",
-  closingQuote:
-    "A kifogástalan minőség és az igényekre szabott szakmai döntések teszik igazán maradandóvá a frizurát.",
+    "A Pop Hair Salon egy olyan szalon, ahol a vendég valódi figyelmet kap.",
+  closingQuote: "Szeretettel várlak a Pop Hair Salonban!",
   closingQuoteAuthor: "Bacsik Szilvia",
 };
 
@@ -52,15 +51,21 @@ export default async function AboutPage() {
               <div className="flex items-center gap-6">
                 <div className="w-16 h-[1px] bg-luxury-gold" />
                 <span className="text-[10px] uppercase font-bold tracking-[0.5em] text-luxury-gold">
-                  Önazonosság
+                  Rólunk
                 </span>
               </div>
               <h1 className="text-6xl md:text-8xl font-serif italic text-black leading-tight tracking-tighter">
-                {a.philosophyTitleLine1 ?? FALLBACK_ABOUT.philosophyTitleLine1}{" "}
-                <br />
                 <span className="text-gold-gradient">
-                  {a.philosophyTitleLine2 ?? FALLBACK_ABOUT.philosophyTitleLine2}
+                  {a.philosophyTitleLine1 ?? FALLBACK_ABOUT.philosophyTitleLine1}
                 </span>
+                {a.philosophyTitleLine2 && (
+                  <>
+                    <br />
+                    <span className="text-gold-gradient">
+                      {a.philosophyTitleLine2}
+                    </span>
+                  </>
+                )}
               </h1>
               {(a.philosophyQuote ?? FALLBACK_ABOUT.philosophyQuote) && (
                 <div className="space-y-8 text-2xl font-light text-gray-500 leading-relaxed italic border-l border-luxury-gold/20 pl-10">
@@ -136,7 +141,7 @@ export default async function AboutPage() {
       {team.length > 0 && (
         <section className="py-32 md:py-64 bg-off-white relative">
           <div className="max-w-7xl mx-auto px-8">
-            <SectionTitle title="A Mesterek" subtitle="SZAKMAI ELIT" align="center" />
+            <SectionTitle title="Csapatunk" subtitle="MUNKATÁRSAK" align="center" />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-24 lg:gap-32">
               {team.map((member, i) => (
                 <TeamCard key={member._id} member={member} index={i} />
@@ -150,46 +155,18 @@ export default async function AboutPage() {
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
-              <SectionTitle title="A Márka Mögött" subtitle="KEVIN MURPHY FILOZÓFIA" />
+              <SectionTitle title="Szakmai szemlélet" subtitle="SZAKMAI HÁTTÉR" />
               <div className="space-y-8 text-xl font-light text-gray-500 leading-relaxed">
                 {splitParagraphs(a.kmFilozofiaBody).length > 0 ? (
                   splitParagraphs(a.kmFilozofiaBody).map((p, i) => (
                     <p key={i}>{p}</p>
                   ))
                 ) : (
-                  <>
-                    <p>
-                      A Kevin Murphy nem csupán egy termékcsalád, hanem egy
-                      szemléletmód. A bőrápolás technológiájára építve, a
-                      legtisztább természetes alapanyagokat ötvözi a tudomány
-                      erejével.
-                    </p>
-                    <p>
-                      Fenntarthatóság, környezettudatosság és kompromisszummentes
-                      minőség.
-                    </p>
-                  </>
+                  <p>
+                    A szalonban kizárólag Kevin Murphy professzionális
+                    termékekkel dolgozunk.
+                  </p>
                 )}
-              </div>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="p-8 border border-black/5 bg-off-white">
-                  <ShieldCheck className="text-luxury-gold mb-4" size={32} />
-                  <h4 className="font-serif italic text-xl mb-4">
-                    Szigorú Alapanyagok
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Parabén- és szulfátmentes összetevők a haj egészségéért.
-                  </p>
-                </div>
-                <div className="p-8 border border-black/5 bg-off-white">
-                  <Zap className="text-luxury-gold mb-4" size={32} />
-                  <h4 className="font-serif italic text-xl mb-4">
-                    Azonnali Hatás
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Könnyed, mégis tartós eredmények minden hajtípusra.
-                  </p>
-                </div>
               </div>
             </div>
             <div className="relative">
@@ -246,9 +223,6 @@ export default async function AboutPage() {
             </h2>
           </div>
           <div className="max-w-4xl mx-auto px-8 relative z-10">
-            <span className="text-gold-champagne text-[11px] uppercase tracking-[1em] mb-12 block">
-              Vezető Szakértelem
-            </span>
             <PerspectiveReveal>
               <h3 className="text-4xl md:text-7xl font-serif italic leading-tight mb-16">
                 &ldquo;
@@ -271,7 +245,8 @@ export default async function AboutPage() {
         <div className="max-w-7xl mx-auto px-8 flex flex-col items-center text-center">
           <Heart className="text-luxury-gold mb-8 animate-pulse" size={32} />
           <h2 className="text-4xl md:text-6xl font-serif italic mb-12">
-            Készen áll a <span className="text-luxury-gold">változásra?</span>
+            Szeretettel várlak{" "}
+            <span className="text-luxury-gold">a Pop Hair Salonban!</span>
           </h2>
           <a
             href={settings.bookingUrl}

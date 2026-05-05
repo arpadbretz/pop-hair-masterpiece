@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { splitParagraphs } from "@/lib/paragraphs";
 
 interface HeroSectionProps {
   bookingUrl: string;
-  eyebrow: string;
+  eyebrow?: string;
   titleLine1: string;
   titleLine2: string;
-  subtitle: string;
+  subtitle?: string;
   videoMp4: string;
   videoWebm?: string;
   posterUrl?: string;
@@ -48,17 +49,19 @@ export function HeroSection({
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-12"
         >
-          <div className="flex flex-col items-center gap-6 mb-8">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: 100 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="h-[1px] bg-luxury-gold"
-            />
-            <span className="text-[11px] uppercase tracking-[1em] text-luxury-gold font-bold block">
-              {eyebrow}
-            </span>
-          </div>
+          {eyebrow && (
+            <div className="flex flex-col items-center gap-6 mb-8">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: 100 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="h-[1px] bg-luxury-gold"
+              />
+              <span className="text-[11px] uppercase tracking-[1em] text-luxury-gold font-bold block">
+                {eyebrow}
+              </span>
+            </div>
+          )}
 
           <h1 className="text-6xl md:text-[10vw] font-serif italic leading-[0.8] text-white tracking-tighter mb-8 drop-shadow-2xl">
             {titleLine1}
@@ -66,9 +69,13 @@ export function HeroSection({
             <span className="text-gold-gradient">{titleLine2}</span>
           </h1>
 
-          <p className="text-xl md:text-2xl font-light text-white/80 max-w-2xl mx-auto leading-relaxed italic drop-shadow-lg">
-            {subtitle}
-          </p>
+          {subtitle && (
+            <div className="text-lg md:text-xl font-light text-white/80 max-w-3xl mx-auto leading-relaxed italic drop-shadow-lg space-y-4">
+              {splitParagraphs(subtitle).map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          )}
 
           <div className="flex flex-wrap justify-center gap-12 pt-8">
             <a

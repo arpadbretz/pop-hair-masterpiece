@@ -10,43 +10,17 @@ export const metadata = {
   description: "Pop Hair Salon szolgáltatások árlistája — Budai mesterszalon.",
 };
 
+// Fallback only kicks in if Sanity is unreachable. Mirrors Szilvi's service
+// list with "Egyéni kalkuláció" placeholders.
 const FALLBACK_PRICING: PricingItem[] = [
-  {
-    _id: "p1",
-    name: "Női Hajvágás",
-    price: "22.500",
-    description: "Személyre szabott stílustanácsadással és mosással",
-  },
-  {
-    _id: "p2",
-    name: "Mesterfodrász Vágás",
-    price: "28.000",
-    description: "Bacsik Szilvia vezetésével",
-  },
-  {
-    _id: "p3",
-    name: "Balayage Ritual",
-    price: "42.000-től",
-    description: "Kevin Murphy kényeztetéssel és árnyalással",
-  },
-  {
-    _id: "p4",
-    name: "Teljes Festés",
-    price: "32.000-től",
-    description: "Környezettudatos KM színekkel",
-  },
-  {
-    _id: "p5",
-    name: "Hajregenerálás",
-    price: "18.500",
-    description: "Mélytápláló rituálé sérült hajszerkezetre",
-  },
-  {
-    _id: "p6",
-    name: "Férfi Vágás",
-    price: "12.500",
-    description: "Prémium stylinggal",
-  },
+  { _id: "p1", name: "női hajvágás", price: "Egyéni kalkuláció" },
+  { _id: "p2", name: "férfi hajvágás és barber szolgáltatások", price: "Egyéni kalkuláció" },
+  { _id: "p3", name: "hajfestés", price: "Egyéni kalkuláció" },
+  { _id: "p4", name: "balayage technikák", price: "Egyéni kalkuláció" },
+  { _id: "p5", name: "hajhosszabbítás (nano kapszula)", price: "Egyéni kalkuláció" },
+  { _id: "p6", name: "professzionális hajápolás", price: "Egyéni kalkuláció" },
+  { _id: "p7", name: "alkalmi frizurák", price: "Egyéni kalkuláció" },
+  { _id: "p8", name: "menyasszonyi frizurák", price: "Egyéni kalkuláció" },
 ];
 
 export default async function PricingPage() {

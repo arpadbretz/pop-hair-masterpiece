@@ -67,25 +67,29 @@ export function ServiceRow({
               </span>
             )}
           </div>
-          <p
-            className={cn(
-              "text-sm font-light leading-relaxed max-w-md",
-              service.highlight ? "text-gray-300" : "text-gray-500"
-            )}
-          >
-            {service.description}
-          </p>
+          {service.description && (
+            <p
+              className={cn(
+                "text-sm font-light leading-relaxed max-w-md",
+                service.highlight ? "text-gray-300" : "text-gray-500"
+              )}
+            >
+              {service.description}
+            </p>
+          )}
         </div>
       </div>
       <div className="text-right">
-        <span
-          className={cn(
-            "text-2xl font-serif italic block mb-2",
-            service.highlight ? "text-white" : "text-black"
-          )}
-        >
-          {service.price}
-        </span>
+        {service.price && (
+          <span
+            className={cn(
+              "text-2xl font-serif italic block mb-2",
+              service.highlight ? "text-white" : "text-black"
+            )}
+          >
+            {service.price}
+          </span>
+        )}
         <a
           href={bookingUrl}
           target="_blank"

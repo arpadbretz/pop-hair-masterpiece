@@ -20,11 +20,11 @@ import { PerspectiveReveal } from "@/components/Common";
 import { splitParagraphs } from "@/lib/paragraphs";
 
 const FALLBACK_HOME: HomeContent = {
-  heroEyebrow: "Budai Szalon • Alapítva 2004",
-  heroTitleLine1: "A szépség mint",
-  heroTitleLine2: "mestermű.",
+  heroEyebrow: "",
+  heroTitleLine1: "A szépség,",
+  heroTitleLine2: "ami önazonos.",
   heroSubtitle:
-    "Húsz év szakértelem Budán, a stílus és az önazonosság találkozásánál. Nálunk a hajformázás nem csupán szolgáltatás, hanem egyénre szabott alkotás.",
+    "Több mint húsz év szakmai tapasztalatával a Pop Hair Salon egy olyan hely Budán, ahol a hajformázás nem futószalag-szolgáltatás, hanem figyelmes, személyre szabott munka.\n\nSzámunkra minden vendég egyedi. Hiszünk abban, hogy egy jól elkészített frizura nemcsak szép, hanem viselőjéhez illik, természetes és hosszú távon is működik.\n\nA Pop Hair Salonban a szakmai precizitás, a minőségi termékek és a nyugodt, igényes környezet találkozik.",
   heroVideoMp4: "/videos/hero.mp4",
   heroVideoWebm: "/videos/hero.webm",
   kmTitle: "Murphy.",
@@ -60,10 +60,10 @@ export default async function HomePage() {
     <>
       <HeroSection
         bookingUrl={settings.bookingUrl}
-        eyebrow={h.heroEyebrow ?? FALLBACK_HOME.heroEyebrow!}
+        eyebrow={h.heroEyebrow}
         titleLine1={h.heroTitleLine1 ?? FALLBACK_HOME.heroTitleLine1}
         titleLine2={h.heroTitleLine2 ?? FALLBACK_HOME.heroTitleLine2}
-        subtitle={h.heroSubtitle ?? FALLBACK_HOME.heroSubtitle!}
+        subtitle={h.heroSubtitle ?? FALLBACK_HOME.heroSubtitle}
         videoMp4={h.heroVideoMp4 ?? "/videos/hero.mp4"}
         videoWebm={h.heroVideoWebm ?? "/videos/hero.webm"}
         posterUrl={
@@ -113,7 +113,7 @@ export default async function HomePage() {
             <div className="space-y-12">
               <PerspectiveReveal>
                 <span className="text-luxury-gold text-[10px] uppercase font-bold tracking-[0.6em] mb-8 block">
-                  Exkluzív Partnerség
+                  Szakmai szemlélet
                 </span>
                 <h2 className="text-6xl md:text-[8vw] font-serif italic leading-[0.9] text-white tracking-tighter mb-12">
                   Kevin <br />
@@ -167,31 +167,31 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-20">
             <span className="text-[10px] uppercase font-bold tracking-[0.6em] text-gold-champagne block mb-6">
-              SZOLGÁLTATÁSOK
+              FEDEZD FEL
             </span>
             <h2 className="text-5xl md:text-[8vw] font-serif italic leading-none">
-              Fedezze fel
+              A szalont
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Mesterfodrászat",
+                title: "Szolgáltatásaink",
                 href: "/szolgaltatasok",
-                desc: "Egyénre szabott stílusépítés",
+                desc: "Női és férfi vágás, festés, balayage",
                 gallery: ctaImages.work,
               },
               {
-                title: "Esküvői Design",
+                title: "Esküvői frizurák",
                 href: "/eskuvo",
-                desc: "Unikális alkalmi hajköltemények",
+                desc: "Egy különleges nap, minden részlet számít",
                 gallery: ctaImages.wedding,
               },
               {
-                title: "Lookbook",
+                title: "Galéria",
                 href: "/galeria",
-                desc: "Inspiráció és munkáink",
+                desc: "Munkáink és szalonunk",
                 gallery: ctaImages.salon,
               },
             ].map((item) => (
@@ -236,12 +236,12 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-16">
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-serif italic mb-6 leading-tight">
-              Minden hajszál egy{" "}
-              <span className="text-luxury-gold">új történet</span> kezdete.
+              Számunkra minden vendég{" "}
+              <span className="text-luxury-gold">egyedi.</span>
             </h2>
-            <p className="text-gray-500 font-light text-lg uppercase tracking-wide leading-relaxed">
-              Elrontott hajak professzionális helyrehozása és tudatos
-              stílustanácsadás Budán.
+            <p className="text-gray-500 font-light text-lg leading-relaxed">
+              Több mint húsz év szakmai tapasztalat, személyre szabott munka és
+              prémium termékek Budán.
             </p>
           </div>
           <div className="flex gap-4">
