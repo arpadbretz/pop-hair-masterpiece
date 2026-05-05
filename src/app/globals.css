@@ -1,14 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-luxury-gold: #d4af37;
-  --color-luxury-gold-light: #f2dfb3;
+  /* Bézs / champagne accent (Szilvi's preferred tone — matches the
+   * original Pop Hair Salon preloader. Slightly darker than #E5D3B3
+   * so it stays readable as text on white backgrounds.) */
+  --color-luxury-gold: #c8a876;
+  --color-luxury-gold-light: #e5d3b3;
   --color-gold-champagne: #e5d3b3;
   --color-soft-black: #1a1a1a;
   --color-off-white: #f9f6f1;
 
   --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
+  /* Display serif inspired by Kevin Murphy's Ivar Display headlines.
+   * Cormorant Garamond is the closest free alternative on Google Fonts. */
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", ui-serif, Georgia, serif;
 
   --tracking-vogue: 0.5em;
   --tracking-vogue-tight: 0.2em;
@@ -43,14 +48,14 @@
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, #d4af37 0%, #e5d3b3 50%, #d4af37 100%);
+    background: linear-gradient(135deg, #c8a876 0%, #e5d3b3 50%, #c8a876 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .bg-gold-gradient {
-    background: linear-gradient(135deg, #d4af37 0%, #e5d3b3 50%, #d4af37 100%);
+    background: linear-gradient(135deg, #c8a876 0%, #e5d3b3 50%, #c8a876 100%);
   }
 
   .perspective-1000 {

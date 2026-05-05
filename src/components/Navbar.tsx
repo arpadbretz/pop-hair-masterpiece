@@ -50,42 +50,30 @@ export function Navbar({
     <>
       <motion.nav
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-6 md:py-10 flex items-center justify-between",
+          "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between",
           isScrolled
-            ? "bg-white/95 backdrop-blur-2xl py-4 shadow-sm border-b border-black/[0.03]"
+            ? "bg-white/95 backdrop-blur-2xl py-2 md:py-3 shadow-sm border-b border-black/[0.03]"
             : "bg-transparent"
         )}
       >
         <Link
           href="/"
-          className="flex items-center gap-6 group cursor-pointer transition-transform hover:scale-105 duration-500"
+          aria-label="Pop Hair Salon — főoldal"
+          className="flex items-center group cursor-pointer transition-transform hover:scale-105 duration-500"
         >
           <Image
             src="/images/logo.png"
-            alt="POP HAIR Logo"
-            width={80}
-            height={80}
+            alt="Pop Hair Salon"
+            width={200}
+            height={200}
             priority
             className={cn(
-              "h-20 w-auto object-contain transition-all duration-500",
+              "h-24 md:h-28 w-auto object-contain transition-all duration-500",
               !isScrolled && isDarkHeroPage
                 ? "brightness-0 invert"
                 : "brightness-0"
             )}
           />
-          <div className="flex flex-col">
-            <h1
-              className={cn(
-                "text-xl md:text-2xl font-serif tracking-[0.4em] font-black italic leading-none mb-1 transition-colors duration-500",
-                navTextColor
-              )}
-            >
-              POP HAIR
-            </h1>
-            <span className="text-[7px] uppercase tracking-[0.5em] text-luxury-gold font-bold">
-              Budai Mesterszalon
-            </span>
-          </div>
         </Link>
 
         <div className="hidden lg:flex items-center gap-14">
@@ -151,18 +139,16 @@ export function Navbar({
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-4"
+                aria-label="Pop Hair Salon — főoldal"
+                className="flex items-center"
               >
                 <Image
                   src="/images/logo.png"
-                  alt="POP HAIR"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain brightness-0"
+                  alt="Pop Hair Salon"
+                  width={120}
+                  height={120}
+                  className="h-16 w-auto object-contain brightness-0"
                 />
-                <span className="text-2xl font-serif italic font-black text-black">
-                  POP HAIR
-                </span>
               </Link>
               <button
                 aria-label="Menü bezárása"

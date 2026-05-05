@@ -1,0 +1,42 @@
+# Pop Hair Salon
+
+> Pop Hair Salon — budai mesterszalon, ahol a vendég valódi figyelmet
+> kap. Több mint 20 év szakmai tapasztalat, személyre szabott munka,
+> Kevin Murphy professzionális termékek.
+
+A Pop Hair Salon egy olyan szalon, ahol a vendég valódi figyelmet kap.
+Fontos számunkra, hogy minden frizura mögött átgondolt szakmai munka álljon.
+Nem dolgozunk kapkodva vagy sablonok alapján — minden vendég haját, stílusát
+és igényeit külön figyelembe vesszük.
+
+A szalonban kizárólag Kevin Murphy professzionális termékekkel dolgozunk.
+Bacsik Szilvia, az alapító, Kevin Murphy Session Stylist minősítéssel
+rendelkezik.
+
+## Szolgáltatások
+
+- Női hajvágás
+- Férfi hajvágás és barber szolgáltatások
+- Hajfestés
+- Balayage technikák
+- Hajhosszabbítás (nano kapszula)
+- Professzionális hajápolás
+- Alkalmi frizurák
+- Menyasszonyi frizurák
+
+## Kapcsolat
+
+- Cím: Budapest, Alkotás u. 39 c, 1023
+- Telefon: +36 30 5901766
+- Online időpontfoglalás: https://b998424.alteg.io/company/624179/personal/menu
+
+## Aloldalak
+
+- [Főoldal](https://pop-hair-pied.vercel.app/)
+- [Rólunk](https://pop-hair-pied.vercel.app/rolunk)
+- [Szolgáltatások](https://pop-hair-pied.vercel.app/szolgaltatasok)
+- [Esküvői frizurák](https://pop-hair-pied.vercel.app/eskuvo)
+- [Galéria](https://pop-hair-pied.vercel.app/galeria)
+- [Áraink](https://pop-hair-pied.vercel.app/araink)
+- [Blog](https://pop-hair-pied.vercel.app/blog)
+- [Kapcsolat](https://pop-hair-pied.vercel.app/kapcsolat)

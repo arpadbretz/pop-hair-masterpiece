@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,11 +8,14 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Cormorant Garamond — closest free alternative to Kevin Murphy's
+// Ivar Display headline serif. Light weights for the editorial feel.
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin", "latin-ext"],
   display: "swap",
   style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="hu"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-black bg-grain">
         {children}
