@@ -20,6 +20,18 @@
 }
 
 @layer base {
+  :root {
+    /* Height of the fixed navbar (logo h-28 / md:h-36 plus breathing room).
+     * Full-bleed first sections (heroes) start below it. */
+    --nav-h: 136px;
+  }
+
+  @media (min-width: 48rem) {
+    :root {
+      --nav-h: 176px;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
   }

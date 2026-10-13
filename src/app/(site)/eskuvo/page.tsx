@@ -39,7 +39,7 @@ export default async function WeddingPage() {
 
   return (
     <div className="bg-white">
-      <section className="h-[90vh] relative overflow-hidden flex items-center justify-center">
+      <section className="mt-[var(--nav-h)] min-h-[calc(90vh-var(--nav-h))] py-16 relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
           {w.heroImage?.asset ? (
             <Image
@@ -61,7 +61,7 @@ export default async function WeddingPage() {
               {w.heroEyebrow}
             </span>
           )}
-          <h1 className="text-7xl md:text-[12vw] font-serif italic text-white drop-shadow-2xl leading-none tracking-tighter">
+          <h1 className="text-7xl md:text-[min(12vw,19vh)] font-serif italic text-white drop-shadow-2xl leading-none tracking-tighter">
             {w.heroTitleLine1 ?? FALLBACK_WEDDING.heroTitleLine1}
             <br />
             <span className="text-luxury-gold">

@@ -26,7 +26,7 @@ export function HeroSection({
   posterUrl,
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen pt-36 pb-28 md:min-h-0 md:h-[110vh] md:py-0 w-full flex items-center justify-center bg-black overflow-hidden">
+    <section className="relative mt-[var(--nav-h)] min-h-[calc(100svh-var(--nav-h))] pt-12 pb-20 md:pt-8 md:pb-12 w-full flex items-center justify-center bg-black overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -47,7 +47,7 @@ export function HeroSection({
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-12"
+          className="space-y-8"
         >
           {eyebrow && (
             <div className="flex flex-col items-center gap-6 mb-8">
@@ -63,26 +63,27 @@ export function HeroSection({
             </div>
           )}
 
-          <h1 className="text-6xl md:text-[10vw] font-serif italic leading-[0.8] text-white tracking-tighter mb-8 drop-shadow-2xl">
+          {/* Capped by viewport height so title, text and button fit below the navbar on laptops */}
+          <h1 className="text-6xl md:text-[min(10vw,15vh)] font-serif italic leading-[0.8] text-white tracking-tighter mb-4 drop-shadow-2xl">
             {titleLine1}
             <br />
             <span className="text-gold-gradient">{titleLine2}</span>
           </h1>
 
           {subtitle && (
-            <div className="text-lg md:text-xl font-light text-white/80 max-w-3xl mx-auto leading-relaxed italic drop-shadow-lg space-y-4">
+            <div className="text-lg md:text-[clamp(15px,2.3vh,20px)] font-light text-white/80 max-w-3xl mx-auto leading-relaxed italic drop-shadow-lg space-y-4 md:space-y-[min(1rem,1.6vh)]">
               {splitParagraphs(subtitle).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
           )}
 
-          <div className="flex flex-wrap justify-center gap-12 pt-8">
+          <div className="flex flex-wrap justify-center gap-12 pt-2">
             <a
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-6"
+              className="group flex flex-col items-center gap-4"
             >
               <div className="w-24 h-24 rounded-full border border-white/30 flex items-center justify-center transition-all duration-700 bg-white/5 backdrop-blur-md group-hover:bg-luxury-gold group-hover:border-luxury-gold group-hover:text-black group-hover:scale-110">
                 <ArrowUpRight
@@ -115,7 +116,7 @@ export function HeroSection({
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
+        className="absolute bottom-12 right-10 hidden md:flex flex-col items-center gap-6"
       >
         <span className="text-[9px] uppercase tracking-[0.8em] text-white rotate-180 [writing-mode:vertical-lr]">
           Scroll

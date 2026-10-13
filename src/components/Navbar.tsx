@@ -42,10 +42,8 @@ export function Navbar({
     });
   }, [scrollY]);
 
-  const isDarkHeroPage =
-    pathname === "/" ||
-    pathname === "/eskuvo" ||
-    pathname.startsWith("/variaciok/");
+  // Pages that open with the dark video hero get a black bar above it.
+  const isDarkHeroPage = pathname === "/" || pathname.startsWith("/variaciok/");
   const navTextColor =
     isScrolled || !isDarkHeroPage ? "text-black" : "text-white";
 
@@ -53,10 +51,12 @@ export function Navbar({
     <>
       <motion.nav
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-12 py-3 md:py-4 flex items-center justify-between",
+          "fixed top-0 left-0 w-full h-[var(--nav-h)] z-50 transition-[background-color,box-shadow] duration-300 px-6 md:px-12 flex items-center justify-between",
           isScrolled
-            ? "bg-white/95 backdrop-blur-2xl py-2 md:py-3 shadow-sm border-b border-black/[0.03]"
-            : "bg-transparent"
+            ? "bg-white/95 backdrop-blur-2xl shadow-sm border-b border-black/[0.03]"
+            : isDarkHeroPage
+              ? "bg-black"
+              : "bg-transparent"
         )}
       >
         <Link
