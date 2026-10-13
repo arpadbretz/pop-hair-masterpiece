@@ -89,7 +89,7 @@ export default async function ServicesPage() {
         {hairExtensionParagraphs.length > 0 && (
           <div className="mt-32 md:mt-48 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="relative aspect-[4/5] overflow-hidden group shadow-2xl bg-off-white">
-              {c.repairImage ? (
+              {c.repairImage?.asset ? (
                 <Image
                   src={urlForImage(c.repairImage).width(1000).url()}
                   alt={c.hairExtensionsTitle ?? "Hajhosszabbítás"}
@@ -118,7 +118,7 @@ export default async function ServicesPage() {
 
         <div className="mt-32 md:mt-48 bg-off-white p-2">
           <div className="relative h-[600px] overflow-hidden">
-            {c.actionImage ? (
+            {c.actionImage?.asset ? (
               <Image
                 src={urlForImage(c.actionImage).width(2000).url()}
                 alt={c.actionSubtitle ?? "Pop Hair Salon"}

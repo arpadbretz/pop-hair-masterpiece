@@ -101,7 +101,7 @@ export default async function BlogPostPage({
                 title={post.title}
               />
             </div>
-          ) : post.coverImage ? (
+          ) : post.coverImage?.asset ? (
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src={urlForImage(post.coverImage).width(2000).url()}

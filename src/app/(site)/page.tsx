@@ -67,7 +67,7 @@ export default async function HomePage() {
         videoMp4={h.heroVideoMp4 ?? "/videos/hero.mp4"}
         videoWebm={h.heroVideoWebm ?? "/videos/hero.webm"}
         posterUrl={
-          h.heroVideoPoster
+          h.heroVideoPoster?.asset
             ? urlForImage(h.heroVideoPoster).url()
             : "/videos/hero-poster.jpg"
         }
@@ -87,7 +87,7 @@ export default async function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
             <div className="relative group">
               <div className="aspect-[4/5] overflow-hidden p-3 border border-white/10 relative">
-                {h.kmImage ? (
+                {h.kmImage?.asset ? (
                   <Image
                     src={urlForImage(h.kmImage).width(800).url()}
                     alt="Kevin Murphy Ritual"
@@ -200,7 +200,7 @@ export default async function HomePage() {
                 href={item.href}
                 className="group relative aspect-[3/4] overflow-hidden flex flex-col justify-end p-12 bg-black"
               >
-                {item.gallery?.image ? (
+                {item.gallery?.image?.asset ? (
                   <Image
                     src={urlForImage(item.gallery.image).width(800).url()}
                     alt={item.gallery.image.alt ?? item.title}

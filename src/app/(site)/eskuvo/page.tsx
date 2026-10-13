@@ -41,7 +41,7 @@ export default async function WeddingPage() {
     <div className="bg-white">
       <section className="h-[90vh] relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
-          {w.heroImage ? (
+          {w.heroImage?.asset ? (
             <Image
               src={urlForImage(w.heroImage).width(1800).url()}
               alt="Esküvői hangulat"
@@ -140,7 +140,7 @@ export default async function WeddingPage() {
                     : "group-hover:translate-y-12"
                 }`}
               >
-                {img ? (
+                {img?.asset ? (
                   <Image
                     src={urlForImage(img).width(800).url()}
                     alt="Wedding work"
@@ -185,7 +185,7 @@ export default async function WeddingPage() {
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {w.lookbookImages.map((img, i) => (
+              {w.lookbookImages.filter((img) => img?.asset).map((img, i) => (
                 <div
                   key={i}
                   className="aspect-[3/4] overflow-hidden border border-white/5 shadow-2xl p-1"

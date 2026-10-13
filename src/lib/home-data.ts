@@ -120,13 +120,13 @@ export async function getHomeData(): Promise<HomeData> {
       subtitle: home?.heroSubtitle,
       videoMp4: home?.heroVideoMp4 ?? "/videos/hero.mp4",
       videoWebm: home?.heroVideoWebm ?? "/videos/hero.webm",
-      posterUrl: home?.heroVideoPoster ? urlForImage(home.heroVideoPoster).url() : "/videos/hero-poster.jpg",
+      posterUrl: home?.heroVideoPoster?.asset ? urlForImage(home.heroVideoPoster).url() : "/videos/hero-poster.jpg",
     },
     about: {
       quote: about?.philosophyQuote,
       body: splitParagraphs(about?.philosophyBody),
       // dimensions aren't queried for singletons; portrait 3:4 is the house crop
-      image: aboutImage ? { image: aboutImage, alt: "Pop Hair Salon", w: 3, h: 4 } : undefined,
+      image: aboutImage?.asset ? { image: aboutImage, alt: "Pop Hair Salon", w: 3, h: 4 } : undefined,
       why: about?.whyChooseUsItems ?? [],
     },
     services: {
@@ -139,8 +139,8 @@ export async function getHomeData(): Promise<HomeData> {
       .map((g) => ({ image: g.image, alt: g.image.alt ?? g.title, w: g.w, h: g.h })),
     km: {
       body: splitParagraphs(home?.kmDescription),
-      image: kmImage ? { image: kmImage, alt: "Kevin Murphy termékek", w: 3, h: 4 } : undefined,
-      image2: kmImage2 ? { image: kmImage2, alt: "Kevin Murphy termékek", w: 1, h: 1 } : undefined,
+      image: kmImage?.asset ? { image: kmImage, alt: "Kevin Murphy termékek", w: 3, h: 4 } : undefined,
+      image2: kmImage2?.asset ? { image: kmImage2, alt: "Kevin Murphy termékek", w: 1, h: 1 } : undefined,
     },
     wedding: {
       title: [wedding?.heroTitleLine1, wedding?.heroTitleLine2].filter(Boolean).join(" ").replace(/\.$/, "") || "Esküvői frizurák",

@@ -19,7 +19,7 @@ export default async function GalleryPage() {
 
   // Pre-compute optimized image URLs server-side so the client doesn't load
   // heavyweight @sanity/image-url logic.
-  const items = images.map((img) => ({
+  const items = images.filter((img) => img.image?.asset).map((img) => ({
     _id: img._id,
     title: img.title,
     category: img.category,

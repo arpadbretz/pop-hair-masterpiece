@@ -23,7 +23,7 @@ export function TeamCard({
     >
       <div className="relative mb-16">
         <div className="w-72 h-72 rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10">
-          {member.image ? (
+          {member.image?.asset ? (
             <Image
               src={urlForImage(member.image).width(600).height(600).fit("crop").url()}
               alt={member.image.alt ?? member.name}

@@ -97,7 +97,7 @@ export default async function AboutPage() {
             </div>
             <div className="relative group">
               <div className="aspect-[3/4] overflow-hidden p-2 border border-luxury-gold/10">
-                {a.philosophyImage ? (
+                {a.philosophyImage?.asset ? (
                   <Image
                     src={urlForImage(a.philosophyImage).width(800).url()}
                     alt="Salon Atmosphere"
@@ -171,7 +171,7 @@ export default async function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-square overflow-hidden border border-luxury-gold/20 p-2">
-                {a.kmFilozofiaImage ? (
+                {a.kmFilozofiaImage?.asset ? (
                   <Image
                     src={urlForImage(a.kmFilozofiaImage).width(1000).url()}
                     alt="Kevin Murphy Products"

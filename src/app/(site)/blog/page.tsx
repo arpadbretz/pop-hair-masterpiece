@@ -47,7 +47,7 @@ export default async function BlogIndexPage() {
                 className="group flex flex-col"
               >
                 <div className="relative aspect-[4/5] overflow-hidden mb-8 bg-off-white">
-                  {post.coverImage ? (
+                  {post.coverImage?.asset ? (
                     <Image
                       src={urlForImage(post.coverImage).width(800).url()}
                       alt={post.coverImage.alt ?? post.title}
