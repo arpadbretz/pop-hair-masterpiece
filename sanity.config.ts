@@ -3,6 +3,7 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
+import { huHULocale } from "@sanity/locale-hu-hu";
 
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schemaTypes, singletonTypes } from "./src/sanity/schemas";
@@ -34,5 +35,9 @@ export default defineConfig({
         : input,
   },
 
-  plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    structureTool({ structure, title: "Tartalom" }),
+    visionTool({ defaultApiVersion: apiVersion }),
+    huHULocale(),
+  ],
 });

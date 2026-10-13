@@ -121,7 +121,7 @@ export default async function HomePage() {
                     {h.kmTitle ?? FALLBACK_HOME.kmTitle}
                   </span>
                 </h2>
-                <div className="space-y-8 text-xl font-light text-gray-600 leading-relaxed max-w-xl">
+                <div className="space-y-8 text-xl font-light text-white/75 leading-relaxed max-w-xl">
                   {splitParagraphs(h.kmDescription).length > 0 ? (
                     splitParagraphs(h.kmDescription).map((p, i) => (
                       <p key={i}>{p}</p>

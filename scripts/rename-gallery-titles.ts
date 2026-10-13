@@ -53,7 +53,7 @@ const NEW_TITLES: Record<string, string> = {
   "gal-hajhosszabbitas-detail": "Hajhosszabbítás",
   "gal-km-details-1": "Kevin Murphy termékek",
   "gal-eskuvo-vibe-2": "Esküvői előkészület",
-  "gal-modern-haj": "Hajszín",
+  "gal-modern-haj": "Fodrász mestervizsga",
   "gal-eskuvo-vibe-3": "Esküvői pillanat",
   "gal-eskuvo-vibe-4": "Esküvői frizura",
   "gal-eskuvo-vibe-14": "Esküvői munka",

@@ -117,7 +117,7 @@ export default async function AboutPage() {
                     <History size={24} className="text-luxury-gold" />
                     <div>
                       <p className="text-2xl font-serif italic">20+ Év</p>
-                      <p className="text-[9px] uppercase tracking-widest text-gray-600">
+                      <p className="text-[9px] uppercase tracking-widest text-white/60">
                         Tapasztalat
                       </p>
                     </div>
@@ -126,7 +126,7 @@ export default async function AboutPage() {
                     <Award size={24} className="text-luxury-gold" />
                     <div>
                       <p className="text-2xl font-serif italic">KM Specialist</p>
-                      <p className="text-[9px] uppercase tracking-widest text-gray-600">
+                      <p className="text-[9px] uppercase tracking-widest text-white/60">
                         Minősítés
                       </p>
                     </div>

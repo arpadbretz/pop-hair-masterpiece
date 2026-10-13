@@ -1,23 +1,21 @@
 import type { StructureResolver } from "sanity/structure";
-import { singletonTypes } from "./schemas";
 
-const SINGLETON_DEFINITIONS: Array<{
-  id: string;
-  type: string;
-  title: string;
-}> = [
-  { id: "siteSettings", type: "siteSettings", title: "Beállítások" },
+// Explicit menu (Ultra Terra standard): page singletons first, then the
+// repeatable lists. Unused types (e.g. weddingProcessStep) stay out of
+// the editor's way.
+const PAGE_SINGLETONS: Array<{ id: string; type: string; title: string }> = [
+  { id: "siteSettings", type: "siteSettings", title: "Alapadatok és elérhetőségek" },
   { id: "homeContent", type: "homeContent", title: "Főoldal" },
-  { id: "aboutContent", type: "aboutContent", title: "Rólunk" },
-  { id: "servicesContent", type: "servicesContent", title: "Szolgáltatások" },
-  { id: "weddingContent", type: "weddingContent", title: "Esküvő" },
+  { id: "aboutContent", type: "aboutContent", title: "Rólunk oldal" },
+  { id: "servicesContent", type: "servicesContent", title: "Szolgáltatások oldal" },
+  { id: "weddingContent", type: "weddingContent", title: "Esküvő oldal" },
 ];
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("Pop Hair Salon")
+    .title("Tartalom")
     .items([
-      ...SINGLETON_DEFINITIONS.map((def) =>
+      ...PAGE_SINGLETONS.map((def) =>
         S.listItem()
           .title(def.title)
           .id(def.id)
@@ -29,7 +27,9 @@ export const structure: StructureResolver = (S) =>
           )
       ),
       S.divider(),
-      ...S.documentTypeListItems().filter(
-        (item) => !singletonTypes.has(item.getId() ?? "")
-      ),
+      S.documentTypeListItem("service").title("Szolgáltatások"),
+      S.documentTypeListItem("teamMember").title("Csapat"),
+      S.documentTypeListItem("galleryImage").title("Galéria"),
+      S.documentTypeListItem("review").title("Vélemények"),
+      S.documentTypeListItem("blogPost").title("Blog"),
     ]);

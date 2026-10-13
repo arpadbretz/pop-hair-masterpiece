@@ -21,7 +21,7 @@ function ReviewCard({ review }: { review: Review }) {
               <Star
                 key={i}
                 size={14}
-                fill="#D4AF37"
+                fill="currentColor"
                 className="text-luxury-gold"
               />
             ))}
@@ -46,7 +46,7 @@ function ReviewCard({ review }: { review: Review }) {
             {review.name}
           </span>
           <span className="text-[8px] uppercase tracking-widest text-gray-600">
-            Ellenőrzött Vendég
+            {review.platform}-értékelés
           </span>
         </div>
       </div>
@@ -84,7 +84,7 @@ export function ReviewSlider({
                   <Star
                     key={i}
                     size={16}
-                    fill="#D4AF37"
+                    fill="currentColor"
                     className="text-luxury-gold"
                   />
                 ))}

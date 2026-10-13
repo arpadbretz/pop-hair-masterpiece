@@ -7,14 +7,14 @@ export const servicesContent = defineType({
   fields: [
     defineField({
       name: "repairImage",
-      title: "Hajjavítás szekció kép",
-      description: "A 'Mesteri Hajjavítás' szakasz bal oldali képe.",
+      title: "Hajhosszabbítás szekció képe",
+      description: "A „Hajhosszabbítás és hajkereskedelem” szakasz képe.",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
       name: "actionImage",
-      title: "Akció banner kép",
+      title: "Alsó banner képe",
       description: "Az oldal alján található sötét banner háttér képe.",
       type: "image",
       options: { hotspot: true },

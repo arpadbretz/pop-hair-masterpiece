@@ -26,7 +26,7 @@ export function HeroSection({
   posterUrl,
 }: HeroSectionProps) {
   return (
-    <section className="relative h-screen md:h-[110vh] w-full flex items-center justify-center bg-black overflow-hidden">
+    <section className="relative min-h-screen pt-36 pb-28 md:min-h-0 md:h-[110vh] md:py-0 w-full flex items-center justify-center bg-black overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
           autoPlay

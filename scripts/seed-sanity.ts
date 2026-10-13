@@ -84,18 +84,20 @@ async function seedSiteSettings() {
     tagline: "Budai Mesterszalon",
     phone: "+36 30 5901766",
     email: "hello@pophair.hu",
-    address: "Budapest, Alkotás u. 39 c, 1023",
+    address: "Budapest, Alkotás u. 39 c, 1123",
     bookingUrl: "https://b998424.alteg.io/company/624179/personal/menu?o=",
     googleMapsEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.53177614!2d19.0229986!3d47.4912222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741de7ba1a0c4f7%3A0x7d8383e3e0689b9e!2zQnVkYXBlc3QsIEFsa290w6FzIHUuIDM5LCAxMTIz!5e0!3m2!1sen!2shu!4v1700000000000!5m2!1sen!2shu",
     openingHours: [
-      { _key: "h1", label: "Hétfő - Péntek", hours: "08:00 - 20:00" },
-      { _key: "h2", label: "Szombat", hours: "09:00 - 15:00" },
+      { _key: "h1", label: "Hétfő", hours: "09:00 – 21:00" },
+      { _key: "h2", label: "Kedd – Péntek", hours: "09:00 – 22:00" },
+      { _key: "h3", label: "Szombat", hours: "09:00 – 17:00" },
+      { _key: "h4", label: "Vasárnap", hours: "Zárva" },
     ],
     instagramUrl: "https://www.instagram.com/pophair_szalon/",
     facebookUrl: "https://www.facebook.com/pophairszalon",
     googleRating: 4.9,
-    reviewCount: 500,
+    reviewCount: 244,
   });
 }
 
@@ -333,13 +335,21 @@ async function seedServices() {
 
 async function seedReviews() {
   console.log("→ Reviews");
+  // Real Google reviews (copied verbatim from the salon's Google Maps
+  // listing, 4.9★ / 244 reviews as of 2026-10). Wipe first so re-runs
+  // never resurrect the old placeholder testimonials.
+  const existingIds = await client.fetch<string[]>('*[_type == "review"]._id');
+  if (existingIds.length > 0) {
+    const tx = client.transaction();
+    existingIds.forEach((id) => tx.delete(id));
+    await tx.commit();
+  }
   const list = [
-    { _id: "rv1", name: "Kovács Adél", platform: "Google", text: "A POP Hair az a hely, ahol végre azt kaptam, amit megálmodtam: természetes eleganciát és professzionális gondoskodást.", rating: 5, order: 1 },
-    { _id: "rv2", name: "Szalai Márk", platform: "Facebook", text: "A Kevin Murphy rituálék minősége egyszerűen más dimenzió. Nem találtam hasonlót egész Európában.", rating: 5, order: 2 },
-    { _id: "rv3", name: "Nagy Júlia", platform: "Google", text: "Budapest legprofibb szalonja. Szilvi kezei között minden látogatás egy rituálé, amiből feltöltődve távozom.", rating: 5, order: 3 },
-    { _id: "rv4", name: "Tóth Petra", platform: "Google", text: "Zseniális balayage technika, végre valaki érti, mit jelent a természetes szőke. Csak ajánlani tudom!", rating: 5, order: 4 },
-    { _id: "rv5", name: "Kiss Bence", platform: "Facebook", text: "Profi hozzáállás, elit környezet. A stílustanácsadás különösen tetszett, bátran ajánlom mindenkinek.", rating: 5, order: 5 },
-    { _id: "rv6", name: "Molnár Anna", platform: "Google", text: "Húsz év szakértelem látszik minden mozdulaton. Az elrontott hajamat mentették meg, örökké hálás leszek.", rating: 5, order: 6 },
+    { _id: "rv-g1", name: "Csenge Majnár", platform: "Google", text: "Színkorrekcióra érkeztem, és egy rendkívül kedves, hihetetlen szakértelemmel rendelkező fodrász fogadott.\nOlyan gyönyörűen helyrehozta a hajamat, hogy még az elképzeléseimet is felülmúlta. Emellett részletes és hasznos tanácsokat kaptam a hajam további ápolásához is.\nCsak ajánlani tudom!", rating: 5, order: 1 },
+    { _id: "rv-g2", name: "Eva Moravcsik", platform: "Google", text: "Szilvi profizmusa mindent felülmúl. Csodálatos hajszíneket kreál, kifinomult, mesteri minden amit csinál. Mellé pedig kedves, személyes a hangulat egy hihetetlenül izgalmas enteriőrben. Élmény minden perc a szalonban.", rating: 5, order: 2 },
+    { _id: "rv-g3", name: "Virág ML", platform: "Google", text: "A legjobb szalon, a legkiválóbb termékekkel  Szilvi a ritka hullós hajamat élesztette újjá az elmúlt évek alatt most pedig egy csodálatos új színt is kaptam, soha más kezébe nem adnám a hajam!\nNagyon hálás vagyok❣️\nKöszönöm", rating: 5, order: 3 },
+    { _id: "rv-g4", name: "Nóra Győrbíró", platform: "Google", text: "Már sok éve járok Szilvihez és minden alkalommal maximálisan elégedett vagyok a munkájával. A szalon nagyon rendezett és Szilvi rendkívül kedvesen bánik minden vendéggel! Csak ajánlani tudom!", rating: 5, order: 4 },
+    { _id: "rv-g5", name: "Lívia Bognar", platform: "Google", text: "Szilvi nagyon kedves és profi fodrász, hajvágáson voltam nála, pont azt kaptam amit szerettem volna. Csak ajánlani tudom, ha tényleg jó fodrászt keresel, jó hangulatban, szép környezetben.", rating: 5, order: 5 },
   ];
   for (const r of list) {
     await client.createOrReplace({ _type: "review", ...r });
@@ -422,7 +432,7 @@ async function seedGallery() {
     { id: "hajhosszabbitas-detail", file: "hajhosszabbitas-detail.jpg", title: "Hajhosszabbítás", category: "work" },
     { id: "km-details-1", file: "kevin-murphy-details-1.jpg", title: "Kevin Murphy termékek", category: "salon" },
     { id: "eskuvo-vibe-2", file: "eskuvo-vibe-2.jpg", title: "Esküvői előkészület", category: "wedding" },
-    { id: "modern-haj", file: "modern-haj-1.jpg", title: "Hajszín", category: "work" },
+    { id: "modern-haj", file: "modern-haj-1.jpg", title: "Fodrász mestervizsga", category: "work" },
     { id: "eskuvo-vibe-3", file: "eskuvo-vibe-3.jpg", title: "Esküvői pillanat", category: "wedding" },
     { id: "eskuvo-vibe-4", file: "eskuvo-vibe-4.jpg", title: "Esküvői frizura", category: "wedding" },
     { id: "eskuvo-vibe-14", file: "eskuvo-vibe-14.jpg", title: "Esküvői munka", category: "wedding" },

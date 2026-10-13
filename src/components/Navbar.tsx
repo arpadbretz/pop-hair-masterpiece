@@ -42,7 +42,10 @@ export function Navbar({
     });
   }, [scrollY]);
 
-  const isDarkHeroPage = pathname === "/" || pathname === "/eskuvo";
+  const isDarkHeroPage =
+    pathname === "/" ||
+    pathname === "/eskuvo" ||
+    pathname.startsWith("/variaciok/");
   const navTextColor =
     isScrolled || !isDarkHeroPage ? "text-black" : "text-white";
 
