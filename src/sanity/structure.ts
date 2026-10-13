@@ -1,4 +1,4 @@
-import type { StructureResolver } from "sanity/structure";
+import type { StructureBuilder, StructureResolver } from "sanity/structure";
 
 // Explicit menu (Ultra Terra standard): page singletons first, then the
 // repeatable lists. Unused types (e.g. weddingProcessStep) stay out of
@@ -27,9 +27,26 @@ export const structure: StructureResolver = (S) =>
           )
       ),
       S.divider(),
-      S.documentTypeListItem("service").title("Szolgáltatások"),
-      S.documentTypeListItem("teamMember").title("Csapat"),
-      S.documentTypeListItem("galleryImage").title("Galéria"),
-      S.documentTypeListItem("review").title("Vélemények"),
-      S.documentTypeListItem("blogPost").title("Blog"),
+      orderedList(S, "service", "Szolgáltatások"),
+      orderedList(S, "teamMember", "Csapat"),
+      orderedList(S, "galleryImage", "Galéria"),
+      orderedList(S, "review", "Vélemények"),
+      S.documentTypeListItem("blogPost")
+        .title("Blog")
+        .child(
+          S.documentTypeList("blogPost")
+            .title("Blog")
+            .defaultOrdering([{ field: "publishedAt", direction: "desc" }])
+        ),
     ]);
+
+// Lists show items in the same order as the website ("Sorrend" field).
+function orderedList(S: StructureBuilder, type: string, title: string) {
+  return S.documentTypeListItem(type)
+    .title(title)
+    .child(
+      S.documentTypeList(type)
+        .title(title)
+        .defaultOrdering([{ field: "order", direction: "asc" }])
+    );
+}

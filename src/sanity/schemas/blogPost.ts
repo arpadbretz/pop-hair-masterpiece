@@ -113,6 +113,7 @@ export const blogPost = defineType({
         },
         {
           type: "image",
+          title: "Kép",
           options: { hotspot: true },
           fields: [
             defineField({

@@ -51,3 +51,6 @@ schema.json
 
 # legacy reference (keep in repo? remove later)
 # _legacy_src/  # currently kept for reference during migration
+
+# generated guide PDF (source: docs/sanity-utmutato, build.sh)
+/docs/*.pdf

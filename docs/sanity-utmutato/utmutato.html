@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<title>Pop Hair Salon – Tartalomkezelési útmutató</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+@page {
+  size: A4;
+  margin: 15mm 15mm 17mm 15mm;
+  @bottom-left { content: "Pop Hair Salon weboldal — Tartalomkezelési útmutató · Prometheus Digital Kft."; font-family: "Inter"; font-size: 6.8pt; color: #9b9188; }
+  @bottom-right { content: counter(page) " / " counter(pages); font-family: "Inter"; font-size: 6.8pt; color: #9b9188; }
+}
+:root {
+  --ink: #1a1a1a; --text: #2c2723; --muted: #756b62; --gold: #c8a876; --gold-dark: #9a7537;
+  --champagne: #e5d3b3; --line: #e9e1d5; --sand: #f7f1e7; --warn-bg: #fbf0ea; --warn: #c27155;
+}
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: "Inter", sans-serif; font-size: 9.4pt; line-height: 1.55; color: var(--text); }
+p { margin: 0 0 2.6mm; }
+b, strong { color: var(--ink); font-weight: 600; }
+ul { margin: 0 0 3mm; padding-left: 5mm; }
+ul li { margin-bottom: 1.2mm; }
+ul li::marker { color: var(--gold); }
+
+.pb { break-before: page; }
+.kicker { display: block; font-size: 7pt; font-weight: 700; letter-spacing: 1.8pt; text-transform: uppercase; color: var(--gold-dark); }
+h2 { font-family: "Cormorant", serif; font-weight: 600; font-size: 25pt; line-height: 1.02; color: var(--ink); margin: 1mm 0 0; letter-spacing: -0.2pt; break-after: avoid; }
+.ch { margin-bottom: 4.5mm; break-after: avoid; }
+.ch::after { content: ""; display: block; width: 14mm; height: 0.9pt; background: var(--gold); margin-top: 3mm; }
+h3 { font-family: "Cormorant", serif; font-weight: 600; font-size: 15pt; line-height: 1.1; color: var(--ink); margin: 5mm 0 2mm; break-after: avoid; }
+.lead { font-size: 10pt; color: #4a423b; }
+
+.ui { font-size: 8.3pt; font-weight: 600; color: var(--ink); background: #f4eee5; border: 0.6pt solid #e0d4c1; border-radius: 3pt; padding: 0.1mm 1.5mm; white-space: nowrap; }
+.url { font-weight: 600; color: var(--ink); white-space: nowrap; }
+
+ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0 0 3.5mm; }
+ol.steps > li { counter-increment: s; position: relative; padding-left: 8.6mm; margin: 0 0 2.4mm; }
+ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: 0.1mm; width: 5.4mm; height: 5.4mm; border-radius: 50%; background: var(--ink); color: var(--champagne); font-size: 7.8pt; font-weight: 700; line-height: 5.4mm; text-align: center; }
+
+ol.legend { list-style: none; padding: 0; margin: 0 0 3.5mm; }
+ol.legend > li { position: relative; padding-left: 8mm; margin: 0 0 2mm; }
+.b { display: inline-block; width: 4.1mm; height: 4.1mm; border-radius: 50%; background: var(--gold-dark); color: #fff; font-size: 6.5pt; font-weight: 700; line-height: 4.1mm; text-align: center; vertical-align: 0.15mm; font-style: normal; }
+ol.legend .n { position: absolute; left: 0; top: 0.1mm; width: 5.2mm; height: 5.2mm; border-radius: 50%; background: var(--gold-dark); color: #fff; font-size: 7.6pt; font-weight: 700; line-height: 5.2mm; text-align: center; }
+
+figure { margin: 2mm 0 5mm; break-inside: avoid; }
+figure img { display: block; width: 100%; border: 0.6pt solid #ddd2c2; border-radius: 4pt; }
+figcaption { font-size: 7.7pt; color: var(--muted); margin-top: 1.6mm; line-height: 1.45; }
+figcaption b { color: var(--ink); }
+figure.center img { margin: 0 auto; }
+figure.center figcaption { text-align: center; }
+
+.split { display: grid; grid-template-columns: 1fr var(--w, 68mm); column-gap: 7mm; align-items: start; }
+.split > figure { margin-top: 0; }
+.split.left { grid-template-columns: var(--w, 68mm) 1fr; }
+.pair { display: flex; gap: 12mm; align-items: flex-end; margin-bottom: 1mm; }
+.pair figure { width: 66mm; margin-bottom: 3mm; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; align-items: start; }
+.duo figure { margin-top: 0; }
+
+.note { border-radius: 4pt; padding: 3mm 4mm 3mm 4.2mm; margin: 2mm 0 4mm; break-inside: avoid; font-size: 8.9pt; }
+.note .label { display: block; font-size: 6.9pt; font-weight: 700; letter-spacing: 1.4pt; text-transform: uppercase; margin-bottom: 1mm; }
+.note p:last-child, .note ul:last-child { margin-bottom: 0; }
+.note.tip { background: var(--sand); border-left: 2.4pt solid var(--gold); }
+.note.tip .label { color: var(--gold-dark); }
+.note.warn { background: var(--warn-bg); border-left: 2.4pt solid var(--warn); }
+.note.warn .label { color: #a9513a; }
+
+table.info { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 1mm 0 4mm; break-inside: avoid; }
+table.info th { text-align: left; font-size: 6.8pt; font-weight: 700; letter-spacing: 1.3pt; text-transform: uppercase; color: var(--gold-dark); border-bottom: 1pt solid var(--gold); padding: 1.4mm 2mm 1.6mm; }
+table.info td { border-bottom: 0.5pt solid var(--line); padding: 1.7mm 2mm; vertical-align: top; line-height: 1.45; }
+table.info td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
+
+/* Cover */
+.cover { position: relative; background-color: #141312; background-image: radial-gradient(110% 85% at 100% 0%, rgba(200,168,118,.30), rgba(200,168,118,0) 55%), radial-gradient(80% 70% at 0% 100%, rgba(200,168,118,.12), rgba(200,168,118,0) 60%); color: #fff; border-radius: 6pt; padding: 10mm 11mm 8mm; margin-bottom: 5mm; }
+.cover .logo { width: 30mm; filter: brightness(0) invert(1); opacity: .96; display: block; }
+.cover .kicker { color: var(--gold); margin-top: 8mm; }
+.cover h1 { font-family: "Cormorant", serif; font-style: italic; font-weight: 500; font-size: 40pt; line-height: .95; margin: 2.5mm 0 4.5mm; letter-spacing: -0.4pt; color: #dcc497; }
+.cover .sub { font-size: 10.4pt; line-height: 1.55; color: rgba(255,255,255,.80); max-width: 125mm; margin: 0 0 7mm; }
+.cover .meta { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 6mm; border-top: 0.6pt solid rgba(200,168,118,.38); padding-top: 4mm; }
+.cover .meta span { display: block; font-size: 6.6pt; font-weight: 700; letter-spacing: 1.6pt; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8mm; }
+.cover .meta div { font-size: 8.6pt; color: #fff; line-height: 1.4; }
+.cover .meta small { display: block; font-size: 7.4pt; color: rgba(255,255,255,.62); }
+
+.key { border: 0.8pt solid #e4d6bd; background: #fbf8f2; border-radius: 5pt; padding: 4mm 6mm 1.5mm; margin-bottom: 5mm; break-inside: avoid; }
+.key h3 { margin-top: 0; }
+.key ol { margin: 0 0 2mm; padding-left: 5mm; }
+.key ol li { margin-bottom: 1.6mm; }
+.key ol li::marker { color: var(--gold-dark); font-weight: 700; }
+
+.toc-title { font-family: "Cormorant", serif; font-weight: 600; font-size: 15pt; color: var(--ink); margin: 0 0 2mm; }
+ol.toc { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 10mm; }
+ol.toc li { display: flex; gap: 3mm; border-bottom: 0.5pt solid var(--line); padding: 1.5mm 0; break-inside: avoid; font-size: 9pt; }
+ol.toc .no { font-family: "Cormorant", serif; font-weight: 600; font-size: 11pt; line-height: 1.2; color: var(--gold-dark); width: 5mm; }
+
+.contact { background: #141312; background-image: radial-gradient(90% 120% at 100% 0%, rgba(200,168,118,.25), rgba(200,168,118,0) 60%); color: #fff; border-radius: 5pt; padding: 6mm 7mm; margin-top: 6mm; break-inside: avoid; }
+.contact h3 { color: var(--champagne); margin: 0 0 2mm; font-style: italic; font-weight: 500; font-size: 17pt; }
+.contact p { color: rgba(255,255,255,.80); }
+.contact .who { font-size: 10pt; color: #fff; margin-bottom: 1.5mm; }
+.contact .who b { color: #fff; }
+.contact .lines { display: flex; gap: 9mm; font-size: 10pt; color: var(--champagne); font-weight: 600; margin-bottom: 3mm; }
+.contact .small { font-size: 8.2pt; color: rgba(255,255,255,.62); margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ============ BORÍTÓ ============ -->
+<section class="cover">
+  <img class="logo" src="img/logo.png" alt="Pop Hair Salon">
+  <span class="kicker">Pop Hair Salon · Weboldal</span>
+  <h1>Tartalomkezelő<br>útmutató</h1>
+  <p class="sub">Így frissítheted saját magad a weboldal szövegeit, fotóit, a csapatot, a galériát, a véleményeket és a blogot — fejlesztői segítség nélkül, számítógépről és telefonról egyaránt.</p>
+  <div class="meta">
+    <div><span>Szerkesztő címe</span>pop-hair-pied.vercel.app/studio<small>a domain átállítása után: pophairsalon.hu/studio</small></div>
+    <div><span>Verzió</span>1.0 — 2026. október</div>
+    <div><span>Készítette</span>Prometheus Digital Kft.</div>
+  </div>
+</section>
+
+<div class="key">
+  <h3>Röviden — az öt legfontosabb tudnivaló</h3>
+  <ol>
+    <li>A szerkesztőt a böngészőben éred el, a <b>Google</b> gombbal lépsz be (1. fejezet).</li>
+    <li>Mentés gomb nincs: amit beírsz, azt a rendszer <b>automatikusan menti</b> piszkozatként.</li>
+    <li>A weboldalon csak a <span class="ui">Közzététel</span> gomb megnyomása után jelenik meg a változás — általában pár másodpercen belül.</li>
+    <li>Fotó feltöltésekor mindig töltsd ki az <b>Alt szöveg</b> mezőt: pár szóban írd le, mi látható a képen.</li>
+    <li>Nem tudod véglegesen elrontani az oldalt: a módosítások visszavonhatók (4. fejezet). Ha bizonytalan vagy, írj nekünk.</li>
+  </ol>
+</div>
+
+<div class="toc-title">Tartalom</div>
+<ol class="toc">
+  <li><span class="no">1</span>Belépés a szerkesztőbe</li>
+  <li><span class="no">2</span>A felület felépítése</li>
+  <li><span class="no">3</span>Szöveg módosítása</li>
+  <li><span class="no">4</span>Közzététel és visszavonás</li>
+  <li><span class="no">5</span>Fotó feltöltése és cseréje</li>
+  <li><span class="no">6</span>Csapat</li>
+  <li><span class="no">7</span>Galéria</li>
+  <li><span class="no">8</span>Vélemények</li>
+  <li><span class="no">9</span>Blog</li>
+  <li><span class="no">10</span>Alapadatok és elérhetőségek</li>
+  <li><span class="no">11</span>Az oldalak szövegei</li>
+  <li><span class="no">12</span>Fontos tudnivalók és segítség</li>
+</ol>
+
+<!-- ============ 1. BELÉPÉS ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">1. fejezet</span><h2>Belépés a szerkesztőbe</h2></header>
+  <p class="lead">A weboldal tartalmát a <b>Sanity</b> nevű tartalomkezelő rendszerben, egy böngészőben futó szerkesztőfelületen módosíthatod. Semmit nem kell telepítened.</p>
+
+  <div class="split" style="--w: 64mm">
+    <div>
+      <ol class="steps">
+        <li><b>Meghívó elfogadása (csak az első alkalommal).</b> A Sanitytől kapsz egy angol nyelvű meghívó e-mailt. Kattints benne az <span class="ui">Accept invitation</span> gombra, és lépj be azzal a Google-fiókkal, amelyre a meghívót kaptad.</li>
+        <li>Nyisd meg a böngészőben a <span class="url">pop-hair-pied.vercel.app/studio</span> címet. A domain átállítása után ugyanez a <span class="url">pophairsalon.hu/studio</span> címen lesz elérhető. Érdemes könyvjelzőbe tenni.</li>
+        <li>A <span class="ui">Choose login provider</span> ablakban kattints a <span class="ui">Google</span> gombra (1. ábra), és válaszd ki a fiókodat.</li>
+        <li>Belépés után azonnal a szerkesztőfelület nyílik meg. A böngésző megjegyzi a belépést, így legközelebb általában nem kell újra bejelentkezned.</li>
+      </ol>
+    </div>
+    <figure>
+      <img src="img/01-login.png" alt="A belépési ablak">
+      <figcaption><b>1. ábra</b> — A belépési ablak. Mindig a <b>Google</b> gombbal lépj be.</figcaption>
+    </figure>
+  </div>
+
+  <div class="note warn"><span class="label">Figyelem</span>
+    <p>A belépési ablak angol nyelvű, mert ez a Sanity saját oldala. Mindig ugyanazt a belépési módot használd: ha a meghívót Google-lel fogadtad el, később is a <span class="ui">Google</span> gombot válaszd. Más belépési móddal a rendszer új felhasználónak tekintene, és nem látnád a tartalmat.</p>
+  </div>
+
+  <div class="split left" style="--w: 44mm">
+    <figure>
+      <img src="img/14-mobile.png" alt="A szerkesztő telefonon">
+      <figcaption><b>2. ábra</b> — A szerkesztő telefonon.</figcaption>
+    </figure>
+    <div class="note tip" style="margin-top:0"><span class="label">Telefonon is működik</span>
+      <p>Ugyanez a cím telefonon is megnyílik (2. ábra). Gyors javításhoz — például a nyitvatartás módosításához vagy egy új galériakép feltöltéséhez — kényelmes. Hosszabb szövegek és blogposztok írásához a számítógép a kényelmesebb.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. FELÜLET ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">2. fejezet</span><h2>A felület felépítése</h2></header>
+  <p class="lead">Belépés után bal oldalt a <b>Tartalom</b> menü látható. Minden, amit a weboldalon módosítani tudsz, innen érhető el.</p>
+
+  <div class="split" style="--w: 82mm">
+    <div>
+      <ol class="legend">
+        <li><span class="n">1</span><b>Oldalak.</b> Az egyes oldalak állandó szövegei és képei, valamint az alapadatok (telefonszám, cím, nyitvatartás). Ezekből mindig pontosan egy van.</li>
+        <li><span class="n">2</span><b>Listák.</b> Szolgáltatások, csapattagok, galériaképek, vélemények és blogposztok. Ezekhez új elemet is felvehetsz.</li>
+        <li><span class="n">3</span><b>Új elem létrehozása</b> bármelyik listába. Kényelmesebb azonban a listák tetején lévő <span class="ui">+</span> gombot használni.</li>
+        <li><span class="n">4</span><b>Keresés</b> a teljes tartalomban.</li>
+      </ol>
+    </div>
+    <figure>
+      <img src="img/02-overview.png" alt="A Tartalom menü">
+      <figcaption><b>3. ábra</b> — A Tartalom menü.</figcaption>
+    </figure>
+  </div>
+
+  <table class="info">
+    <tr><th>Menüpont</th><th>Mit szerkeszthetsz itt?</th><th>Hol látszik?</th></tr>
+    <tr><td>Alapadatok és elérhetőségek</td><td>Telefonszám, e-mail, cím, online időpontfoglalás linkje, nyitvatartás, közösségi oldalak, Google-értékelés</td><td>Az oldal több pontján: lábléc, Kapcsolat oldal, minden „Időpontfoglalás” gomb</td></tr>
+    <tr><td>Főoldal</td><td>A nyitókép főcíme és szövege, a Kevin Murphy szekció, a statisztikák</td><td>Főoldal</td></tr>
+    <tr><td>Rólunk oldal</td><td>Bemutatkozás, idézetek, „Miért válassz minket?” pontok, képek</td><td>Rólunk</td></tr>
+    <tr><td>Szolgáltatások oldal</td><td>Bevezető és záró szöveg, hajhosszabbítás szekció, alsó sáv</td><td>Szolgáltatások</td></tr>
+    <tr><td>Esküvő oldal</td><td>Nyitókép, szakértelem szövege és képei, lookbook képek</td><td>Esküvő</td></tr>
+    <tr><td>Szolgáltatások</td><td>A szolgáltatások listája: név, ár, leírás</td><td>Szolgáltatások</td></tr>
+    <tr><td>Csapat</td><td>Csapattagok névvel, pozícióval, bemutatkozással, fotóval</td><td>Rólunk — Csapatunk</td></tr>
+    <tr><td>Galéria</td><td>A galéria fotói kategóriákba sorolva</td><td>Galéria</td></tr>
+    <tr><td>Vélemények</td><td>Vendégvélemények</td><td>Főoldal</td></tr>
+    <tr><td>Blog</td><td>Blogposztok</td><td>Blog</td></tr>
+  </table>
+
+  <div class="note tip"><span class="label">Jó tudni</span>
+    <p>A felület magyar nyelvű, de néhány apró felirat angolul maradt — ilyen a <span class="ui">Select</span> (kép kiválasztása a korábban feltöltöttek közül), a <span class="ui">Field actions</span> és a <span class="ui">Comments</span>. Az utóbbi kettőre nincs szükséged. A jobb felső sarokban lévő <span class="ui">Piszkozatok</span> gombot hagyd így: ez a szerkesztési nézet.</p>
+  </div>
+</section>
+
+<!-- ============ 3. SZÖVEG MÓDOSÍTÁSA ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">3. fejezet</span><h2>Szöveg módosítása</h2></header>
+  <p class="lead">A módosítás menete minden tartalomnál ugyanaz. Példaként nézzük meg, hogyan írhatod át egy szolgáltatás adatait.</p>
+
+  <figure style="width: 168mm">
+    <img src="img/03-edit.png" alt="Egy szolgáltatás szerkesztése">
+    <figcaption><b>4. ábra</b> — Balra a menü, középen a lista, jobbra a kiválasztott elem szerkesztője.</figcaption>
+  </figure>
+
+  <ol class="legend">
+    <li><span class="n">1</span>Kattints a bal oldali menüben a <b>Szolgáltatások</b> pontra.</li>
+    <li><span class="n">2</span>Középen megjelenik a lista: kattints arra az elemre, amelyet módosítanál.</li>
+    <li><span class="n">3</span>Jobb oldalt megnyílik a szerkesztő. Kattints a mezőbe, és írd át a szöveget. Külön mentés nincs, a rendszer automatikusan menti a piszkozatot.</li>
+    <li><span class="n">4</span>Ha végeztél, kattints jobb alul a <span class="ui">Közzététel</span> gombra — a változás ekkor kerül ki a weboldalra (4. fejezet).</li>
+  </ol>
+
+  <h3>A szolgáltatások mezői</h3>
+  <ul>
+    <li><b>Név</b> — így jelenik meg a szolgáltatás a Szolgáltatások oldalon.</li>
+    <li><b>Ár (opcionális)</b> — például „28.000 HUF-tól” vagy „Egyéni kalkuláció”. Ha üresen hagyod, nem jelenik meg ár.</li>
+    <li><b>Leírás (opcionális)</b> — egy-két mondatos ismertető.</li>
+    <li><b>Ikon</b> — a szolgáltatás mellett megjelenő kis jel (olló, csillag, szív stb.).</li>
+    <li><b>Kiemelt szolgáltatás</b> — bekapcsolva sötét háttérrel, hangsúlyosan jelenik meg.</li>
+    <li><b>Sorrend</b> — a kisebb szám kerül előrébb. Ugyanez a szabály érvényes a csapatra, a galériára és a véleményekre is.</li>
+  </ul>
+
+  <div class="note tip"><span class="label">Bekezdések</span>
+    <p>A hosszabb szövegmezőknél (például a Rólunk oldalon) több bekezdést is írhatsz: a bekezdéseket egy üres sorral válaszd el — vagyis nyomj kétszer Entert.</p>
+  </div>
+</section>
+
+<!-- ============ 4. KÖZZÉTÉTEL ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">4. fejezet</span><h2>Közzététel és visszavonás</h2></header>
+  <p class="lead">A legfontosabb szabály: <b>a weboldalon csak az jelenik meg, amit közzétettél.</b> Amíg nem kattintasz a Közzététel gombra, a módosítás biztonságban, piszkozatként vár, a látogatók pedig a korábbi változatot látják.</p>
+
+  <div class="pair">
+    <figure>
+      <img src="img/05-chips.png" alt="Közzétéve és Vázlat jelzés">
+      <figcaption><b>5. ábra</b> — Az állapotjelzők a szerkesztő bal felső sarkában.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/05-publish-btn.png" alt="Közzététel gomb">
+      <figcaption><b>6. ábra</b> — A Közzététel gomb a szerkesztő jobb alsó sarkában.</figcaption>
+    </figure>
+  </div>
+
+  <ol class="legend">
+    <li><span class="n">1</span><b>Közzétéve</b> — a weboldalon jelenleg látható változat.</li>
+    <li><span class="n">2</span><b>Vázlat</b> — a szerkesztés alatt álló változat (piszkozat). Itt dolgozol.</li>
+    <li><span class="n">3</span><span class="ui">Közzététel</span> — amíg nincs módosítás, halvány és nem kattintható. Amint változtatsz valamit, aktív lesz: kattints rá, és a változás kikerül a weboldalra.</li>
+  </ol>
+  <p>A weboldal a közzététel után általában <b>pár másodpercen belül</b> frissül. Ha mégsem látod a változást, töltsd újra az oldalt a böngészőben (Mac: <span class="ui">Cmd + Shift + R</span>, Windows: <span class="ui">Ctrl + F5</span>).</p>
+
+  <h3>Ha valamit visszavonnál</h3>
+  <div class="split" style="--w: 56mm">
+    <div>
+      <p><b>Még nem tetted közzé?</b> Kattints a <span class="ui">Közzététel</span> melletti <span class="ui">…</span> gombra, és válaszd a <span class="ui">Változtatások elvetése</span> pontot. A piszkozat törlődik, a weboldalon minden marad a régiben.</p>
+      <p><b>Már közzétetted?</b> A szerkesztő jobb felső sarkában kattints a <span class="ui">…</span> gombra <span class="b">1</span>, majd a <span class="ui">Változások áttekintése</span> pontra <span class="b">2</span>. Az <b>Előzmények</b> fülön kattints a korábbi változatra, majd a <span class="ui">Visszaállítás</span> gombra, végül a <span class="ui">Közzététel</span> gombra.</p>
+      <div class="note warn"><span class="label">Törlés</span>
+        <p>A <span class="ui">Közzététel</span> melletti <span class="ui">…</span> menü <span class="ui">Törlés</span> pontja az elemet azonnal leveszi a weboldalról. Ha valamit csak ideiglenesen vennél le, vagy bizonytalan vagy, inkább írj nekünk.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="img/05b-history-menu.png" alt="A dokumentum menüje">
+      <figcaption><b>7. ábra</b> — A szerkesztő jobb felső <b>…</b> menüje.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 5. FOTÓK ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">5. fejezet</span><h2>Fotó feltöltése és cseréje</h2></header>
+  <p class="lead">Minden képmező ugyanúgy működik — a csapattagok portréjánál, a galériában, a blogban és az oldalak képeinél is.</p>
+
+  <h3>Új fotó feltöltése</h3>
+  <figure style="width: 118mm">
+    <img src="img/04a-image-empty.png" alt="Üres képmező">
+    <figcaption><b>8. ábra</b> — Üres képmező (itt: egy csapattag portréja).</figcaption>
+  </figure>
+  <ol class="legend">
+    <li><span class="n">1</span>Húzd rá a fotót a számítógépről erre a sávra — vagy másold ki, és illeszd be ide.</li>
+    <li><span class="n">2</span><span class="ui">Feltöltés</span> — fotó kiválasztása a számítógépről vagy a telefonról.</li>
+    <li><span class="n">3</span><span class="ui">Select</span> — választás a korábban már feltöltött képek közül.</li>
+  </ol>
+  <p>Feltöltés után töltsd ki az <b>Alt szöveg</b> mezőt: pár szóban írd le, mi látható a képen, például „szőke balayage hosszú hajon”. Ezt a Google és a képernyőolvasó programok használják.</p>
+
+  <h3>Fotó cseréje vagy vágása</h3>
+  <div class="duo">
+    <div>
+      <figure>
+        <img src="img/04b-image-tools.png" alt="Kitöltött képmező">
+        <figcaption><b>9. ábra</b> — Ha az egeret a képre viszed, két gomb jelenik meg.</figcaption>
+      </figure>
+      <ol class="legend">
+        <li><span class="n">1</span><b>Kép vágása</b> — kijelölheted a kép legfontosabb részét; a weboldal a kép kivágásakor erre figyel.</li>
+        <li><span class="n">2</span><b>…</b> gomb — megnyitja a 10. ábrán látható menüt.</li>
+      </ol>
+    </div>
+    <div>
+      <figure>
+        <img src="img/04c-image-menu.png" alt="A kép menüje" style="width: 42mm">
+        <figcaption><b>10. ábra</b> — A <b>…</b> gomb menüje.</figcaption>
+      </figure>
+      <ol class="legend">
+        <li><span class="n">1</span><span class="ui">Feltöltés</span> — új fotó a régi helyére.</li>
+        <li><span class="n">2</span><span class="ui">Select</span> — csere egy korábban feltöltött képre.</li>
+        <li><span class="n">3</span><span class="ui">Mező törlése</span> — a kép eltávolítása.</li>
+        <li style="padding-left:0">A cserét is a <span class="ui">Közzététel</span> gombbal véglegesítsd.</li>
+      </ol>
+      <div class="note tip"><span class="label">Milyen fotó jó?</span>
+        <p>Telefonos fotó is tökéletes, átméretezni sem kell. Lehetőleg éles, világos képet válassz.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ 6. CSAPAT ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">6. fejezet</span><h2>Csapat</h2></header>
+  <p class="lead">A <b>Csapat</b> menüpontban a Rólunk oldal „Csapatunk” részét szerkesztheted: itt adhatsz hozzá új csapattagot, és itt írhatod át a meglévők adatait.</p>
+
+  <figure>
+    <img src="img/06-new-team.png" alt="A Csapat lista" style="width: 118mm">
+    <figcaption><b>11. ábra</b> — A lista tetején lévő <b>+</b> gombbal <span class="b">1</span> veszel fel új csapattagot.</figcaption>
+  </figure>
+
+  <div class="split" style="--w: 72mm">
+    <div>
+      <h3 style="margin-top:0">Új csapattag felvétele</h3>
+      <ol class="steps">
+        <li>Kattints a <b>Csapat</b> menüpontra, majd a lista tetején a <span class="ui">+</span> gombra (11. ábra).</li>
+        <li>Töltsd ki az adatlapot (12. ábra):
+          <ol class="legend" style="margin-top:2mm">
+            <li><span class="n">1</span><b>Név</b></li>
+            <li><span class="n">2</span><b>Pozíció</b> — például „Fodrász”.</li>
+            <li><span class="n">3</span><b>Specialitás</b> — nem kötelező, például „Esküvői frizurák”.</li>
+            <li><span class="n">4</span><b>Életrajz</b> — rövid bemutatkozás.</li>
+            <li><span class="n">5</span><b>Portré</b> — fotó feltöltése (5. fejezet), Alt szövegnek elég a név. Ha nincs fotó, a név kezdőbetűje jelenik meg helyette.</li>
+            <li><span class="n">6</span><b>Sorrend</b> — hányadikként jelenjen meg; a kisebb szám kerül előrébb.</li>
+          </ol>
+        </li>
+        <li>Kattints a <span class="ui">Közzététel</span> gombra.</li>
+      </ol>
+      <p>Meglévő csapattag módosításához kattints a nevére a listában. Ha valaki már nem dolgozik a szalonban, nyisd meg az adatlapját, és a <span class="ui">Közzététel</span> melletti <span class="ui">…</span> menüben válaszd a <span class="ui">Törlés</span> pontot.</p>
+    </div>
+    <figure>
+      <img src="img/07-team-form.png" alt="Csapattag adatlapja">
+      <figcaption><b>12. ábra</b> — Egy csapattag adatlapja.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 7. GALÉRIA ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">7. fejezet</span><h2>Galéria</h2></header>
+  <p class="lead">A <b>Galéria</b> menüpontban a Galéria oldal fotóit kezelheted. Minden fotó külön elem a listában.</p>
+
+  <div class="split" style="--w: 56mm">
+    <div>
+      <figure>
+        <img src="img/08-gallery-list.png" alt="A Galéria lista" style="width: 92mm">
+        <figcaption><b>13. ábra</b> — A Galéria lista. Új fotót a <b>+</b> gombbal <span class="b">1</span> adhatsz hozzá.</figcaption>
+      </figure>
+      <ol class="steps">
+        <li>Kattints a <b>Galéria</b> menüpontra, majd a <span class="ui">+</span> gombra.</li>
+        <li>Töltsd ki az adatlapot (14. ábra):
+          <ol class="legend" style="margin-top:2mm">
+            <li><span class="n">1</span><b>Cím</b> — rövid, egyszerű megnevezés, például „Balayage”.</li>
+            <li><span class="n">2</span><b>Kép</b> és <b>Alt szöveg</b> — mindkettő kötelező.</li>
+            <li><span class="n">3</span><b>Kategória</b> — melyik fül alatt jelenjen meg (lásd lent).</li>
+            <li><span class="n">4</span><b>Méret a rácsban</b> — a „Kiemelt (nagy)” fotó kétszer akkora helyet kap.</li>
+            <li><span class="n">5</span><b>Sorrend</b> — a kisebb szám kerül előrébb. Átrendezéshez elég átírni a számokat.</li>
+          </ol>
+        </li>
+        <li>Kattints a <span class="ui">Közzététel</span> gombra.</li>
+      </ol>
+      <table class="info">
+        <tr><th>Kategória</th><th>Mit tegyél ide?</th></tr>
+        <tr><td>Referenciák</td><td>A vendégeken készült munkák</td></tr>
+        <tr><td>A Szalon</td><td>A szalon terei, hangulata, munka közben</td></tr>
+        <tr><td>Esküvői Világ</td><td>Menyasszonyi és alkalmi frizurák</td></tr>
+        <tr><td>Videó</td><td>Videók — ezekhez kérj segítséget tőlünk</td></tr>
+      </table>
+      <p>Fotó törlése: nyisd meg a fotót, és a <span class="ui">Közzététel</span> melletti <span class="ui">…</span> menüben válaszd a <span class="ui">Törlés</span> pontot.</p>
+    </div>
+    <figure>
+      <img src="img/09-gallery-form.png" alt="Galériakép adatlapja">
+      <figcaption><b>14. ábra</b> — Egy galériakép adatlapja.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 8. VÉLEMÉNYEK ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">8. fejezet</span><h2>Vélemények</h2></header>
+  <p class="lead">A <b>Vélemények</b> menüpontban a főoldalon megjelenő vendégvéleményeket kezelheted. Jelenleg öt valódi Google-vélemény szerepel itt.</p>
+
+  <div class="split" style="--w: 74mm">
+    <div>
+      <h3 style="margin-top:0">Új vélemény felvétele</h3>
+      <ol class="steps">
+        <li>Kattints a <b>Vélemények</b> menüpontra, majd a <span class="ui">+</span> gombra.</li>
+        <li>Töltsd ki az adatlapot (15. ábra):
+          <ol class="legend" style="margin-top:2mm">
+            <li><span class="n">1</span><b>Vendég neve</b> — ahogy a vendég a véleményt közzétette.</li>
+            <li><span class="n">2</span><b>Platform</b> — Google, Facebook, Instagram vagy Egyéb.</li>
+            <li><span class="n">3</span><b>Vélemény szövege</b> — másold be szó szerint.</li>
+            <li><span class="n">4</span><b>Csillagok</b> — 1 és 5 közötti szám.</li>
+            <li><span class="n">5</span><b>Sorrend</b> — a kisebb szám kerül előrébb.</li>
+          </ol>
+        </li>
+        <li>Kattints a <span class="ui">Közzététel</span> gombra.</li>
+      </ol>
+      <div class="note tip"><span class="label">Google-értékelés</span>
+        <p>A Google-értékelés átlagát (például 4,9) és a vélemények számát az <b>Alapadatok és elérhetőségek</b> menüpontban frissítheted (10. fejezet). Érdemes időnként átírni a Google-profilod alapján.</p>
+      </div>
+      <div class="note warn"><span class="label">Fontos</span>
+        <p>Csak valódi, vendégtől származó véleményt tegyél fel, szó szerint, a vendég nevével. Ha egy véleményt már nem szeretnél mutatni, töröld (<span class="ui">…</span> menü, <span class="ui">Törlés</span>).</p>
+      </div>
+    </div>
+    <figure>
+      <img src="img/10-review.png" alt="Vélemény adatlapja">
+      <figcaption><b>15. ábra</b> — Egy vélemény adatlapja.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 9. BLOG ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">9. fejezet</span><h2>Blog</h2></header>
+  <p class="lead">A <b>Blog</b> menüpontban írhatsz új blogposztot — stílustippet, hajápolási tanácsot, esküvői inspirációt vagy akár videós (vlog) bejegyzést.</p>
+
+  <div class="split" style="--w: 64mm">
+    <div>
+      <ol class="steps">
+        <li>Kattints a <b>Blog</b> menüpontra, majd a <span class="ui">+</span> gombra. Üres posztsablon nyílik meg (16. ábra).</li>
+        <li><b>Cím</b> <span class="b">1</span> — a poszt címe.</li>
+        <li><b>Slug (URL-rész)</b> <span class="b">2</span> — kattints a <span class="ui">Generálás</span> gombra: a rendszer a címből elkészíti a poszt webcímét.</li>
+        <li><b>Publikálás dátuma</b> <span class="b">3</span> — automatikusan a mai nap. A Blog oldal a legújabb poszttal kezdődik.</li>
+        <li><b>Kategória</b> <span class="b">4</span> — Stílustippek, Esküvő, Hajápolás, Trendek, Szalon élet vagy Vlog (videó).</li>
+        <li><b>Borítókép</b> <span class="b">5</span> és Alt szöveg — a listában és a poszt tetején jelenik meg.</li>
+        <li><b>Kivonat</b> <span class="b">6</span> — egy-két mondatos összefoglaló a listához (legfeljebb 280 karakter).</li>
+        <li><b>Videó URL</b> — nem kötelező. Ha beillesztesz egy YouTube- vagy Vimeo-linket, a poszt tetején lejátszható videó jelenik meg.</li>
+        <li><b>Tartalom</b> <span class="b">7</span> — a poszt szövege. Új bekezdéshez nyomj Entert; a formázáshoz használd a mező tetején lévő eszköztárat (következő oldal).</li>
+        <li>Kattints a <span class="ui">Közzététel</span> gombra — a poszt megjelenik a Blog oldalon.</li>
+      </ol>
+      <div class="note warn"><span class="label">Figyelem</span>
+        <p>Már közzétett posztnál a <b>Slug</b> mezőt ne írd át, és a <span class="ui">Generálás</span> gombot se nyomd meg újra: megváltozna a poszt webcíme, és a korábban megosztott linkek nem működnének.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="img/11-blog-new.png" alt="Új blogposzt adatlapja">
+      <figcaption><b>16. ábra</b> — Új blogposzt adatlapja.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="pb">
+  <header class="ch"><span class="kicker">9. fejezet — folytatás</span><h2>A blog szövegszerkesztője</h2></header>
+  <p class="lead">A <b>Tartalom</b> mezőben úgy írhatsz, mint egy egyszerű szövegszerkesztőben: új bekezdéshez nyomj Entert. A mező tetején lévő eszköztárral formázhatod a szöveget.</p>
+
+  <figure>
+    <img src="img/11b-blog-toolbar.png" alt="A szövegszerkesztő eszköztára">
+    <figcaption><b>17. ábra</b> — A Tartalom mező eszköztára.</figcaption>
+  </figure>
+  <ol class="legend">
+    <li><span class="n">1</span><b>Bekezdéstípus</b> — kattints a bekezdésbe, majd a lenyíló menüben válaszd ki: <b>Normál</b> szöveg, <b>Nagy cím (H2)</b>, <b>Alcím (H3)</b> vagy <b>Idézet</b>.</li>
+    <li><span class="n">2</span><b>Félkövér</b> és <b>dőlt</b> — jelöld ki a szöveget, majd kattints a gombra.</li>
+    <li><span class="n">3</span><b>Felsorolás</b> és <b>számozott lista</b>.</li>
+    <li><span class="n">4</span><b>Link</b> — jelöld ki a szöveget, kattints a gombra, és illeszd be a webcímet.</li>
+    <li><span class="n">5</span><b>Kép</b> — fotó beszúrása a szöveg közé. Itt is töltsd ki az Alt szöveget; képaláírást is adhatsz hozzá.</li>
+    <li><span class="n">6</span><b>Teljes képernyő</b> — hosszabb szövegnél kényelmesebb így írni; ugyanezzel a gombbal lépsz vissza.</li>
+  </ol>
+
+  <h3>Hasznos tudnivalók</h3>
+  <ul>
+    <li><b>Szöveg bemásolása</b> Wordből vagy e-mailből is működik. Bemásolás után nézd át a formázást, és ahol kell, állítsd vissza <b>Normál</b> szövegre.</li>
+    <li><b>Tagolás:</b> a hosszabb posztot érdemes <b>Nagy cím (H2)</b> és <b>Alcím (H3)</b> bekezdésekkel részekre bontani — így könnyebben olvasható, és a Google is jobban érti.</li>
+    <li><b>Videós (vlog) poszt:</b> válaszd a <b>Vlog (videó)</b> kategóriát, és a <b>Videó URL</b> mezőbe illeszd be a YouTube- vagy Vimeo-linket.</li>
+    <li><b>Poszt módosítása:</b> kattints a posztra a Blog listában, írd át, majd <span class="ui">Közzététel</span>. A Slug mezőhöz ilyenkor ne nyúlj.</li>
+    <li><b>Poszt törlése:</b> nyisd meg a posztot, és a <span class="ui">Közzététel</span> melletti <span class="ui">…</span> menüben válaszd a <span class="ui">Törlés</span> pontot.</li>
+  </ul>
+</section>
+
+<!-- ============ 10. ALAPADATOK ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">10. fejezet</span><h2>Alapadatok és elérhetőségek</h2></header>
+  <p class="lead">Az itt megadott adatok a weboldal több pontján egyszerre jelennek meg: a láblécben, a Kapcsolat oldalon és az időpontfoglaló gomboknál. Elég egy helyen átírni őket.</p>
+
+  <div class="split" style="--w: 80mm">
+    <div>
+      <ol class="legend">
+        <li><span class="n">1</span><b>Telefonszám</b> — úgy írd be, ahogy meg szeretnéd jeleníteni (például +36 30 590 1766). A hívásgombot a rendszer ebből készíti el.</li>
+        <li><span class="n">2</span><b>E-mail cím</b></li>
+        <li><span class="n">3</span><b>Cím</b> — a szalon címe.</li>
+        <li><span class="n">4</span><b>Időpontfoglalás URL</b> — az online foglalási oldal linkje. Erre visz minden „Időpontfoglalás” gomb, ezért csak akkor írd át, ha a foglalási rendszer címe megváltozik.</li>
+      </ol>
+      <div class="note warn"><span class="label">Ne módosítsd</span>
+        <p>A <b>Google Maps embed URL</b> a weboldalon megjelenő térkép beállítása. Ha a szalon címe változna, szólj nekünk, és a térképet is átállítjuk.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="img/12a-settings-contact.png" alt="Elérhetőségek">
+      <figcaption><b>18. ábra</b> — Elérhetőségek és az időpontfoglalás linkje.</figcaption>
+    </figure>
+  </div>
+
+  <div class="split left" style="--w: 70mm">
+    <figure>
+      <img src="img/12b-settings-hours.png" alt="Nyitvatartás és közösségi oldalak">
+      <figcaption><b>19. ábra</b> — Nyitvatartás, közösségi oldalak, Google-értékelés.</figcaption>
+    </figure>
+    <div>
+      <ol class="legend">
+        <li><span class="n">5</span><b>Nyitvatartás</b> — kattints egy sorra a módosításhoz: a <b>Címke</b> a nap (például „Hétfő”), az <b>Idő</b> a nyitvatartás (például „09:00 – 21:00” vagy „Zárva”). Új sort az <span class="ui">Elem hozzáadása</span> gombbal veszel fel; a sorrendet a sor bal szélén lévő pöttyöknél fogva húzással változtathatod meg; törölni a sor jobb szélén lévő <span class="ui">…</span> gombbal tudsz.</li>
+        <li><span class="n">6</span><b>Instagram, Facebook, TikTok</b> — a közösségi oldalak teljes linkje.</li>
+        <li><span class="n">7</span><b>Google átlagos értékelés</b> és <b>Vélemények száma</b> — a Google-profilod alapján időnként frissítsd.</li>
+      </ol>
+      <p>Végül ne felejtsd el: <span class="ui">Közzététel</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. OLDALSZÖVEGEK ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">11. fejezet</span><h2>Az oldalak szövegei</h2></header>
+  <p class="lead">A <b>Főoldal</b>, a <b>Rólunk oldal</b>, a <b>Szolgáltatások oldal</b> és az <b>Esküvő oldal</b> menüpontokban az adott oldal állandó szövegeit és képeit találod. Ezek nem listák: mindegyikből egy van, így itt nincs <span class="ui">+</span> gomb és törlés sem.</p>
+
+  <div class="split" style="--w: 84mm">
+    <div>
+      <p>A mezők neve megmutatja, hol látszik a szöveg az oldalon. A <b>„Hero”</b> az oldal tetején lévő nagy nyitókép. A főoldalon például:</p>
+      <ol class="legend">
+        <li><span class="n">1</span><b>Hero főcím – 1. sor</b> — a nagy cím első sora.</li>
+        <li><span class="n">2</span><b>Hero főcím – 2. sor (arany)</b> — a második, arany színű sor.</li>
+        <li><span class="n">3</span><b>Hero alszöveg</b> — a cím alatti bemutatkozó szöveg.</li>
+      </ol>
+      <p>A szöveg átírása után itt is a <span class="ui">Közzététel</span> gombbal véglegesíts.</p>
+    </div>
+    <figure>
+      <img src="img/13-home.png" alt="A Főoldal szövegei">
+      <figcaption><b>20. ábra</b> — A Főoldal nyitóképének szövegei.</figcaption>
+    </figure>
+  </div>
+
+  <table class="info">
+    <tr><th>Menüpont</th><th>Mit szerkeszthetsz?</th></tr>
+    <tr><td>Főoldal</td><td>A nyitókép főcíme (két sor) és alszövege; a Kevin Murphy szekció címe, szövege és képe; a statisztikák (évek, értékelések száma)</td></tr>
+    <tr><td>Rólunk oldal</td><td>A bemutatkozás címe, kiemelt idézete, szövege és képe; a Kevin Murphy filozófia szövege és képe; a „Miért válassz minket?” cím és pontok; a záró idézet és szerzője</td></tr>
+    <tr><td>Szolgáltatások oldal</td><td>Bevezető szöveg (a lista felett), záró szöveg (a lista után); a hajhosszabbítás szekció címe, szövege és képe; az alsó sáv címe, szövege és képe</td></tr>
+    <tr><td>Esküvő oldal</td><td>A nyitókép szövegei, idézete és háttérképe; a szakértelem szövege és két képe; a statisztikák; a lookbook képei (4 db); a záró felhívás címe</td></tr>
+  </table>
+
+  <div class="note warn"><span class="label">Ne módosítsd</span>
+    <p>A Főoldalon lévő <b>Hero videó (MP4)</b> és <b>Hero videó (WebM)</b> mezők a nyitóvideó fájljait jelölik. Ezeket hagyd változatlanul — ha új videót szeretnél, küldd el nekünk, és mi kicseréljük.</p>
+  </div>
+</section>
+
+<!-- ============ 12. FONTOS TUDNIVALÓK ============ -->
+<section class="pb">
+  <header class="ch"><span class="kicker">12. fejezet</span><h2>Fontos tudnivalók és segítség</h2></header>
+
+  <h3 style="margin-top:0">Amit érdemes észben tartani</h3>
+  <ul>
+    <li><b>Csak a közzétett változás látszik.</b> Amíg nem kattintasz a <span class="ui">Közzététel</span> gombra, a weboldal nem változik.</li>
+    <li><b>Nincs mit félned:</b> a módosítások visszavonhatók (4. fejezet). A korábbi változatok csak korlátozott ideig érhetők el, ezért ha valami nem úgy sikerült, minél előbb javítsd — vagy szólj nekünk.</li>
+    <li><b>A Törlés azonnal leveszi</b> az elemet a weboldalról.</li>
+    <li><b>Fotóknál mindig töltsd ki az Alt szöveget.</b> A galériában ez kötelező is.</li>
+    <li><b>Már közzétett blogposzt</b> Slug mezőjét ne módosítsd.</li>
+    <li><b>Amit nem itt szerkesztesz:</b> az oldalak felépítése és dizájnja, a menü, az impresszum és az adatvédelmi tájékoztató, valamint a videók cseréje. Ezekhez írj nekünk, és megcsináljuk.</li>
+  </ul>
+
+  <h3>Gyors ellenőrzőlista minden módosításhoz</h3>
+  <ol class="steps">
+    <li>Megnyitottam a megfelelő menüpontot és elemet.</li>
+    <li>Átírtam a szöveget vagy feltöltöttem a fotót (Alt szöveggel).</li>
+    <li>Rákattintottam a <span class="ui">Közzététel</span> gombra.</li>
+    <li>Pár másodperc múlva megnéztem a weboldalon.</li>
+  </ol>
+
+  <div class="contact">
+    <h3>Ha elakadsz, keress minket bizalommal</h3>
+    <p class="who"><b>Prometheus Digital Kft.</b> — Bretz Árpád</p>
+    <div class="lines"><span>+36 30 922 2042</span><span>arpadbretz@prometheusdigital.hu</span></div>
+    <p class="small">Írd meg röviden, mit szeretnél módosítani vagy hol akadtál el — egy képernyőkép sokat segít.</p>
+  </div>
+</section>
+
+</body>
+</html>

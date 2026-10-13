@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const siteSettings = defineType({
   name: "siteSettings",
-  title: "Beállítások",
+  title: "Alapadatok és elérhetőségek",
   type: "document",
   fields: [
     defineField({
@@ -117,6 +117,6 @@ export const siteSettings = defineType({
     }),
   ],
   preview: {
-    prepare: () => ({ title: "Beállítások" }),
+    prepare: () => ({ title: "Alapadatok és elérhetőségek" }),
   },
 });

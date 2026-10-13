@@ -2,12 +2,15 @@
 
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-import { visionTool } from "@sanity/vision";
 import { huHULocale } from "@sanity/locale-hu-hu";
 
-import { apiVersion, dataset, projectId } from "./src/sanity/env";
+import { dataset, projectId } from "./src/sanity/env";
 import { schemaTypes, singletonTypes } from "./src/sanity/schemas";
 import { structure } from "./src/sanity/structure";
+
+// Not offered in the global "+" menu: singletons, and the wedding-steps type
+// whose section was removed from /eskuvo.
+const notCreatable = new Set([...singletonTypes, "weddingProcessStep"]);
 
 export default defineConfig({
   name: "default",
@@ -20,7 +23,7 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
     templates: (templates) =>
-      templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+      templates.filter(({ schemaType }) => !notCreatable.has(schemaType)),
   },
 
   document: {
@@ -37,7 +40,6 @@ export default defineConfig({
 
   plugins: [
     structureTool({ structure, title: "Tartalom" }),
-    visionTool({ defaultApiVersion: apiVersion }),
     huHULocale(),
   ],
 });

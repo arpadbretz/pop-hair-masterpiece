@@ -1,5 +1,12 @@
 import { defineField, defineType } from "sanity";
 
+const CATEGORIES = [
+  { title: "Referenciák", value: "work" },
+  { title: "A Szalon", value: "salon" },
+  { title: "Esküvői Világ", value: "wedding" },
+  { title: "Videó", value: "video" },
+];
+
 export const galleryImage = defineType({
   name: "galleryImage",
   title: "Galéria kép",
@@ -30,15 +37,7 @@ export const galleryImage = defineType({
       name: "category",
       title: "Kategória",
       type: "string",
-      options: {
-        list: [
-          { title: "Referenciák", value: "work" },
-          { title: "A Szalon", value: "salon" },
-          { title: "Esküvői Világ", value: "wedding" },
-          { title: "Videó", value: "video" },
-        ],
-        layout: "radio",
-      },
+      options: { list: CATEGORIES, layout: "radio" },
       validation: (r) => r.required(),
     }),
     defineField({
@@ -76,6 +75,11 @@ export const galleryImage = defineType({
     },
   ],
   preview: {
-    select: { title: "title", subtitle: "category", media: "image" },
+    select: { title: "title", category: "category", media: "image" },
+    prepare: ({ title, category, media }) => ({
+      title,
+      subtitle: CATEGORIES.find((c) => c.value === category)?.title ?? category,
+      media,
+    }),
   },
 });
