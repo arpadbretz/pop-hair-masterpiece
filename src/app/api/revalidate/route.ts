@@ -27,7 +27,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    revalidateTag(body._type, "max");
+    // Expire now (not stale-while-revalidate): an edit published in the
+    // Studio should be on the very next page view.
+    revalidateTag(body._type, { expire: 0 });
     return NextResponse.json({ revalidated: body._type, now: Date.now() });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
