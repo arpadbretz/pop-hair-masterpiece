@@ -54,34 +54,39 @@ export const homeContent = defineType({
     }),
     defineField({
       name: "kmTitle",
-      title: "Kevin Murphy szekció címe",
+      title: "Szakmai szemlélet – termékmárka neve",
+      description:
+        "A szalonban használt termékmárka, pl. Philip Martin's. A „Szakmai szemlélet” szekcióban és a nyitókép forgó jelvényén jelenik meg.",
       type: "string",
-      initialValue: "Kevin Murphy.",
     }),
     defineField({
       name: "kmDescription",
-      title: "Kevin Murphy szekció szövege",
+      title: "Szakmai szemlélet – szöveg",
       description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
       type: "text",
       rows: 8,
     }),
     defineField({
       name: "kmImage",
-      title: "Kevin Murphy szekció kép",
+      title: "Szakmai szemlélet – kép",
+      description: "Opcionális. Kép nélkül a szekció csak szöveggel jelenik meg.",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
+      // Not shown since the October 2026 home page redesign.
       name: "yearsExperience",
       title: "Évek tapasztalat (statisztika)",
       type: "string",
       initialValue: "20+",
+      hidden: true,
     }),
     defineField({
       name: "reviewBadgeCount",
       title: "Értékelések száma (statisztika)",
       type: "string",
       initialValue: "500+",
+      hidden: true,
     }),
   ],
   preview: {

@@ -40,14 +40,15 @@ export const aboutContent = defineType({
     }),
     defineField({
       name: "kmFilozofiaBody",
-      title: "Kevin Murphy filozófia szöveg",
+      title: "Szakmai szemlélet – szöveg",
       description: "Több bekezdés is lehet — üres sorral válaszd el őket.",
       type: "text",
       rows: 8,
     }),
     defineField({
       name: "kmFilozofiaImage",
-      title: "Kevin Murphy filozófia kép",
+      title: "Szakmai szemlélet – kép",
+      description: "Opcionális. Kép nélkül a szöveg teljes szélességben jelenik meg.",
       type: "image",
       options: { hotspot: true },
     }),

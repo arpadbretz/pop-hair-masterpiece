@@ -13,6 +13,8 @@ interface HeroSectionProps {
   videoMp4: string;
   videoWebm?: string;
   posterUrl?: string;
+  /** Text of the rotating badge in the bottom-left corner. */
+  badge?: string;
 }
 
 export function HeroSection({
@@ -24,6 +26,7 @@ export function HeroSection({
   videoMp4,
   videoWebm,
   posterUrl,
+  badge = "BUDA • 20 ÉV • PRÉMIUM •",
 }: HeroSectionProps) {
   return (
     <section className="relative mt-[var(--nav-h)] min-h-[calc(100svh-var(--nav-h))] pt-12 pb-20 md:pt-8 md:pb-12 w-full flex items-center justify-center bg-black overflow-hidden">
@@ -107,7 +110,7 @@ export function HeroSection({
       <div className="absolute bottom-16 left-10 hidden md:block">
         <div className="w-28 h-28 rounded-full border border-white/20 backdrop-blur-sm flex items-center justify-center animate-spin-slow text-center p-3">
           <span className="text-[8px] text-white/85 uppercase tracking-tighter leading-tight font-bold">
-            KEVIN MURPHY • BUDA • 20 ÉV • PRÉMIUM •
+            {badge}
           </span>
         </div>
       </div>

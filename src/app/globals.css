@@ -87,7 +87,7 @@
   }
 
   .animate-marquee {
-    animation: marquee 60s linear infinite;
+    animation: marquee 45s linear infinite;
   }
 
   @keyframes marquee {
@@ -115,7 +115,7 @@
     left: -100%;
     width: 300%;
     height: 300%;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    background-image: url("/noise.svg");
     opacity: 0.05;
     pointer-events: none;
     z-index: 9999;

@@ -125,7 +125,7 @@ export default async function AboutPage() {
                   <div className="flex gap-6 items-center">
                     <Award size={24} className="text-luxury-gold" />
                     <div>
-                      <p className="text-2xl font-serif italic">KM Specialist</p>
+                      <p className="text-2xl font-serif italic">Mesterfodrász</p>
                       <p className="text-[9px] uppercase tracking-widest text-white/60">
                         Minősítés
                       </p>
@@ -153,7 +153,13 @@ export default async function AboutPage() {
 
       <section className="py-32 md:py-64 bg-white relative overflow-hidden text-black">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
+          <div
+            className={
+              a.kmFilozofiaImage?.asset
+                ? "grid lg:grid-cols-2 gap-24 items-center"
+                : "max-w-3xl"
+            }
+          >
             <div className="space-y-12">
               <SectionTitle title="Szakmai szemlélet" subtitle="SZAKMAI HÁTTÉR" />
               <div className="space-y-8 text-xl font-light text-gray-700 leading-relaxed">
@@ -163,27 +169,25 @@ export default async function AboutPage() {
                   ))
                 ) : (
                   <p>
-                    A szalonban kizárólag Kevin Murphy professzionális
+                    A szalonban kizárólag Philip Martin&apos;s professzionális
                     termékekkel dolgozunk.
                   </p>
                 )}
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square overflow-hidden border border-luxury-gold/20 p-2">
-                {a.kmFilozofiaImage?.asset ? (
+            {a.kmFilozofiaImage?.asset && (
+              <div className="relative">
+                <div className="aspect-square overflow-hidden border border-luxury-gold/20 p-2">
                   <Image
                     src={urlForImage(a.kmFilozofiaImage).width(1000).url()}
-                    alt="Kevin Murphy Products"
+                    alt="Termékeink"
                     width={1000}
                     height={1000}
                     className="w-full h-full object-cover"
                   />
-                ) : (
-                  <div className="w-full h-full bg-off-white" />
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

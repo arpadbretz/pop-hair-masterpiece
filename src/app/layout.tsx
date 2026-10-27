@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Pop Hair Salon",
   },
   description:
-    "Pop Hair Salon — Prémium fodrászat és stílusépítés Budán. Személyre szabott figyelem, mesterfodrászok és minőségi Kevin Murphy termékek.",
+    "Pop Hair Salon — Prémium fodrászat és stílusépítés Budán. Személyre szabott figyelem, mesterfodrászok és minőségi Philip Martin's termékek.",
   metadataBase: new URL("https://pop-hair-pied.vercel.app"),
 };
 

@@ -75,11 +75,13 @@ export type HomeData = {
     videoMp4: string;
     videoWebm?: string;
     posterUrl?: string;
+    badge?: string;
   };
   about: { quote?: string; body: string[]; image?: SizedImage; why: string[] };
   services: { intro?: string; items: Service[] };
   gallery: SizedImage[];
-  km: { body: string[]; image?: SizedImage; image2?: SizedImage };
+  /** The salon's product brand section ("Szakmai szemlélet"). */
+  km: { title?: string; body: string[]; image?: SizedImage };
   wedding: { title: string; quote?: string; images: SizedImage[] };
   reviews: Review[];
 };
@@ -103,7 +105,7 @@ export async function getHomeData(): Promise<HomeData> {
 
   const aboutImage = about?.philosophyImage as (Image & { asset?: unknown }) | undefined;
   const kmImage = home?.kmImage;
-  const kmImage2 = about?.kmFilozofiaImage;
+  const brand = home?.kmTitle?.trim();
 
   const weddingImages = [
     sized(weddingImgs?.hero?.image, "Esküvői frizura", weddingImgs?.hero?.w, weddingImgs?.hero?.h),
@@ -121,6 +123,7 @@ export async function getHomeData(): Promise<HomeData> {
       videoMp4: home?.heroVideoMp4 ?? "/videos/hero.mp4",
       videoWebm: home?.heroVideoWebm ?? "/videos/hero.webm",
       posterUrl: home?.heroVideoPoster?.asset ? urlForImage(home.heroVideoPoster).url() : "/videos/hero-poster.jpg",
+      badge: [brand, "Buda", "20 év", "Prémium"].filter(Boolean).join(" • ").toUpperCase() + " •",
     },
     about: {
       quote: about?.philosophyQuote,
@@ -138,9 +141,9 @@ export async function getHomeData(): Promise<HomeData> {
       .filter((g) => g.w >= 1000 && g.h > g.w)
       .map((g) => ({ image: g.image, alt: g.image.alt ?? g.title, w: g.w, h: g.h })),
     km: {
+      title: brand,
       body: splitParagraphs(home?.kmDescription),
-      image: kmImage?.asset ? { image: kmImage, alt: "Kevin Murphy termékek", w: 3, h: 4 } : undefined,
-      image2: kmImage2?.asset ? { image: kmImage2, alt: "Kevin Murphy termékek", w: 1, h: 1 } : undefined,
+      image: kmImage?.asset ? { image: kmImage, alt: brand ? `${brand} termékek` : "Termékek", w: 3, h: 4 } : undefined,
     },
     wedding: {
       title: [wedding?.heroTitleLine1, wedding?.heroTitleLine2].filter(Boolean).join(" ").replace(/\.$/, "") || "Esküvői frizurák",

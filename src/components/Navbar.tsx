@@ -42,8 +42,8 @@ export function Navbar({
     });
   }, [scrollY]);
 
-  // Pages that open with the dark video hero get a black bar above it.
-  const isDarkHeroPage = pathname === "/" || pathname.startsWith("/variaciok/");
+  // The home page opens with the dark video hero: black bar above it.
+  const isDarkHeroPage = pathname === "/";
   const navTextColor =
     isScrolled || !isDarkHeroPage ? "text-black" : "text-white";
 

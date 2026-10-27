@@ -5,7 +5,6 @@ import { directionsUrl, MAPS_PLACE_URL, type HomeData } from "@/lib/home-data";
 import { Photo } from "./Photo";
 import { Reveal } from "./Reveal";
 import { ReviewsMarquee } from "./ReviewsMarquee";
-import { ServiceIcon } from "./ServiceIcon";
 import { BOOKING_INVITE, telHref } from "./contact";
 
 function SectionHead({
@@ -41,14 +40,30 @@ function SectionHead({
   );
 }
 
+/** Diamond-and-hairlines ornament of the classic layout (used by the services section). */
+function Ornament() {
+  return (
+    <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
+      <span className="h-px w-10 bg-luxury-gold/60" />
+      <span className="h-1.5 w-1.5 rotate-45 bg-luxury-gold" />
+      <span className="h-px w-10 bg-luxury-gold/60" />
+    </div>
+  );
+}
+
 const btnSolid =
   "inline-flex items-center justify-center gap-2 bg-black px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-luxury-gold hover:text-black";
 const btnOutline =
   "inline-flex items-center justify-center gap-2 border border-black px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-colors hover:bg-black hover:text-white";
+const btnDarkClassic =
+  "inline-flex items-center justify-center gap-2 bg-black px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-white transition-colors hover:bg-luxury-gold hover:text-black";
+const btnLine =
+  "inline-flex items-center gap-2 border-b border-black/30 pb-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-black transition-colors hover:border-luxury-gold hover:text-luxury-gold";
 
-/** B — Modern: grid-based, numbered sections, full-bleed photo strip
- * (Kevin Murphy-style editorial minimalism). */
-export function VariantB({ data }: { data: HomeData }) {
+/** Home page: the modern, numbered layout Szilvi picked (variant B), with
+ * reviews moved up right after the hero and the services list taken from
+ * the classic layout (variant A). */
+export function HomePage({ data }: { data: HomeData }) {
   const { settings, about, services, gallery, km, wedding, reviews } = data;
   const wrap = "mx-auto max-w-7xl px-6 md:px-10";
 
@@ -56,10 +71,47 @@ export function VariantB({ data }: { data: HomeData }) {
     <>
       <HeroSection {...data.hero} />
 
-      {/* 01 Rólunk */}
+      {/* 01 Vélemények — marquee */}
+      {reviews.length > 0 && (
+        <section className="bg-off-white py-20 md:py-28">
+          <div className={wrap}>
+            <SectionHead
+              no="01"
+              title="Vélemények"
+              aside={
+                settings.googleRating ? (
+                  <a
+                    href={MAPS_PLACE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 text-black hover:text-luxury-gold"
+                  >
+                    <span className="font-serif text-5xl font-light">{settings.googleRating.toString().replace(".", ",")}</span>
+                    <span className="flex flex-col">
+                      <span className="flex gap-0.5 text-luxury-gold">
+                        {Array.from({ length: 5 }).map((_, k) => (
+                          <Star key={k} size={13} fill="currentColor" strokeWidth={0} />
+                        ))}
+                      </span>
+                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.2em] text-gray-600">
+                        {settings.reviewCount} Google-értékelés <ArrowUpRight size={12} />
+                      </span>
+                    </span>
+                  </a>
+                ) : undefined
+              }
+            />
+          </div>
+          <div className="mt-12">
+            <ReviewsMarquee reviews={reviews} />
+          </div>
+        </section>
+      )}
+
+      {/* 02 Rólunk */}
       <section className="bg-white py-24 md:py-32">
         <div className={wrap}>
-          <SectionHead no="01" title="Rólunk" href="/rolunk" linkLabel="Ismerj meg minket" />
+          <SectionHead no="02" title="Rólunk" href="/rolunk" linkLabel="Ismerj meg minket" />
           <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5 lg:pt-6">
               {about.quote && (
@@ -100,38 +152,31 @@ export function VariantB({ data }: { data: HomeData }) {
         </div>
       </section>
 
-      {/* 02 Szolgáltatásaink */}
-      <section className="bg-off-white py-24 md:py-32">
-        <div className={wrap}>
-          <SectionHead no="02" title="Szolgáltatásaink" href="/szolgaltatasok" linkLabel="Részletek" />
+      {/* Szolgáltatásaink — the classic, menu-like list */}
+      <section className="bg-off-white px-6 py-24 md:py-32">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <Ornament />
+          <h2 className="font-serif text-4xl md:text-5xl font-light tracking-tight text-black">Szolgáltatásaink</h2>
           {services.intro && (
-            <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-gray-600">{services.intro}</p>
+            <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-gray-600">{services.intro}</p>
           )}
-          <Reveal className="mt-12">
-            <ul className="grid grid-cols-2 gap-px border border-black/10 bg-black/10 lg:grid-cols-4">
-              {services.items.map((s, k) => (
-                <li
-                  key={s._id}
-                  className="group flex min-h-[10rem] flex-col justify-between bg-off-white p-5 transition-colors duration-500 hover:bg-white md:min-h-[12rem] md:p-8"
-                >
-                  <div className="flex items-center justify-between text-luxury-gold">
-                    <span className="text-[11px] font-semibold tracking-[0.2em]">{String(k + 1).padStart(2, "0")}</span>
-                    <ServiceIcon name={s.icon} />
-                  </div>
-                  <span className="font-serif text-xl md:text-2xl font-light leading-tight text-black">{s.name}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href={settings.bookingUrl} target="_blank" rel="noopener noreferrer" className={btnSolid}>
+          <ul className="mt-14 grid gap-x-16 text-left sm:grid-cols-2">
+            {services.items.map((s, k) => (
+              <li key={s._id} className="flex items-baseline gap-5 border-b border-black/10 py-5">
+                <span className="w-6 font-serif text-base text-luxury-gold">{String(k + 1).padStart(2, "0")}</span>
+                <span className="font-serif text-2xl font-light text-black">{s.name}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-8">
+            <a href={settings.bookingUrl} target="_blank" rel="noopener noreferrer" className={btnDarkClassic}>
               Időpontfoglalás
             </a>
-            <Link href="/szolgaltatasok" className={`${btnOutline} sm:hidden`}>
+            <Link href="/szolgaltatasok" className={btnLine}>
               Részletek
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* 03 Munkáink — full-bleed swipe strip */}
@@ -151,22 +196,42 @@ export function VariantB({ data }: { data: HomeData }) {
         </section>
       )}
 
-      {/* 04 Szakmai szemlélet — split */}
-      <section className="grid bg-off-white lg:grid-cols-2">
-        <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:min-h-[44rem]">
-          <Photo img={km.image} width={1000} ratio={5 / 4} sizes="(max-width: 1024px) 100vw, 50vw" className="absolute inset-0" />
-        </div>
-        <Reveal className="flex flex-col justify-center px-6 py-20 md:px-16 lg:px-20">
-          <span className="text-[11px] font-semibold tracking-[0.3em] text-luxury-gold">04</span>
-          <h2 className="mt-4 font-serif text-4xl md:text-6xl font-light tracking-tight text-black">Szakmai szemlélet</h2>
-          <p className="mt-2 font-serif text-3xl md:text-4xl italic text-luxury-gold">Kevin Murphy</p>
-          <div className="mt-10 max-w-lg space-y-5 border-t border-black/15 pt-8 text-[17px] leading-relaxed text-gray-700">
-            {km.body.map((p, k) => (
-              <p key={k}>{p}</p>
-            ))}
-          </div>
-        </Reveal>
-      </section>
+      {/* 04 Szakmai szemlélet — the salon's product brand. Split with a photo
+          once one is uploaded in the Studio, text-only until then. */}
+      {km.body.length > 0 &&
+        (km.image ? (
+          <section className="grid bg-off-white lg:grid-cols-2">
+            <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:min-h-[44rem]">
+              <Photo img={km.image} width={1000} ratio={5 / 4} sizes="(max-width: 1024px) 100vw, 50vw" className="absolute inset-0" />
+            </div>
+            <Reveal className="flex flex-col justify-center px-6 py-20 md:px-16 lg:px-20">
+              <span className="text-[11px] font-semibold tracking-[0.3em] text-luxury-gold">04</span>
+              <h2 className="mt-4 font-serif text-4xl md:text-6xl font-light tracking-tight text-black">Szakmai szemlélet</h2>
+              {km.title && <p className="mt-2 font-serif text-3xl md:text-4xl italic text-luxury-gold">{km.title}</p>}
+              <div className="mt-10 max-w-lg space-y-5 border-t border-black/15 pt-8 text-[17px] leading-relaxed text-gray-700">
+                {km.body.map((p, k) => (
+                  <p key={k}>{p}</p>
+                ))}
+              </div>
+            </Reveal>
+          </section>
+        ) : (
+          <section className="bg-off-white py-24 md:py-32">
+            <div className={wrap}>
+              <SectionHead no="04" title="Szakmai szemlélet" />
+              <Reveal className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
+                {km.title && (
+                  <p className="font-serif text-4xl md:text-6xl italic leading-tight text-luxury-gold lg:col-span-5">{km.title}</p>
+                )}
+                <div className="space-y-5 text-[17px] leading-relaxed text-gray-700 lg:col-span-7">
+                  {km.body.map((p, k) => (
+                    <p key={k}>{p}</p>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        ))}
 
       {/* 05 Esküvői frizurák — bento */}
       <section className="bg-white py-24 md:py-32">
@@ -197,48 +262,11 @@ export function VariantB({ data }: { data: HomeData }) {
         </div>
       </section>
 
-      {/* 06 Vélemények — marquee */}
-      {reviews.length > 0 && (
-        <section className="bg-off-white py-24 md:py-32">
-          <div className={wrap}>
-            <SectionHead
-              no="06"
-              title="Vélemények"
-              aside={
-                settings.googleRating ? (
-                  <a
-                    href={MAPS_PLACE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-black hover:text-luxury-gold"
-                  >
-                    <span className="font-serif text-5xl font-light">{settings.googleRating.toString().replace(".", ",")}</span>
-                    <span className="flex flex-col">
-                      <span className="flex gap-0.5 text-luxury-gold">
-                        {Array.from({ length: 5 }).map((_, k) => (
-                          <Star key={k} size={13} fill="currentColor" strokeWidth={0} />
-                        ))}
-                      </span>
-                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.2em] text-gray-600">
-                        {settings.reviewCount} Google-értékelés <ArrowUpRight size={12} />
-                      </span>
-                    </span>
-                  </a>
-                ) : undefined
-              }
-            />
-          </div>
-          <div className="mt-12">
-            <ReviewsMarquee reviews={reviews} />
-          </div>
-        </section>
-      )}
-
-      {/* 07 Időpontfoglalás */}
-      <section className="bg-white py-24 md:py-32">
+      {/* 06 Időpontfoglalás */}
+      <section className="bg-off-white py-24 md:py-32">
         <div className={`${wrap} grid gap-16 lg:grid-cols-2`}>
           <Reveal>
-            <span className="text-[11px] font-semibold tracking-[0.3em] text-luxury-gold">07</span>
+            <span className="text-[11px] font-semibold tracking-[0.3em] text-luxury-gold">06</span>
             <h2 className="mt-4 font-serif text-5xl md:text-7xl font-light leading-none tracking-tight text-black">Időpontfoglalás</h2>
             <p className="mt-8 max-w-md text-[17px] leading-relaxed text-gray-600">{BOOKING_INVITE}</p>
             <div className="mt-10 flex flex-wrap gap-4">
